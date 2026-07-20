@@ -91,26 +91,48 @@
 
   .bio { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 14px; }
 
-  .location { font-size: 12px; color: var(--muted); margin-bottom: 18px; display: flex; align-items: center; justify-content: center; gap: 4px; }
-  .flag { font-size: 10px; font-weight: 600; opacity: 0.7; }
+  .location { font-size: 12px; color: var(--muted); margin-bottom: 18px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+  .flag { font-size: 11px; font-weight: 600; opacity: 0.8; }
 
-  .tg-btn {
+  /* Блок кнопок соцсетей */
+  .social-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .social-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 45, 77, 0.1);
-    border: 1px solid rgba(255, 45, 77, 0.3);
+    gap: 6px;
+    background: rgba(255, 45, 77, 0.12);
+    border: 1px solid rgba(255, 45, 77, 0.35);
     color: var(--text);
-    padding: 8px 20px;
+    padding: 8px 16px;
     border-radius: 20px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     text-decoration: none;
     transition: all 0.2s ease;
+    flex: 1;
+    min-width: 120px;
   }
-  .tg-btn:hover { background: var(--red); color: #000; }
 
-  /* Player Styles */
+  .social-btn:hover { 
+    background: var(--red); 
+    color: #000; 
+    box-shadow: 0 0 15px var(--red-glow); 
+  }
+
+  .social-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+  }
+
+  /* Плеер */
   .player {
     background: var(--card);
     border: 1px solid var(--card-border);
@@ -135,18 +157,18 @@
   .track-info { flex: 1; min-width: 0; }
   .track-title { font-weight: 600; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-  .controls-row { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
-  .time-text { font-size: 11px; color: var(--muted); width: 28px; text-align: center; }
+  .controls-row { display: flex; align-items: center; gap: 6px; margin-top: 4px; }
+  .time-text { font-size: 11px; color: var(--muted); width: 26px; text-align: center; }
 
   .progress-bar {
     flex: 1; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; cursor: pointer; position: relative;
   }
   .progress-fill { position: absolute; height: 100%; width: 0%; background: var(--red); border-radius: 2px; }
 
-  /* Volume slider */
-  .volume-container { display: flex; align-items: center; gap: 4px; }
+  /* Громкость */
+  .volume-container { display: flex; align-items: center; }
   .volume-slider {
-    width: 45px;
+    width: 40px;
     height: 3px;
     -webkit-appearance: none;
     background: rgba(255,255,255,0.2);
@@ -165,7 +187,7 @@
     background: var(--red);
     color: #000;
     border: none;
-    width: 32px; height: 32px;
+    width: 34px; height: 34px;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -174,7 +196,7 @@
     flex-shrink: 0;
     transition: transform 0.1s ease;
   }
-  .play-btn:active { transform: scale(0.95); }
+  .play-btn:active { transform: scale(0.93); }
   .play-btn svg { fill: #000; width: 14px; height: 14px; }
 </style>
 </head>
@@ -204,7 +226,15 @@
         <span class="flag">RU</span> Russia, Yekaterinburg
       </div>
 
-      <a href="https://t.me/Discoragen" target="_blank" class="tg-btn">@Discoragen</a>
+      <!-- Кнопки перехода -->
+      <div class="social-buttons">
+        <a href="https://t.me/Discoragen" target="_blank" class="social-btn">
+          Telegram
+        </a>
+        <a href="https://github.com/bonya-cloud" target="_blank" class="social-btn">
+          GitHub
+        </a>
+      </div>
     </div>
 
     <div class="player">
@@ -224,14 +254,12 @@
           
           <span class="time-text" id="duration">0:00</span>
 
-          <!-- Регулятор громкости -->
           <div class="volume-container">
             <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.01" value="0.8">
           </div>
         </div>
       </div>
 
-      <!-- Кнопка Play/Pause с SVG -->
       <button class="play-btn" id="playBtn" title="Play/Pause">
         <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
@@ -259,15 +287,13 @@
       return `${m}:${s}`;
     }
 
-    // Переключение Play / Pause
     playBtn.addEventListener('click', () => {
       if (audio.paused) {
         audio.play().then(() => {
           playIcon.style.display = 'none';
           pauseIcon.style.display = 'block';
         }).catch(err => {
-          console.error("Не удалось воспроизвести аудио:", err);
-          alert("Не удалось загрузить трек! Проверь, находится ли файл по пути assets/track.mp3 (обрати внимание на регистр букв).");
+          console.error("Ошибка аудио:", err);
         });
       } else {
         audio.pause();
@@ -276,7 +302,6 @@
       }
     });
 
-    // Обновление прогресс-бара
     audio.addEventListener('timeupdate', () => {
       currentTimeEl.textContent = formatTime(audio.currentTime);
       if (audio.duration) {
@@ -284,19 +309,16 @@
       }
     });
 
-    // Загрузка длительности трека
     audio.addEventListener('loadedmetadata', () => {
       durationEl.textContent = formatTime(audio.duration);
     });
 
-    // Перемотка кликом по прогресс-бару
     progressTrack.addEventListener('click', e => {
       if (!audio.duration) return;
       const rect = progressTrack.getBoundingClientRect();
       audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
     });
 
-    // Управление громкостью
     volumeSlider.addEventListener('input', e => {
       audio.volume = e.target.value;
     });
