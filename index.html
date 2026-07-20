@@ -28,101 +28,30 @@
     overflow: hidden;
   }
 
-  body {
-    position: relative;
-    background: var(--bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  body { background: var(--bg); display: flex; align-items: center; justify-content: center; position: relative; }
 
-  .backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    background:
-      radial-gradient(ellipse at 50% 110%, rgba(122, 12, 31, 0.55) 0%, transparent 55%),
-      radial-gradient(ellipse at 15% -10%, rgba(255, 45, 77, 0.18) 0%, transparent 45%),
-      linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 100%);
-  }
+  .backdrop, .scanlines, .noise-pulse { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 
-  .scanlines {
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background: repeating-linear-gradient(
-      0deg,
-      rgba(255, 45, 77, 0.03) 0px,
-      rgba(255, 45, 77, 0.03) 1px,
-      transparent 1px,
-      transparent 3px
-    );
-    opacity: 0.6;
-  }
+  .backdrop { background: radial-gradient(ellipse at 50% 110%, rgba(122,12,31,0.55) 0%, transparent 55%), linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 100%); }
 
-  .noise-pulse {
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background: radial-gradient(circle at 50% 40%, rgba(255,45,77,0.06), transparent 60%);
-    animation: pulse 6s ease-in-out infinite;
-  }
+  .scanlines { background: repeating-linear-gradient(0deg, rgba(255,45,77,0.03) 0px, transparent 3px); opacity: 0.6; z-index: 1; }
 
-  @keyframes pulse {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 0.9; }
-  }
+  .noise-pulse { background: radial-gradient(circle at 50% 40%, rgba(255,45,77,0.06), transparent 60%); animation: pulse 6s infinite; z-index: 1; }
 
-  .sound-toggle {
-    position: fixed;
-    top: 24px;
-    left: 24px;
-    z-index: 10;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: rgba(20, 8, 10, 0.6);
-    border: 1px solid var(--card-border);
-    backdrop-filter: blur(6px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
+  @keyframes pulse { 0%,100% {opacity:0.4} 50% {opacity:0.9} }
 
-  .stage {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-    padding: 20px;
-    width: 100%;
-    max-width: 380px;
-  }
+  .stage { position: relative; z-index: 2; max-width: 380px; padding: 20px; }
 
   .card {
-    position: relative;
-    width: 100%;
     background: var(--card);
     border: 1px solid var(--card-border);
     border-radius: 18px;
-    backdrop-filter: blur(18px) saturate(1.2);
     padding: 32px 28px 22px;
     text-align: center;
-    box-shadow: 0 0 60px -20px var(--red-glow);
+    backdrop-filter: blur(18px);
   }
 
-  .avatar-wrap {
-    position: relative;
-    width: 92px;
-    height: 92px;
-    margin: 0 auto 18px;
-  }
-
+  .avatar-wrap { position: relative; width: 92px; height: 92px; margin: 0 auto 18px; }
   .avatar-ring {
     position: absolute;
     inset: -5px;
@@ -130,132 +59,35 @@
     background: conic-gradient(from 0deg, var(--red), var(--red-dim), var(--red));
     animation: spin 5s linear infinite;
   }
-
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
+  @keyframes spin { to { transform: rotate(360deg); } }
 
   .avatar {
-    position: relative;
-    width: 92px;
-    height: 92px;
-    border-radius: 50%;
-    overflow: hidden;
+    width: 92px; height: 92px; border-radius: 50%;
     background: #1a0d10 url('assets/avatar.jpg') center/cover no-repeat;
     border: 3px solid var(--bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--red);
+    overflow: hidden;
   }
 
-  .status-dot {
-    position: absolute;
-    bottom: 2px;
-    right: 2px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--red);
-    border: 3px solid var(--bg);
-    box-shadow: 0 0 8px var(--red-glow);
-  }
-
-  .username {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 26px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    color: var(--text);
-    text-shadow: 0 0 18px var(--red-glow);
-  }
-
-  .bio {
-    margin-top: 12px;
-    font-size: 13.5px;
-    line-height: 1.55;
-    color: var(--muted);
-  }
-
-  .meta-row {
-    margin-top: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  .links {
-    margin-top: 18px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .link-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 7px 14px;
-    border-radius: 999px;
-    background: rgba(255, 45, 77, 0.08);
-    border: 1px solid var(--card-border);
-    color: var(--text);
-    text-decoration: none;
-    font-size: 12.5px;
-    font-weight: 500;
-  }
+  .username { font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; margin-bottom: 8px; }
 
   .player {
-    width: 100%;
     background: var(--card);
     border: 1px solid var(--card-border);
     border-radius: 16px;
-    backdrop-filter: blur(18px) saturate(1.2);
     padding: 12px 14px;
     display: flex;
     align-items: center;
     gap: 12px;
+    margin-top: 16px;
   }
 
   .track-cover {
-    width: 42px;
-    height: 42px;
-    border-radius: 8px;
+    width: 42px; height: 42px; border-radius: 8px;
     background: #1a0d10 url('assets/avatar.jpg') center/cover no-repeat;
-    flex-shrink: 0;
     border: 1px solid var(--card-border);
   }
 
-  .track-title {
-    font-size: 12.5px;
-    font-weight: 500;
-    color: var(--text);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .progress-track {
-    flex: 1;
-    height: 3px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 3px;
-    position: relative;
-    cursor: pointer;
-  }
-
-  .progress-fill {
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 0%;
-    background: var(--red);
-    border-radius: 3px;
-  }
+  .track-title { font-weight: 500; font-size: 13px; }
 </style>
 </head>
 <body>
@@ -265,47 +97,30 @@
   <div class="noise-pulse"></div>
 
   <div class="stage">
-
     <div class="card">
       <div class="avatar-wrap">
         <div class="avatar-ring"></div>
         <div class="avatar"></div>
-        <div class="status-dot"></div>
       </div>
-
       <h1 class="username">discoragen</h1>
-
-      <p class="bio">
-        hey, i'm discoragen. this is my little corner of the internet.<br>
-        message me on telegram if you want.
-      </p>
-
-      <div class="meta-row">
-        🇷🇺 Russia, Yekaterinburg
-      </div>
-
-      <div class="links">
-        <a class="link-pill" href="https://t.me/Discoragen" target="_blank">
-          @Discoragen
-        </a>
-      </div>
+      <p>hey, i'm discoragen. this is my little corner of the internet.<br>message me on telegram if you want.</p>
+      <p style="margin-top:12px; font-size:13px; color:var(--muted);">Russia, Yekaterinburg</p>
     </div>
 
     <div class="player">
       <div class="track-cover"></div>
-      <div class="track-info" style="flex:1">
+      <div style="flex:1">
         <div class="track-title" id="trackTitle">discoragen — track</div>
-        <div class="track-progress-row" style="display:flex; align-items:center; gap:8px; margin-top:5px;">
-          <span class="track-time" id="currentTime">0:00</span>
-          <div class="progress-track" id="progressTrack">
-            <div class="progress-fill" id="progressFill"></div>
+        <div style="display:flex; align-items:center; gap:8px; margin-top:6px;">
+          <span id="currentTime">0:00</span>
+          <div id="progressTrack" style="flex:1; height:4px; background:rgba(255,255,255,0.1); border-radius:2px; cursor:pointer; position:relative;">
+            <div id="progressFill" style="position:absolute; height:100%; width:0%; background:var(--red); border-radius:2px;"></div>
           </div>
-          <span class="track-time" id="duration">0:00</span>
+          <span id="duration">0:00</span>
         </div>
       </div>
-      <button id="playBtn">▶</button>
+      <button id="playBtn" style="background:var(--red); color:#000; border:none; width:36px; height:36px; border-radius:50%; cursor:pointer;">▶</button>
     </div>
-
   </div>
 
   <audio id="audio" src="assets/track.mp3" preload="metadata" loop></audio>
@@ -319,6 +134,7 @@
     const durationEl = document.getElementById('duration');
 
     function formatTime(sec) {
+      if (isNaN(sec)) return '0:00';
       const m = Math.floor(sec / 60);
       const s = Math.floor(sec % 60).toString().padStart(2, '0');
       return `${m}:${s}`;
@@ -336,20 +152,17 @@
 
     audio.addEventListener('timeupdate', () => {
       currentTimeEl.textContent = formatTime(audio.currentTime);
-      const pct = (audio.currentTime / audio.duration) * 100 || 0;
-      progressFill.style.width = pct + '%';
+      progressFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
     });
 
     audio.addEventListener('loadedmetadata', () => {
       durationEl.textContent = formatTime(audio.duration);
     });
 
-    progressTrack.addEventListener('click', (e) => {
+    progressTrack.addEventListener('click', e => {
       const rect = progressTrack.getBoundingClientRect();
-      const ratio = (e.clientX - rect.left) / rect.width;
-      audio.currentTime = ratio * audio.duration;
+      audio.currentTime = (e.clientX - rect.left) / rect.width * audio.duration;
     });
   </script>
-
 </body>
 </html>
