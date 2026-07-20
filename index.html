@@ -40,7 +40,7 @@
 
   @keyframes pulse { 0%,100% {opacity:0.4} 50% {opacity:0.9} }
 
-  .stage { position: relative; z-index: 2; max-width: 380px; padding: 20px; }
+  .stage { position: relative; z-index: 2; max-width: 380px; padding: 20px; width: 100%; }
 
   .card {
     background: var(--card);
@@ -63,9 +63,16 @@
 
   .avatar {
     width: 92px; height: 92px; border-radius: 50%;
-    background: #1a0d10 url('assets/avatar.jpg') center/cover no-repeat;
+    background: #1a0d10;
     border: 3px solid var(--bg);
     overflow: hidden;
+    position: relative;
+    z-index: 2;
+  }
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .username { font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; margin-bottom: 8px; }
@@ -83,8 +90,14 @@
 
   .track-cover {
     width: 42px; height: 42px; border-radius: 8px;
-    background: #1a0d10 url('assets/avatar.jpg') center/cover no-repeat;
+    background: #1a0d10;
     border: 1px solid var(--card-border);
+    overflow: hidden;
+  }
+  .track-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .track-title { font-weight: 500; font-size: 13px; }
@@ -100,7 +113,9 @@
     <div class="card">
       <div class="avatar-wrap">
         <div class="avatar-ring"></div>
-        <div class="avatar"></div>
+        <div class="avatar">
+          <img src="assets/avatar.jpg" alt="avatar">
+        </div>
       </div>
       <h1 class="username">discoragen</h1>
       <p>hey, i'm discoragen. this is my little corner of the internet.<br>message me on telegram if you want.</p>
@@ -108,7 +123,9 @@
     </div>
 
     <div class="player">
-      <div class="track-cover"></div>
+      <div class="track-cover">
+        <img src="assets/avatar.jpg" alt="track cover">
+      </div>
       <div style="flex:1">
         <div class="track-title" id="trackTitle">discoragen — track</div>
         <div style="display:flex; align-items:center; gap:8px; margin-top:6px;">
@@ -119,7 +136,7 @@
           <span id="duration">0:00</span>
         </div>
       </div>
-      <button id="playBtn" style="background:var(--red); color:#000; border:none; width:36px; height:36px; border-radius:50%; cursor:pointer;">▶</button>
+      <button id="playBtn" style="background:var(--red); color:#000; border:none; width:36px; height:36px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; font-weight:bold;">▶</button>
     </div>
   </div>
 
@@ -127,7 +144,8 @@
 
   <script>
     const audio = document.getElementById('audio');
-    const playBtn = document.getElementById('playBtn');
+    const playBtn = id => document.getElementById('playBtn'); // поправлено для надежности
+    const realPlayBtn = document.getElementById('playBtn');
     const progressTrack = document.getElementById('progressTrack');
     const progressFill = document.getElementById('progressFill');
     const currentTimeEl = document.getElementById('currentTime');
@@ -140,19 +158,24 @@
       return `${m}:${s}`;
     }
 
-    playBtn.addEventListener('click', () => {
+    realPlayBtn.addEventListener('click', () => {
       if (audio.paused) {
-        audio.play();
-        playBtn.textContent = '❚❚';
+        audio.play().catch(e => {
+          console.error("Ошибка воспроизведения аудио:", e);
+          alert("Не удалось воспроизвести трек. Проверьте, загружен ли файл assets/track.mp3 в репозиторий.");
+        });
+        realPlayBtn.textContent = '❚❚';
       } else {
         audio.pause();
-        playBtn.textContent = '▶';
+        realPlayBtn.textContent = '▶';
       }
     });
 
     audio.addEventListener('timeupdate', () => {
       currentTimeEl.textContent = formatTime(audio.currentTime);
-      progressFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+      if(audio.duration) {
+        progressFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+      }
     });
 
     audio.addEventListener('loadedmetadata', () => {
@@ -160,6 +183,7 @@
     });
 
     progressTrack.addEventListener('click', e => {
+      if(!audio.duration) return;
       const rect = progressTrack.getBoundingClientRect();
       audio.currentTime = (e.clientX - rect.left) / rect.width * audio.duration;
     });
