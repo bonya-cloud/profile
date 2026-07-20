@@ -9,9 +9,8 @@
 <style>
   :root {
     --bg: #0a0507;
-    --bg-deep: #050203;
-    --card: rgba(18, 8, 10, 0.65);
-    --card-border: rgba(255, 45, 77, 0.2);
+    --card: rgba(18, 8, 10, 0.70);
+    --card-border: rgba(255, 45, 77, 0.3);
     --red: #ff2d4d;
     --red-dim: #7a0c1f;
     --red-glow: rgba(255, 45, 77, 0.35);
@@ -36,12 +35,20 @@
     position: relative; 
   }
 
-  .backdrop, .scanlines, .noise-pulse { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-  .backdrop { background: radial-gradient(circle at 50% 50%, rgba(122,12,31,0.4) 0%, transparent 70%), linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 100%); }
-  .scanlines { background: repeating-linear-gradient(0deg, rgba(255,45,77,0.02) 0px, transparent 2px); opacity: 0.8; z-index: 1; }
-  .noise-pulse { background: radial-gradient(circle at 50% 40%, rgba(255,45,77,0.05), transparent 60%); animation: pulse 6s infinite; z-index: 1; }
+  /* Фоновое изображение из папки assets */
+  .backdrop { 
+    position: fixed; 
+    inset: 0; 
+    z-index: 0; 
+    pointer-events: none;
+    background: linear-gradient(0deg, rgba(10, 5, 7, 0.5), rgba(10, 5, 7, 0.5)), url('assets/bg.jpg') center/cover no-repeat;
+  }
 
-  @keyframes pulse { 0%,100% {opacity:0.3} 50% {opacity:0.8} }
+  .scanlines { 
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background: repeating-linear-gradient(0deg, rgba(255,45,77,0.02) 0px, transparent 2px); 
+    opacity: 0.8; 
+  }
 
   .stage { position: relative; z-index: 2; width: 100%; max-width: 380px; padding: 16px; }
 
@@ -51,8 +58,8 @@
     border-radius: 20px;
     padding: 32px 24px 24px;
     text-align: center;
-    backdrop-filter: blur(16px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
   }
 
   .avatar-wrap { position: relative; width: 92px; height: 92px; margin: 0 auto 16px; }
@@ -68,7 +75,7 @@
   .avatar {
     width: 92px; height: 92px; border-radius: 50%;
     background: #1a0d10;
-    border: 3px solid var(--bg-deep);
+    border: 3px solid #0a0507;
     position: relative;
     z-index: 2;
     overflow: hidden;
@@ -82,7 +89,7 @@
     width: 14px;
     height: 14px;
     background: var(--red);
-    border: 2px solid var(--bg-deep);
+    border: 2px solid #0a0507;
     border-radius: 50%;
     z-index: 3;
   }
@@ -94,7 +101,6 @@
   .location { font-size: 12px; color: var(--muted); margin-bottom: 18px; display: flex; align-items: center; justify-content: center; gap: 6px; }
   .flag { font-size: 11px; font-weight: 600; opacity: 0.8; }
 
-  /* Блок кнопок соцсетей */
   .social-buttons {
     display: flex;
     gap: 10px;
@@ -107,8 +113,8 @@
     align-items: center;
     justify-content: center;
     gap: 6px;
-    background: rgba(255, 45, 77, 0.12);
-    border: 1px solid rgba(255, 45, 77, 0.35);
+    background: rgba(255, 45, 77, 0.15);
+    border: 1px solid rgba(255, 45, 77, 0.4);
     color: var(--text);
     padding: 8px 16px;
     border-radius: 20px;
@@ -126,12 +132,6 @@
     box-shadow: 0 0 15px var(--red-glow); 
   }
 
-  .social-btn svg {
-    width: 14px;
-    height: 14px;
-    fill: currentColor;
-  }
-
   /* Плеер */
   .player {
     background: var(--card);
@@ -142,7 +142,7 @@
     align-items: center;
     gap: 12px;
     margin-top: 14px;
-    backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px);
   }
 
   .track-cover {
@@ -165,7 +165,6 @@
   }
   .progress-fill { position: absolute; height: 100%; width: 0%; background: var(--red); border-radius: 2px; }
 
-  /* Громкость */
   .volume-container { display: flex; align-items: center; }
   .volume-slider {
     width: 40px;
@@ -204,7 +203,6 @@
 
   <div class="backdrop"></div>
   <div class="scanlines"></div>
-  <div class="noise-pulse"></div>
 
   <div class="stage">
     <div class="card">
@@ -226,14 +224,9 @@
         <span class="flag">RU</span> Russia, Yekaterinburg
       </div>
 
-      <!-- Кнопки перехода -->
       <div class="social-buttons">
-        <a href="https://t.me/Discoragen" target="_blank" class="social-btn">
-          Telegram
-        </a>
-        <a href="https://github.com/bonya-cloud" target="_blank" class="social-btn">
-          GitHub
-        </a>
+        <a href="https://t.me/Discoragen" target="_blank" class="social-btn">Telegram</a>
+        <a href="https://github.com/bonya-cloud" target="_blank" class="social-btn">GitHub</a>
       </div>
     </div>
 
@@ -292,9 +285,7 @@
         audio.play().then(() => {
           playIcon.style.display = 'none';
           pauseIcon.style.display = 'block';
-        }).catch(err => {
-          console.error("Ошибка аудио:", err);
-        });
+        }).catch(err => console.error(err));
       } else {
         audio.pause();
         playIcon.style.display = 'block';
