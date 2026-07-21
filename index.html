@@ -21,23 +21,41 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   html, body {
-    height: 100%;
+    min-height: 100%;
     font-family: 'Inter', sans-serif;
     color: var(--text);
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  /* Кастомный скроллбар */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--red-dim);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--red);
   }
 
   /* ---------- Кастомный геймерский/кибер-курсор ---------- */
   body {
     background: var(--bg);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 40px 16px;
     position: relative;
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l16 7-6 3-3 6z' fill='%23ff2d4d' stroke='%230a0507' stroke-width='1.5'/><circle cx='5' cy='5' r='1' fill='%23ffffff'/></svg>"), auto;
   }
 
-  a, button, .play-btn, .progress-bar, .social-btn, .tag, .volume-slider, #enterOverlay, .visitor-count, .fullscreen-btn, .username {
+  a, button, .play-btn, .progress-bar, .social-btn, .tag, .volume-slider, #enterOverlay, .visitor-count, .fullscreen-btn, .username, .discord-plaque, .game-plaque {
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l16 7-6 3-3 6z' fill='%23ffffff' stroke='%23ff2d4d' stroke-width='1.5'/><circle cx='5' cy='5' r='1.5' fill='%23ff2d4d'/></svg>"), pointer;
   }
 
@@ -177,7 +195,7 @@
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    background: linear-gradient(0deg, rgba(10, 5, 7, 0.3), rgba(10, 5, 7, 0.3)), url('assets/bg.gif') center/cover no-repeat;
+    background: linear-gradient(0deg, rgba(10, 5, 7, 0.4), rgba(10, 5, 7, 0.4)), url('assets/bg.gif') center/cover no-repeat;
   }
 
   .scanlines {
@@ -186,16 +204,18 @@
     opacity: 0.8;
   }
 
-  /* ---------- Карточка ---------- */
+  /* ---------- Контейнер профиля ---------- */
   .stage {
     position: relative;
     z-index: 2;
     width: 100%;
     max-width: 380px;
-    padding: 16px;
     opacity: 0;
     transform: translateY(16px);
     transition: opacity 0.8s ease, transform 0.8s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
   }
 
   .stage.revealed {
@@ -216,7 +236,6 @@
 
   .avatar-wrap { position: relative; width: 92px; height: 92px; margin: 0 auto 16px; }
   
-  /* Огненное анимированное кольцо аватарки */
   .avatar-ring {
     position: absolute;
     inset: -6px;
@@ -263,7 +282,6 @@
   }
   .avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-  /* Динамический статус-индикатор */
   .status-dot {
     position: absolute;
     bottom: 2px;
@@ -330,7 +348,7 @@
     opacity: 0.85;
   }
 
-  /* ---------- Теги-интересы с огненным эффектом ---------- */
+  /* ---------- Теги-интересы ---------- */
   .tags {
     display: flex;
     flex-wrap: wrap;
@@ -437,21 +455,104 @@
     margin-left: 2px;
   }
 
+  /* ---------- Discord Плашка ---------- */
+  .discord-plaque {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    backdrop-filter: blur(20px);
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  }
+
+  .discord-plaque:hover {
+    border-color: #5865F2;
+    box-shadow: 0 0 20px rgba(88, 101, 242, 0.35);
+    transform: translateY(-2px);
+  }
+
+  .discord-icon-wrap {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: rgba(88, 101, 242, 0.15);
+    border: 1px solid rgba(88, 101, 242, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .discord-icon-wrap svg {
+    width: 20px;
+    height: 20px;
+    fill: #5865F2;
+  }
+
+  .discord-info {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+  }
+
+  .discord-title {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .discord-id {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .discord-action {
+    font-size: 10px;
+    font-weight: 600;
+    color: #5865F2;
+    background: rgba(88, 101, 242, 0.1);
+    border: 1px solid rgba(88, 101, 242, 0.3);
+    padding: 5px 10px;
+    border-radius: 8px;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+  }
+
+  .discord-plaque:hover .discord-action {
+    background: #5865F2;
+    color: #fff;
+  }
+
   /* ---------- Плеер ---------- */
   .player {
     background: var(--card);
     border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: 12px 14px;
+    border-radius: 18px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+  }
+
+  .player-top {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-top: 14px;
-    backdrop-filter: blur(20px);
   }
 
   .track-cover {
-    width: 40px; height: 40px; border-radius: 8px;
+    width: 44px; height: 44px; border-radius: 10px;
     background: #1a0d10;
     border: 1px solid var(--card-border);
     overflow: hidden;
@@ -460,31 +561,65 @@
   .track-cover img { width: 100%; height: 100%; object-fit: cover; }
 
   .track-info { flex: 1; min-width: 0; }
-  .track-title { font-weight: 600; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .track-title { font-weight: 600; font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-  .controls-row { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
-  .time-text { font-size: 11px; color: var(--muted); width: 26px; text-align: center; }
+  .progress-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
 
   .progress-bar {
-    flex: 1; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; position: relative;
+    width: 100%;
+    height: 7px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    position: relative;
+    padding: 4px 0;
+    background-clip: content-box;
+    cursor: pointer;
   }
-  .progress-fill { position: absolute; height: 100%; width: 0%; background: var(--red); border-radius: 2px; }
 
-  /* Увеличенный блок громкости */
+  .progress-fill {
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 0;
+    width: 0%;
+    background: var(--red);
+    border-radius: 4px;
+    box-shadow: 0 0 8px var(--red);
+  }
+
+  .time-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .player-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 8px;
+  }
+
   .volume-container {
     display: flex;
     align-items: center;
     gap: 6px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 45, 77, 0.25);
-    padding: 4px 8px;
+    padding: 5px 10px;
     border-radius: 12px;
     backdrop-filter: blur(10px);
   }
 
   .volume-icon {
-    width: 13px;
-    height: 13px;
+    width: 14px;
+    height: 14px;
     fill: var(--muted);
     transition: fill 0.2s ease;
   }
@@ -494,7 +629,7 @@
   }
 
   .volume-slider {
-    width: 60px;
+    width: 75px;
     height: 4px;
     -webkit-appearance: none;
     background: rgba(255, 255, 255, 0.15);
@@ -504,7 +639,7 @@
 
   .volume-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 9px; height: 9px;
+    width: 10px; height: 10px;
     border-radius: 50%;
     background: var(--red);
     box-shadow: 0 0 8px var(--red);
@@ -517,13 +652,12 @@
     background: #ff7700;
   }
 
-  /* Красивая кнопка Play с огненным обрамлением */
   .play-btn {
     position: relative;
     background: linear-gradient(135deg, var(--red), #ff7700);
     color: #fff;
     border: 2px solid rgba(255, 255, 255, 0.25);
-    width: 40px; height: 40px;
+    width: 42px; height: 42px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -554,10 +688,87 @@
 
   .play-btn svg { 
     fill: #fff; 
-    width: 14px; 
-    height: 14px; 
+    width: 15px; 
+    height: 15px; 
     filter: drop-shadow(0 0 2px rgba(0,0,0,0.6));
     margin-left: 1px;
+  }
+
+  /* ---------- Секция любимых игр (Скролл вниз) ---------- */
+  .games-section {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 16px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .games-header {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .games-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .game-plaque {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 45, 77, 0.2);
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.25s ease;
+  }
+
+  .game-plaque:hover {
+    background: rgba(255, 45, 77, 0.08);
+    border-color: var(--red);
+    box-shadow: 0 0 15px var(--red-glow);
+    transform: translateY(-2px);
+  }
+
+  .game-icon-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(255, 45, 77, 0.1);
+    border: 1px solid rgba(255, 45, 77, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .game-info {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+  }
+
+  .game-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .game-genre {
+    font-size: 11px;
+    color: var(--muted);
   }
 
   /* ---------- Эффект жутких горящих краёв (Пасхалка 1) ---------- */
@@ -718,6 +929,7 @@
   <div class="secret-toast" id="secretToast">you found me 67🩸</div>
 
   <div class="stage" id="stage">
+    <!-- Главная карточка -->
     <div class="card">
       <div class="avatar-wrap">
         <div class="avatar-ring"></div>
@@ -763,35 +975,79 @@
       </div>
     </div>
 
+    <!-- Discord Плашка -->
+    <div class="discord-plaque" id="discordPlaque" title="Кликните, чтобы скопировать Discord ID">
+      <div class="discord-icon-wrap">
+        <svg viewBox="0 0 640 512"><path d="M524.5 69.8c-1.1-1.6-2.3-3.3-3.5-5-59.5-27.1-124.5-42-192.5-43.5-3.3 0-6.6.2-9.9.5-38.3 3.8-74.8 12.7-108.8 25.9-2.3.9-4.5 2-6.7 3.1-60.5 28.5-104 77.2-127.3 135.5-23.4 58.7-29.3 122.5-17.4 185.3 11.9 62.8 42.1 119.8 88.5 166.5 46.5 46.8 104.5 78.5 168.3 93.6 6.8 1.6 13.8 2.8 20.8 3.7 3.3.4 6.6.7 9.9.9 33.3 2.1 66.8-.4 99.3-7.5 62.8-13.7 119.8-42.1 166.5-85.5 46.8-43.4 80.5-98.5 99.3-161.3 18.8-62.8 21.6-129.5 8.1-195.3-13.5-65.8-44.1-124.8-88.5-172.5-1.2-1.3-2.5-2.6-3.8-3.9zm-352.5 290c-26.5 0-48-24.3-48-54.2 0-29.9 21.5-54.2 48-54.2s48 24.3 48 54.2c0 29.9-21.5 54.2-48 54.2zm288 0c-26.5 0-48-24.3-48-54.2 0-29.9 21.5-54.2 48-54.2s48 24.3 48 54.2c0 29.9-21.5 54.2-48 54.2z"/></svg>
+      </div>
+      <div class="discord-info">
+        <div class="discord-title">Discord ID</div>
+        <div class="discord-id">775704094748180480</div>
+      </div>
+      <div class="discord-action">COPY</div>
+    </div>
+
     <!-- Плеер -->
     <div class="player">
-      <div class="track-cover">
-        <img src="assets/cover.jpg" alt="cover">
+      <div class="player-top">
+        <div class="track-cover">
+          <img src="assets/cover.jpg" alt="cover">
+        </div>
+        <div class="track-info">
+          <div class="track-title">52Üh 60 (feat. Yeat)</div>
+        </div>
+        <button class="play-btn" id="playBtn" title="Play/Pause">
+          <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        </button>
       </div>
 
-      <div class="track-info">
-        <div class="track-title">52Üh 60 (feat. Yeat)</div>
-
-        <div class="controls-row">
+      <div class="progress-section">
+        <div class="progress-bar" id="progressTrack">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="time-row">
           <span class="time-text" id="currentTime">0:00</span>
-
-          <div class="progress-bar" id="progressTrack">
-            <div class="progress-fill" id="progressFill"></div>
-          </div>
-
           <span class="time-text" id="duration">0:00</span>
-
-          <div class="volume-container" title="Громкость">
-            <svg class="volume-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.01" value="0.8">
-          </div>
         </div>
       </div>
 
-      <button class="play-btn" id="playBtn" title="Play/Pause">
-        <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-      </button>
+      <div class="player-bottom">
+        <div class="volume-container" title="Громкость">
+          <svg class="volume-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+          <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.01" value="0.8">
+        </div>
+      </div>
+    </div>
+
+    <!-- Секция любимых игр -->
+    <div class="games-section">
+      <div class="games-header">favorite games</div>
+      <div class="games-grid">
+        <div class="game-plaque">
+          <div class="game-icon-box">🎯</div>
+          <div class="game-info">
+            <div class="game-name">Counter-Strike 2</div>
+            <div class="game-genre">Tactical Shooter</div>
+          </div>
+        </div>
+
+        <div class="game-plaque">
+          <div class="game-icon-box">⛏️</div>
+          <div class="game-info">
+            <div class="game-name">Minecraft</div>
+            <div class="game-genre">Sandbox / Survival</div>
+          </div>
+        </div>
+
+        <div class="game-plaque">
+          <div class="game-icon-box">🪂</div>
+          <div class="game-info">
+            <div class="game-name">PUBG (PC)</div>
+            <div class="game-genre">Battle Royale</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -810,6 +1066,9 @@
     const enterOverlay = document.getElementById('enterOverlay');
     const stage = document.getElementById('stage');
     const statusDot = document.getElementById('statusDot');
+    const discordPlaque = document.getElementById('discordPlaque');
+    const toast = document.getElementById('secretToast');
+    let toastTimeout;
 
     audio.volume = 0.8;
 
@@ -862,6 +1121,18 @@
 
     volumeSlider.addEventListener('input', e => {
       audio.volume = e.target.value;
+    });
+
+    /* ---------- Копирование Discord ID ---------- */
+    discordPlaque.addEventListener('click', () => {
+      navigator.clipboard.writeText('775704094748180480').then(() => {
+        toast.textContent = 'Discord ID copied! 📋';
+        toast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2500);
+      });
     });
 
     /* ---------- Динамический статус активности (В сети / Отошел) ---------- */
@@ -963,8 +1234,6 @@
       let buffer = '';
       const flash = document.getElementById('glitchFlash');
       const fireBorder = document.getElementById('fireBorder');
-      const toast = document.getElementById('secretToast');
-      let toastTimeout;
 
       window.addEventListener('keydown', (e) => {
         if (e.key.length !== 1) return;
@@ -978,6 +1247,7 @@
           void fireBorder.offsetWidth;
           fireBorder.classList.add('active');
 
+          toast.textContent = 'you found me 67🩸';
           toast.classList.add('show');
           clearTimeout(toastTimeout);
           toastTimeout = setTimeout(() => {
@@ -1002,7 +1272,7 @@
         if (clickCount === 1) {
           clickTimer = setTimeout(() => {
             clickCount = 0;
-          }, 500); // Окно в 500мс для 3 кликов
+          }, 500);
         } else if (clickCount === 3) {
           clearTimeout(clickTimer);
           clickCount = 0;
@@ -1010,7 +1280,7 @@
           pumpkinOverlay.classList.add('active');
           setTimeout(() => {
             pumpkinOverlay.classList.remove('active');
-          }, 3000); // Тыква висит 3 секунды
+          }, 3000);
         }
       });
     })();
