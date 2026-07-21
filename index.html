@@ -55,7 +55,7 @@
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l16 7-6 3-3 6z' fill='%23ff2d4d' stroke='%230a0507' stroke-width='1.5'/><circle cx='5' cy='5' r='1' fill='%23ffffff'/></svg>"), auto;
   }
 
-  a, button, .play-btn, .progress-slider, .social-btn, .tag, .volume-slider, #enterOverlay, .visitor-count, .fullscreen-btn, .username, .game-plaque, .corner-volume {
+  a, button, .play-btn, .progress-slider, .social-btn, .tag, .volume-slider, #enterOverlay, .visitor-count, .fullscreen-btn, .username, .game-plaque, .corner-volume, .location, .gb-send-btn, .reaction-btn {
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l16 7-6 3-3 6z' fill='%23ffffff' stroke='%23ff2d4d' stroke-width='1.5'/><circle cx='5' cy='5' r='1.5' fill='%23ff2d4d'/></svg>"), pointer;
   }
 
@@ -443,16 +443,29 @@
     font-size: 12px;
     color: var(--muted);
     margin-bottom: 16px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
     gap: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 45, 77, 0.15);
+    transition: all 0.2s ease;
   }
+
+  .location:hover {
+    border-color: var(--red);
+    background: rgba(255, 45, 77, 0.08);
+    color: var(--text);
+    box-shadow: 0 0 12px var(--red-glow);
+    transform: translateY(-1px);
+  }
+
   .loc-icon {
     width: 14px;
     height: 14px;
-    fill: var(--text);
-    opacity: 0.85;
+    fill: var(--red);
+    opacity: 0.9;
   }
 
   .tags {
@@ -519,7 +532,6 @@
     fill: #000;
   }
 
-  /* Кастомные ховеры для соцсетей */
   .social-btn.telegram-btn:hover {
     background: #229ED9;
     border-color: #229ED9;
@@ -527,7 +539,7 @@
   }
 
   .social-btn.github-btn:hover {
-    background: #ff5c8a; /* мягкий розоватый */
+    background: #ff5c8a;
     border-color: #ff5c8a;
     box-shadow: 0 0 15px rgba(255, 92, 138, 0.6);
   }
@@ -676,9 +688,7 @@
     border-color: #ffea00;
   }
 
-  .play-btn:active { 
-    transform: scale(0.93); 
-  }
+  .play-btn:active { transform: scale(0.93); }
 
   .play-btn svg { 
     fill: #fff; 
@@ -772,125 +782,312 @@
     color: var(--muted);
   }
 
-  /* ---------- Пасхалки и эффекты ---------- */
-  .fire-border {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    pointer-events: none;
-    box-shadow: inset 0 0 0 rgba(255, 45, 77, 0);
-    transition: box-shadow 0.3s ease;
-  }
-
-  .fire-border.active {
-    animation: scaryFirePulse 0.6s ease-in-out infinite alternate;
-  }
-
-  @keyframes scaryFirePulse {
-    0% {
-      box-shadow: inset 0 0 40px rgba(255, 45, 77, 0.7), inset 0 0 90px rgba(255, 119, 0, 0.5), inset 0 0 140px rgba(122, 12, 31, 0.9);
-    }
-    100% {
-      box-shadow: inset 0 0 70px rgba(255, 77, 0, 0.9), inset 0 0 130px rgba(255, 0, 0, 0.7), inset 0 0 200px rgba(80, 0, 10, 1);
-    }
-  }
-
-  .pumpkin-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 2000;
-    background: rgba(5, 2, 3, 0.9);
-    backdrop-filter: blur(12px);
+  /* ---------- Discord Guestbook (Гостевая книга) ---------- */
+  .guestbook-section {
+    background: #313338;
+    border: 1px solid #1e1f22;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .gb-channel-header {
+    background: #2b2d31;
+    padding: 12px 16px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #dbdee1;
+    border-bottom: 1px solid #1f2023;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .gb-messages-container {
+    padding: 14px 16px;
+    max-height: 220px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #313338;
+  }
+
+  .gb-msg {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .gb-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #5865F2;
+    color: #fff;
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .gb-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .gb-user-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 2px;
+  }
+
+  .gb-author {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #f2f3f5;
+  }
+
+  .gb-time {
+    font-size: 10px;
+    color: #949ba4;
+  }
+
+  .gb-text {
+    font-size: 13px;
+    color: #dbdee1;
+    word-break: break-word;
+    line-height: 1.4;
+  }
+
+  .gb-reactions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .reaction-btn {
+    background: #2b2d31;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 3px 8px;
+    font-size: 12px;
+    color: #b5bac1;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .reaction-btn:hover {
+    background: #3f4147;
+    border-color: #4e5058;
+  }
+
+  .reaction-btn.active {
+    background: rgba(88, 101, 242, 0.15);
+    border-color: #5865F2;
+    color: #5865F2;
+  }
+
+  .gb-form-wrap {
+    padding: 12px 16px;
+    background: #2b2d31;
+    border-top: 1px solid #1f2023;
+  }
+
+  .gb-input-box {
+    background: #383a40;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px 0 14px;
+    border: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .gb-input-box:focus-within {
+    border-color: #5865F2;
+  }
+
+  .gb-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #dbdee1;
+    font-size: 13px;
+    padding: 10px 0;
+  }
+
+  .gb-input::placeholder {
+    color: #878992;
+  }
+
+  .gb-send-btn {
+    background: #5865F2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+
+  .gb-send-btn:hover {
+    background: #4752c4;
+  }
+
+  /* ---------- Модальные окна (Карта локации) ---------- */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    background: rgba(5, 2, 3, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 16px;
   }
 
-  .pumpkin-overlay.active {
+  .modal-overlay.active {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
   }
 
-  .pumpkin-container {
-    font-size: 120px;
-    animation: pumpkinShake 0.2s ease-in-out infinite alternate, pumpkinGlow 1s ease-in-out infinite alternate;
-    filter: drop-shadow(0 0 35px #ff7700) drop-shadow(0 0 70px var(--red));
-    user-select: none;
+  .modal-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 420px;
+    padding: 24px;
+    backdrop-filter: blur(25px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
   }
 
-  .pumpkin-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 22px;
-    color: #ffea00;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    text-shadow: 0 0 15px var(--red);
-    animation: coreFlicker 0.5s ease-in-out infinite alternate;
+  .modal-overlay.active .modal-card {
+    transform: translateY(0);
   }
+
+  .modal-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .modal-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .modal-close-x {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 20px;
+    line-height: 1;
+    transition: color 0.2s;
+  }
+
+  .modal-close-x:hover {
+    color: var(--red);
+  }
+
+  .modal-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .map-frame-wrap {
+    width: 100%;
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+    background: #111;
+  }
+
+  .map-frame-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: invert(90%) hue-rotate(180deg) contrast(120%);
+  }
+
+  /* Пасхалки и эффекты */
+  .fire-border {
+    position: fixed; inset: 0; z-index: 1000; pointer-events: none;
+    box-shadow: inset 0 0 0 rgba(255, 45, 77, 0);
+    transition: box-shadow 0.3s ease;
+  }
+  .fire-border.active {
+    animation: scaryFirePulse 0.6s ease-in-out infinite alternate;
+  }
+  @keyframes scaryFirePulse {
+    0% { box-shadow: inset 0 0 40px rgba(255, 45, 77, 0.7), inset 0 0 90px rgba(255, 119, 0, 0.5); }
+    100% { box-shadow: inset 0 0 70px rgba(255, 77, 0, 0.9), inset 0 0 130px rgba(255, 0, 0, 0.7); }
+  }
+
+  .pumpkin-overlay {
+    position: fixed; inset: 0; z-index: 2000;
+    background: rgba(5, 2, 3, 0.9); backdrop-filter: blur(12px);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .pumpkin-overlay.active { opacity: 1; visibility: visible; pointer-events: auto; }
+  .pumpkin-container { font-size: 120px; animation: pumpkinShake 0.2s ease-in-out infinite alternate; filter: drop-shadow(0 0 35px #ff7700); }
+  .pumpkin-title { font-family: 'Space Grotesk', sans-serif; font-size: 22px; color: #ffea00; letter-spacing: 4px; text-transform: uppercase; }
 
   @keyframes pumpkinShake {
-    0% { transform: scale(1) rotate(-5deg) translateY(0); }
-    100% { transform: scale(1.1) rotate(5deg) translateY(-10px); }
-  }
-
-  @keyframes pumpkinGlow {
-    0% { filter: drop-shadow(0 0 25px #ff2d4d) drop-shadow(0 0 50px #ff7700); }
-    100% { filter: drop-shadow(0 0 50px #ffea00) drop-shadow(0 0 90px #ff2d4d); }
+    0% { transform: scale(1) rotate(-5deg); }
+    100% { transform: scale(1.1) rotate(5deg); }
   }
 
   .glitch-flash {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    background: var(--red);
-    opacity: 0;
-    pointer-events: none;
-    mix-blend-mode: overlay;
+    position: fixed; inset: 0; z-index: 1000; background: var(--red); opacity: 0; pointer-events: none; mix-blend-mode: overlay;
   }
-
-  .glitch-flash.active {
-    animation: glitchFlash 0.4s steps(2, end);
-  }
-
+  .glitch-flash.active { animation: glitchFlash 0.4s steps(2, end); }
   @keyframes glitchFlash {
     0% { opacity: 0; }
     25% { opacity: 0.5; transform: translateX(-6px); }
     50% { opacity: 0.2; transform: translateX(6px); }
-    75% { opacity: 0.4; transform: translateX(-3px); }
     100% { opacity: 0; transform: translateX(0); }
   }
 
   .secret-toast {
-    position: fixed;
-    bottom: 28px;
-    left: 50%;
-    transform: translateX(-50%) translateY(10px);
-    z-index: 1001;
-    background: rgba(10, 5, 7, 0.92);
-    border: 1px solid var(--red);
-    color: var(--text);
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 12px;
-    letter-spacing: 1px;
-    padding: 10px 18px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px var(--red-glow);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(10px); z-index: 1001;
+    background: rgba(10, 5, 7, 0.92); border: 1px solid var(--red); color: var(--text);
+    font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 1px;
+    padding: 10px 18px; border-radius: 10px; box-shadow: 0 0 20px var(--red-glow);
+    opacity: 0; pointer-events: none; transition: opacity 0.4s ease, transform 0.4s ease;
   }
-
-  .secret-toast.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
+  .secret-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
   @media (max-width: 420px) {
     .stage { max-width: 92vw; }
@@ -901,15 +1098,11 @@
 
   <!-- Кнопка полноэкранного режима -->
   <button class="fullscreen-btn" id="fullscreenBtn" title="Полноэкранный режим">
-    <svg id="enterFsIcon" viewBox="0 0 24 24">
-      <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-    </svg>
-    <svg id="exitFsIcon" viewBox="0 0 24 24" style="display: none;">
-      <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
-    </svg>
+    <svg id="enterFsIcon" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+    <svg id="exitFsIcon" viewBox="0 0 24 24" style="display: none;"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
   </button>
 
-  <!-- Выдвижной регулятор громкости в верхнем левом углу -->
+  <!-- Регулятор громкости -->
   <div class="corner-volume" id="cornerVolume" title="Громкость (Клик — выкл/вкл звук)">
     <button class="corner-volume-btn" id="muteToggleBtn" title="Выключить / Включить звук">
       <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
@@ -919,11 +1112,28 @@
     </div>
   </div>
 
-  <!-- Экран входа с огненным лоадером -->
+  <!-- Экран входа -->
   <div id="enterOverlay">
     <div class="enter-ring"></div>
     <div class="enter-text">click to enter</div>
     <div class="enter-sub">sound on</div>
+  </div>
+
+  <!-- Модальное окно карты локации -->
+  <div class="modal-overlay" id="locationModal">
+    <div class="modal-card">
+      <div class="modal-title-row">
+        <div class="modal-title">📍 Екатеринбург, ул. Шейнкмана, 121а</div>
+        <button class="modal-close-x" id="closeLocModal">&times;</button>
+      </div>
+      <p class="modal-desc">
+        Здесь находится знаменитая штаб-квартира Русской медной компании (РМК) — первое в России здание, построенное по проекту легендарного бюро британского архитектора Нормана Фостера. Футуристичный дизайн из граненых модулей напоминает кристалл или постройку из киберпанка, что идеально отражает вайб цифрового мира и технологий.
+      </p>
+      <div class="map-frame-wrap">
+        <!-- Интерактивная карта OpenStreetMap с меткой на Шейнкмана 121а -->
+        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=60.589%2C56.824%2C60.609%2C56.834&amp;layer=mapnik&amp;marker=56.8291%2C60.5991"></iframe>
+      </div>
+    </div>
   </div>
 
   <!-- Пасхалка с тыквой -->
@@ -955,11 +1165,13 @@
         hey, i'm discoragen. this is my little corner of the internet.<br>message me on telegram if you want.
       </p>
 
-      <div class="location">
+      <!-- Кликабельная локация -->
+      <div class="location" id="openLocationBtn" title="Нажмите, чтобы открыть карту и историю">
         <svg class="loc-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-        <span>Russia, Yekaterinburg</span>
+        <span>Russia, Yekaterinburg (Шейнкмана 121а)</span>
       </div>
 
+      <!-- Хэштеги (без #linux) -->
       <div class="tags">
         <span class="tag">#python</span>
         <span class="tag">#webdev</span>
@@ -968,24 +1180,20 @@
       </div>
 
       <div class="social-buttons">
-        <!-- Телеграм с голубым ховером -->
         <a href="https://t.me/Discoragen" target="_blank" class="social-btn telegram-btn" title="Telegram">
           <svg viewBox="0 0 496 512"><path d="M248,8C111,8,0,119,0,256S111,504,248,504,496,393,496,256,385,8,248,8ZM362,169.9c-3.7,39.2-19.9,134.4-28.1,178.3-3.5,18.6-10.3,24.8-16.9,25.4-14.4,1.3-25.3-9.5-39.3-18.7-21.8-14.3-34.2-23.2-55.3-37.2-24.5-16.1-8.6-25,5.3-39.5,3.7-3.8,67.1-61.5,68.3-66.7.2-.7.3-3.1-1.2-4.4s-3.6-.8-5.1-.5q-3.3.7-104.6,69.1-14.8,10.2-26.9,9.9c-8.9-.2-25.9-5-38.6-9.1-15.5-5-27.9-7.7-26.8-16.3q.8-6.7,18.5-13.7,108.4-47.2,144.6-62.3c68.9-28.6,83.2-33.6,92.5-33.8,2.1,0,6.6.5,9.6,2.9a10.5,10.5,0,0,1,3.5,6.7A43.8,43.8,0,0,1,362,169.9Z"/></svg>
         </a>
-        <!-- Гитхаб с розоватым ховером -->
         <a href="https://github.com/bonya-cloud" target="_blank" class="social-btn github-btn" title="GitHub">
           <svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.7-1.4-1.7-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6a4.7 4.7 0 0 1 1.2-3.2 4.3 4.3 0 0 1 .1-3.2s1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2a4.3 4.3 0 0 1 .1 3.2 4.7 4.7 0 0 1 1.2 3.2c0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg>
         </a>
-        <!-- Дискорд с синим ховером -->
         <button class="social-btn discord-btn" id="discordBtn" title="Копировать Discord ID">
           <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
         </button>
       </div>
 
-      <!-- Просмотры с глазиком -->
       <div class="visitor-count">
         <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-        <span id="visitorCount">35</span>
+        <span id="visitorCount">506</span>
         <span class="visitor-label">views</span>
       </div>
     </div>
@@ -1010,6 +1218,22 @@
         <div class="time-row">
           <span class="time-text" id="currentTime">0:00</span>
           <span class="time-text" id="duration">0:00</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Discord Guestbook (Гостевая книга) -->
+    <div class="guestbook-section">
+      <div class="gb-channel-header">
+        <span>💬</span> # guestbook
+      </div>
+      <div class="gb-messages-container" id="gbMessages">
+        <!-- Сюда динамически добавляются сообщения -->
+      </div>
+      <div class="gb-form-wrap">
+        <div class="gb-input-box">
+          <input type="text" class="gb-input" id="gbInput" placeholder="Message #guestbook..." maxlength="80">
+          <button class="gb-send-btn" id="gbSendBtn">Send</button>
         </div>
       </div>
     </div>
@@ -1068,6 +1292,18 @@
     const statusDot = document.getElementById('statusDot');
     const discordBtn = document.getElementById('discordBtn');
     const toast = document.getElementById('secretToast');
+
+    // Модалка локации
+    const openLocationBtn = document.getElementById('openLocationBtn');
+    const locationModal = document.getElementById('locationModal');
+    const closeLocModal = document.getElementById('closeLocModal');
+
+    openLocationBtn.addEventListener('click', () => locationModal.classList.add('active'));
+    closeLocModal.addEventListener('click', () => locationModal.classList.remove('active'));
+    locationModal.addEventListener('click', (e) => {
+      if (e.target === locationModal) locationModal.classList.remove('active');
+    });
+
     let toastTimeout;
     let isSeeking = false;
     let previousVolume = 0.8;
@@ -1132,9 +1368,7 @@
 
     volumeSlider.addEventListener('input', e => {
       audio.volume = e.target.value;
-      if (audio.volume > 0) {
-        previousVolume = audio.volume;
-      }
+      if (audio.volume > 0) previousVolume = audio.volume;
     });
 
     muteToggleBtn.addEventListener('click', () => {
@@ -1153,12 +1387,105 @@
         toast.textContent = 'Discord ID copied! 📋';
         toast.classList.add('show');
         clearTimeout(toastTimeout);
-        toastTimeout = setTimeout(() => {
-          toast.classList.remove('show');
-        }, 2500);
+        toastTimeout = setTimeout(() => toast.classList.remove('show'), 2500);
       });
     });
 
+    /* ---------- Дискорд Гостевая Книга (Guestbook Logic) ---------- */
+    const gbMessagesContainer = document.getElementById('gbMessages');
+    const gbInput = document.getElementById('gbInput');
+    const gbSendBtn = document.getElementById('gbSendBtn');
+
+    // Начальные сообщения гостевой книги по умолчанию
+    let defaultMessages = [
+      { id: 1, author: 'visitor_52', text: 'крутой профиль, сайту респект! 🔥', time: 'Сегодня в 14:15', reactions: { '👍': 4, '🔥': 7 } },
+      { id: 2, author: 'bonya', text: 'добро пожаловать в мой уголок интернета!', time: 'Сегодня в 14:20', reactions: { '❤️': 5, '💀': 2 } }
+    ];
+
+    let guestbookMessages = JSON.parse(localStorage.getItem('discoragen_guestbook')) || defaultMessages;
+
+    function renderGuestbook() {
+      gbMessagesContainer.innerHTML = '';
+      guestbookMessages.forEach((msg) => {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'gb-msg';
+
+        let reactionsHTML = '';
+        for (const [emoji, count] of Object.entries(msg.reactions)) {
+          reactionsHTML += `<button class="reaction-btn" onclick="handleReaction(${msg.id}, '${emoji}')">${emoji} <span>${count}</span></button>`;
+        }
+
+        msgDiv.innerHTML = `
+          <div class="gb-avatar">${msg.author.charAt(0).toUpperCase()}</div>
+          <div class="gb-content">
+            <div class="gb-user-row">
+              <span class="gb-author">${msg.author}</span>
+              <span class="gb-time">${msg.time}</span>
+            </div>
+            <div class="gb-text">${escapeHtml(msg.text)}</div>
+            <div class="gb-reactions">
+              ${reactionsHTML}
+              <button class="reaction-btn" onclick="addCustomReaction(${msg.id})">➕</button>
+            </div>
+          </div>
+        `;
+        gbMessagesContainer.appendChild(msgDiv);
+      });
+      gbMessagesContainer.scrollTop = gbMessagesContainer.scrollHeight;
+    }
+
+    function escapeHtml(text) {
+      return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    window.handleReaction = function(id, emoji) {
+      const msg = guestbookMessages.find(m => m.id === id);
+      if (msg) {
+        msg.reactions[emoji] = (msg.reactions[emoji] || 0) + 1;
+        saveAndRender();
+      }
+    };
+
+    window.addCustomReaction = function(id) {
+      const emojis = ['👍', '❤️', '🔥', '💀', '🚀', '⭐'];
+      const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+      handleReaction(id, randomEmoji);
+    };
+
+    function postMessage() {
+      const text = gbInput.value.trim();
+      if (!text) return;
+
+      const randomNames = ['guest_99', 'cyber_user', 'anon_1337', 'player_one', 'user_52', 'visitor'];
+      const author = randomNames[Math.floor(Math.random() * randomNames.length)];
+
+      const newMsg = {
+        id: Date.now(),
+        author: author,
+        text: text,
+        time: 'Только что',
+        reactions: { '👍': 1 }
+      };
+
+      guestbookMessages.push(newMsg);
+      if (guestbookMessages.length > 20) guestbookMessages.shift(); // Ограничение истории
+      saveAndRender();
+      gbInput.value = '';
+    }
+
+    function saveAndRender() {
+      localStorage.setItem('discoragen_guestbook', JSON.stringify(guestbookMessages));
+      renderGuestbook();
+    }
+
+    gbSendBtn.addEventListener('click', postMessage);
+    gbInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') postMessage();
+    });
+
+    renderGuestbook();
+
+    /* Статус сети */
     function updateOnlineStatus() {
       if (!navigator.onLine || document.hidden) {
         statusDot.classList.add('offline');
@@ -1168,12 +1495,12 @@
         statusDot.title = 'Статус: В сети';
       }
     }
-
     window.addEventListener('online', updateOnlineStatus);
     window.addEventListener('offline', updateOnlineStatus);
     document.addEventListener('visibilitychange', updateOnlineStatus);
     updateOnlineStatus();
 
+    /* Полноэкранный режим */
     (function() {
       const fsBtn = document.getElementById('fullscreenBtn');
       const enterIcon = document.getElementById('enterFsIcon');
@@ -1182,77 +1509,52 @@
       function toggleFullscreen() {
         if (!document.fullscreenElement && !document.webkitFullscreenElement) {
           const docEl = document.documentElement;
-          if (docEl.requestFullscreen) {
-            docEl.requestFullscreen();
-          } else if (docEl.webkitRequestFullscreen) {
-            docEl.webkitRequestFullscreen();
-          }
+          if (docEl.requestFullscreen) docEl.requestFullscreen();
+          else if (docEl.webkitRequestFullscreen) docEl.webkitRequestFullscreen();
         } else {
-          if (document.exitFullscreen) {
-            document.exitFullscreen();
-          } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-          }
+          if (document.exitFullscreen) document.exitFullscreen();
+          else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
         }
       }
 
       function updateFsIcons() {
         const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
-        if (isFs) {
-          enterIcon.style.display = 'none';
-          exitIcon.style.display = 'block';
-        } else {
-          enterIcon.style.display = 'block';
-          exitIcon.style.display = 'none';
-        }
+        enterIcon.style.display = isFs ? 'none' : 'block';
+        exitIcon.style.display = isFs ? 'block' : 'none';
       }
 
-      if (fsBtn) {
-        fsBtn.addEventListener('click', toggleFullscreen);
-      }
-
+      if (fsBtn) fsBtn.addEventListener('click', toggleFullscreen);
       document.addEventListener('fullscreenchange', updateFsIcons);
       document.addEventListener('webkitfullscreenchange', updateFsIcons);
     })();
 
+    /* Заголовок тайпинг */
     (function () {
       const fullText = "@discoragen";
       let charIndex = 0;
       let isDeleting = false;
-
       function typeEffect() {
         document.title = fullText.substring(0, charIndex) || "@";
-
         let speed = isDeleting ? 120 : 180;
-
-        if (!isDeleting && charIndex === fullText.length) {
-          speed = 2000;
-          isDeleting = true;
-        } else if (isDeleting && charIndex === 1) {
-          speed = 600;
-          isDeleting = false;
-        } else {
-          charIndex += isDeleting ? -1 : 1;
-        }
-
+        if (!isDeleting && charIndex === fullText.length) { speed = 2000; isDeleting = true; }
+        else if (isDeleting && charIndex === 1) { speed = 600; isDeleting = false; }
+        else { charIndex += isDeleting ? -1 : 1; }
         setTimeout(typeEffect, speed);
       }
-
       typeEffect();
     })();
 
+    /* Счётчик просмотров */
     (function () {
       const el = document.getElementById('visitorCount');
       let count = parseInt(localStorage.getItem('discoragen_visits'), 10);
-      if (!count || isNaN(count)) {
-        count = 35;
-      } else {
-        count += 1;
-      }
+      if (!count || isNaN(count)) count = 506;
+      else count += 1;
       localStorage.setItem('discoragen_visits', count);
       el.textContent = count;
     })();
 
+    /* Секретное слово */
     (function () {
       const secretWord = 'discoragen';
       let buffer = '';
@@ -1263,14 +1565,8 @@
         if (e.key.length !== 1) return;
         buffer = (buffer + e.key.toLowerCase()).slice(-secretWord.length);
         if (buffer === secretWord) {
-          flash.classList.remove('active');
-          void flash.offsetWidth;
-          flash.classList.add('active');
-
-          fireBorder.classList.remove('active');
-          void fireBorder.offsetWidth;
-          fireBorder.classList.add('active');
-
+          flash.classList.remove('active'); void flash.offsetWidth; flash.classList.add('active');
+          fireBorder.classList.remove('active'); void fireBorder.offsetWidth; fireBorder.classList.add('active');
           toast.textContent = 'you found me 67🩸';
           toast.classList.add('show');
           clearTimeout(toastTimeout);
@@ -1278,32 +1574,26 @@
             toast.classList.remove('show');
             fireBorder.classList.remove('active');
           }, 3500);
-
           buffer = '';
         }
       });
     })();
 
+    /* Пасхалка по клику на ник */
     (function () {
       const usernameEl = document.getElementById('usernameEl');
       const pumpkinOverlay = document.getElementById('pumpkinOverlay');
-      let clickCount = 0;
-      let clickTimer = null;
+      let clickCount = 0, clickTimer = null;
 
       usernameEl.addEventListener('click', () => {
         clickCount++;
         if (clickCount === 1) {
-          clickTimer = setTimeout(() => {
-            clickCount = 0;
-          }, 500);
+          clickTimer = setTimeout(() => { clickCount = 0; }, 500);
         } else if (clickCount === 3) {
           clearTimeout(clickTimer);
           clickCount = 0;
-
           pumpkinOverlay.classList.add('active');
-          setTimeout(() => {
-            pumpkinOverlay.classList.remove('active');
-          }, 3000);
+          setTimeout(() => pumpkinOverlay.classList.remove('active'), 3000);
         }
       });
     })();
