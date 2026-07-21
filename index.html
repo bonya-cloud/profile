@@ -187,14 +187,43 @@
   }
 
   .avatar-wrap { position: relative; width: 92px; height: 92px; margin: 0 auto 16px; }
+  
+  /* ---------- Огненное анимированное кольцо аватарки ---------- */
   .avatar-ring {
     position: absolute;
-    inset: -4px;
+    inset: -6px;
     border-radius: 50%;
-    background: conic-gradient(from 0deg, var(--red), var(--red-dim), var(--red));
-    animation: spin 6s linear infinite;
+    background: conic-gradient(from 0deg, var(--red), #ff7700, #ffea00, var(--red-dim), var(--red));
+    animation: spin 3s linear infinite, fireGlow 2s ease-in-out infinite alternate;
+    filter: blur(0.8px);
+    z-index: 1;
   }
+
+  .avatar-ring::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(from 180deg, transparent, rgba(255, 45, 77, 0.9), transparent);
+    animation: spin 1.5s linear reverse infinite;
+  }
+
   @keyframes spin { to { transform: rotate(360deg); } }
+
+  @keyframes fireGlow {
+    0% {
+      box-shadow: 0 0 10px rgba(255, 45, 77, 0.4), inset 0 0 8px rgba(255, 119, 0, 0.2);
+      transform: scale(1);
+    }
+    50% {
+      box-shadow: 0 0 25px rgba(255, 119, 0, 0.75), 0 0 12px rgba(255, 45, 77, 0.9);
+      transform: scale(1.03);
+    }
+    100% {
+      box-shadow: 0 0 16px rgba(255, 45, 77, 0.5), inset 0 0 12px rgba(255, 234, 0, 0.4);
+      transform: scale(1.01);
+    }
+  }
 
   .avatar {
     width: 92px; height: 92px; border-radius: 50%;
@@ -216,6 +245,7 @@
     border: 2px solid #0a0507;
     border-radius: 50%;
     z-index: 3;
+    box-shadow: 0 0 8px var(--red);
   }
 
   .username {
@@ -484,11 +514,9 @@
 
   <!-- Кнопка полноэкранного режима -->
   <button class="fullscreen-btn" id="fullscreenBtn" title="Полноэкранный режим">
-    <!-- Иконка разворачивания (Войти) -->
     <svg id="enterFsIcon" viewBox="0 0 24 24">
       <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
     </svg>
-    <!-- Иконка сворачивания (Выйти) -->
     <svg id="exitFsIcon" viewBox="0 0 24 24" style="display: none;">
       <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
     </svg>
@@ -705,10 +733,10 @@
         let speed = isDeleting ? 120 : 180;
 
         if (!isDeleting && charIndex === fullText.length) {
-          speed = 2000; // Пауза, когда текст набран полностью
+          speed = 2000;
           isDeleting = true;
         } else if (isDeleting && charIndex === 1) {
-          speed = 600; // Пауза перед новым набором
+          speed = 600;
           isDeleting = false;
         } else {
           charIndex += isDeleting ? -1 : 1;
