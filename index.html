@@ -188,7 +188,7 @@
 
   .avatar-wrap { position: relative; width: 92px; height: 92px; margin: 0 auto 16px; }
   
-  /* ---------- Огненное анимированное кольцо аватарки ---------- */
+  /* Огненное анимированное кольцо аватарки */
   .avatar-ring {
     position: absolute;
     inset: -6px;
@@ -235,6 +235,7 @@
   }
   .avatar img { width: 100%; height: 100%; object-fit: cover; }
 
+  /* Динамический статус-индикатор */
   .status-dot {
     position: absolute;
     bottom: 2px;
@@ -245,7 +246,13 @@
     border: 2px solid #0a0507;
     border-radius: 50%;
     z-index: 3;
-    box-shadow: 0 0 8px var(--red);
+    box-shadow: 0 0 10px var(--red);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .status-dot.offline {
+    background: #555566;
+    box-shadow: none;
   }
 
   .username {
@@ -541,7 +548,8 @@
         <div class="avatar">
           <img src="assets/avatar.jpg" alt="avatar">
         </div>
-        <div class="status-dot"></div>
+        <!-- Динамический статус-кружок с подсказкой -->
+        <div class="status-dot" id="statusDot" title="Статус: В сети"></div>
       </div>
 
       <h1 class="username">discoragen</h1>
@@ -625,6 +633,7 @@
     const volumeSlider = document.getElementById('volumeSlider');
     const enterOverlay = document.getElementById('enterOverlay');
     const stage = document.getElementById('stage');
+    const statusDot = document.getElementById('statusDot');
 
     audio.volume = 0.8;
 
@@ -677,6 +686,17 @@
 
     volumeSlider.addEventListener('input', e => {
       audio.volume = e.target.value;
+    });
+
+    /* ---------- Динамический статус активности (В сети / Отошел) ---------- */
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        statusDot.classList.add('offline');
+        statusDot.title = 'Статус: Отошел / Не в сети';
+      } else {
+        statusDot.classList.remove('offline');
+        statusDot.title = 'Статус: В сети';
+      }
     });
 
     /* ---------- Полноэкранный режим ---------- */
