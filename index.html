@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>discoragen</title>
+<title>@discoragen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -449,7 +449,7 @@
   <div class="backdrop"></div>
   <div class="scanlines"></div>
   <div class="glitch-flash" id="glitchFlash"></div>
-  <div class="secret-toast" id="secretToast">you found me 67🩸</div>
+  <div class="secret-toast" id="secretToast">you found me 🩸</div>
 
   <div class="stage" id="stage">
     <div class="card">
@@ -504,7 +504,7 @@
       </div>
 
       <div class="track-info">
-        <div class="track-title">52Üh 60 (feat. Yeat)</div>
+        <div class="track-title">discoragen — track</div>
 
         <div class="controls-row">
           <span class="time-text" id="currentTime">0:00</span>
@@ -595,6 +595,33 @@
     volumeSlider.addEventListener('input', e => {
       audio.volume = e.target.value;
     });
+
+    /* ---------- Динамическая анимация заголовка вкладки ---------- */
+    (function () {
+      const fullText = "@discoragen";
+      let charIndex = 0;
+      let isDeleting = false;
+
+      function typeEffect() {
+        document.title = fullText.substring(0, charIndex) || "@";
+
+        let speed = isDeleting ? 120 : 180;
+
+        if (!isDeleting && charIndex === fullText.length) {
+          speed = 2000; // Пауза, когда текст набран полностью
+          isDeleting = true;
+        } else if (isDeleting && charIndex === 1) {
+          speed = 600; // Пауза перед новым набором
+          isDeleting = false;
+        } else {
+          charIndex += isDeleting ? -1 : 1;
+        }
+
+        setTimeout(typeEffect, speed);
+      }
+
+      typeEffect();
+    })();
 
     /* ---------- Логика счётчика просмотров ---------- */
     (function () {
