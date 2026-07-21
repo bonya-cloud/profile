@@ -55,7 +55,7 @@
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l16 7-6 3-3 6z' fill='%23ff2d4d' stroke='%230a0507' stroke-width='1.5'/><circle cx='5' cy='5' r='1' fill='%23ffffff'/></svg>"), auto;
   }
 
-  a, button, .play-btn, .progress-slider, .social-btn, .tag, .volume-slider, #enterOverlay, .visitor-count, .fullscreen-btn, .username, .game-plaque, .corner-volume, .location, .gb-send-btn, .reaction-btn, .gb-delete-btn, .picker-emoji-opt {
+  a, button, .play-btn, .progress-slider, .social-btn, .tag, .volume-slider, #enterOverlay, .visitor-count, .fullscreen-btn, .username, .game-plaque, .corner-volume, .location, .gb-send-btn, .reaction-btn, .gb-delete-btn, .picker-emoji-opt, .admin-panel-link {
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l16 7-6 3-3 6z' fill='%23ffffff' stroke='%23ff2d4d' stroke-width='1.5'/><circle cx='5' cy='5' r='1.5' fill='%23ff2d4d'/></svg>"), pointer;
   }
 
@@ -781,6 +781,45 @@
     color: var(--muted);
   }
 
+  /* ---------- Кнопка перехода в админ-панель ---------- */
+  .admin-panel-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+    transition: all 0.25s ease;
+  }
+
+  .admin-panel-link:hover {
+    background: rgba(255, 45, 77, 0.12);
+    border-color: var(--red);
+    box-shadow: 0 0 20px var(--red-glow);
+    transform: translateY(-2px);
+    color: #fff;
+  }
+
+  .admin-panel-link svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--red);
+    transition: transform 0.2s ease;
+  }
+
+  .admin-panel-link:hover svg {
+    transform: scale(1.15);
+  }
+
   /* ---------- Discord Guestbook (Гостевая книга) ---------- */
   .guestbook-section {
     background: #313338;
@@ -1321,6 +1360,12 @@
         </div>
       </div>
     </div>
+
+    <!-- Кнопка перехода в админ-панель -->
+    <a href="https://bonya-cloud.github.io/discoragen.github.io/" target="_blank" class="admin-panel-link">
+      <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+      <span>Админ-панель</span>
+    </a>
   </div>
 
   <audio id="audio" src="assets/track.mp3" preload="metadata" loop></audio>
