@@ -894,9 +894,16 @@
     color: #f2f3f5;
   }
 
+  /* Выделение вашего ника желтым цветом */
+  .gb-author.admin-author {
+    color: #fee75c !important;
+    text-shadow: 0 0 8px rgba(254, 231, 92, 0.4);
+  }
+
   .gb-time {
     font-size: 10px;
     color: #949ba4;
+    cursor: help;
   }
 
   .gb-text {
@@ -1479,6 +1486,39 @@
       });
     });
 
+    // Функция форматирования времени в стиле Discord
+    function formatMessageTime(createdAt) {
+      if (!createdAt || !createdAt.toDate) return { display: 'Только что', tooltip: '' };
+      const date = createdAt.toDate();
+      const now = new Date();
+
+      const hours = String(date.getHours()).padStart(2, '0');
+      const minutes = String(date.getMinutes()).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const year = date.getFullYear();
+
+      const timeStr = `${hours}:${minutes}`;
+      const dateStr = `${day}.${month}.${year}`;
+      const tooltip = `${timeStr} ${dateStr}`;
+
+      const isToday = date.toDateString() === now.toDateString();
+      const yesterday = new Date(now);
+      yesterday.setDate(now.getDate() - 1);
+      const isYesterday = date.toDateString() === yesterday.toDateString();
+
+      let display = '';
+      if (isToday) {
+        display = `сегодня в ${timeStr}`;
+      } else if (isYesterday) {
+        display = `вчера в ${timeStr}`;
+      } else {
+        display = `${dateStr} в ${timeStr}`;
+      }
+
+      return { display, tooltip };
+    }
+
     /* ---------- Дискорд Гостевая Книга (Firestore Реальное Время) ---------- */
     const gbMessagesContainer = document.getElementById('gbMessages');
     const gbInput = document.getElementById('gbInput');
@@ -1520,14 +1560,17 @@
 
       const authorName = msg.author || msg.name || 'guest';
       const messageText = msg.text || msg.message || '';
+      const timeInfo = formatMessageTime(msg.createdAt);
+      
+      const isOwner = authorName === '@discoragen' || msg.isAdminPost;
+      const authorClass = isOwner ? 'gb-author admin-author' : 'gb-author';
 
-      // Кнопка удаления успешно убрана для профиля пользователя
       msgDiv.innerHTML = `
-        <div class="gb-avatar">${authorName.charAt(0).toUpperCase()}</div>
+        <div class="gb-avatar" style="${isOwner ? 'background: #fee75c; color: #000;' : ''}">${authorName.charAt(0).toUpperCase()}</div>
         <div class="gb-content">
           <div class="gb-user-row">
-            <span class="gb-author">${escapeHtml(authorName)}</span>
-            <span class="gb-time">${msg.time || 'Только что'}</span>
+            <span class="${authorClass}">${escapeHtml(authorName)}</span>
+            <span class="gb-time" title="${timeInfo.tooltip}">${timeInfo.display}</span>
           </div>
           <div class="gb-text">${escapeHtml(messageText)}</div>
           <div class="gb-reactions">
@@ -1587,7 +1630,6 @@
       db.collection('messages').add({
         author: author,
         text: text,
-        time: 'Только что',
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         reactions: { '👍': 1 }
       }).then(() => {
