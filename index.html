@@ -102,7 +102,7 @@
     stroke: #000;
   }
 
-  /* ---------- Выдвижной регулятор громкости в верхнем левом углу ---------- */
+  /* ---------- Выдвижной регулятор громкости ---------- */
   .corner-volume {
     position: fixed;
     top: 18px;
@@ -189,7 +189,7 @@
     background: #ff7700;
   }
 
-  /* ---------- Экран входа с огненным анимационным лоадером ---------- */
+  /* ---------- Экран входа ---------- */
   #enterOverlay {
     position: fixed;
     inset: 0;
@@ -276,13 +276,28 @@
     letter-spacing: 1px;
   }
 
-  /* ---------- Фон ---------- */
+  /* ---------- Анимированный фон (Градиент, Волны, Частицы) ---------- */
   .backdrop {
     position: fixed;
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    background: linear-gradient(0deg, rgba(10, 5, 7, 0.4), rgba(10, 5, 7, 0.4)), url('assets/bg.gif') center/cover no-repeat;
+    background: linear-gradient(125deg, #0a0507, #1a080f, #0f0408, #050203);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  #bgCanvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
   }
 
   .scanlines {
@@ -820,7 +835,7 @@
     transform: scale(1.15);
   }
 
-  /* ---------- Discord Guestbook (Гостевая книга) ---------- */
+  /* ---------- Гостевая книга ---------- */
   .guestbook-section {
     background: #313338;
     border: 1px solid #1e1f22;
@@ -950,7 +965,6 @@
     border-color: #4e5058;
   }
 
-  /* Выпадающий выбор эмодзи */
   .emoji-picker-popup {
     position: absolute;
     bottom: 100%;
@@ -960,7 +974,6 @@
     border: 1px solid #1f2023;
     border-radius: 10px;
     padding: 6px;
-    display: flex;
     gap: 6px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.6);
     z-index: 20;
@@ -1035,7 +1048,7 @@
     background: #4752c4;
   }
 
-  /* ---------- Модальные окна (Карта локации) ---------- */
+  /* ---------- Модальные окна ---------- */
   .modal-overlay {
     position: fixed;
     inset: 0;
@@ -1195,7 +1208,7 @@
   </button>
 
   <!-- Регулятор громкости -->
-  <div class="corner-volume" id="cornerVolume" title="Громкость (Клик — выкл/вкл звук)">
+  <div class="corner-volume" id="cornerVolume" title="Громкость">
     <button class="corner-volume-btn" id="muteToggleBtn" title="Выключить / Включить звук">
       <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
     </button>
@@ -1211,7 +1224,7 @@
     <div class="enter-sub">sound on</div>
   </div>
 
-  <!-- Модальное окно карты локации -->
+  <!-- Модальное окно карты -->
   <div class="modal-overlay" id="locationModal">
     <div class="modal-card">
       <div class="modal-title-row">
@@ -1219,7 +1232,7 @@
         <button class="modal-close-x" id="closeLocModal">&times;</button>
       </div>
       <p class="modal-desc">
-        Здесь находится знаменитая штаб-квартира Русской медной компании (РМК) — первое в России здание, построенное по проекту легендарного бюро британского архитектора Нормана Фостера. Футуристичный дизайн из граненых модулей напоминает кристалл или постройку из киберпанка, что идеально отражает вайб цифрового мира и технологий.
+        Штаб-квартира Русской медной компании (РМК) — первое в России здание по проекту Нормана Фостера. Футуристичный дизайн напоминает кристалл или постройку из киберпанка.
       </p>
       <div class="map-frame-wrap">
         <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=60.589%2C56.824%2C60.609%2C56.834&amp;layer=mapnik&amp;marker=56.8291%2C60.5991"></iframe>
@@ -1234,6 +1247,7 @@
   </div>
 
   <div class="backdrop"></div>
+  <canvas id="bgCanvas"></canvas>
   <div class="scanlines"></div>
   <div class="fire-border" id="fireBorder"></div>
   <div class="glitch-flash" id="glitchFlash"></div>
@@ -1256,7 +1270,7 @@
         hey, i'm discoragen. this is my little corner of the internet.<br>message me on telegram if you want.
       </p>
 
-      <div class="location" id="openLocationBtn" title="Нажмите, чтобы открыть карту и историю">
+      <div class="location" id="openLocationBtn" title="Нажмите, чтобы открыть карту">
         <svg class="loc-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
         <span>Russia, Yekaterinburg (Шейнкмана 121а)</span>
       </div>
@@ -1311,7 +1325,7 @@
       </div>
     </div>
 
-    <!-- Discord Guestbook (Гостевая книга с Firebase) -->
+    <!-- Гостевая книга -->
     <div class="guestbook-section">
       <div class="gb-channel-header">
         <span>💬</span> # guestbook
@@ -1361,7 +1375,7 @@
       </div>
     </div>
 
-    <!-- Кнопка перехода в админ-панель -->
+    <!-- Кнопка админ-панели -->
     <a href="https://bonya-cloud.github.io/discoragen.github.io/" target="_blank" class="admin-panel-link">
       <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
       <span>Админ-панель</span>
@@ -1496,7 +1510,94 @@
       });
     });
 
-    /* ---------- Дискорд Гостевая Книга (Firestore Реальное Время) ---------- */
+    /* ---------- Анимированный фон (Частицы и Волны) ---------- */
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const particles = [];
+    const particleCount = 45;
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        radius: Math.random() * 2 + 1,
+        alpha: Math.random() * 0.5 + 0.2
+      });
+    }
+
+    let waveAngle = 0;
+
+    function renderAnimatedBg() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Волны
+      ctx.save();
+      waveAngle += 0.012;
+      for (let i = 0; i < 3; i++) {
+        ctx.beginPath();
+        ctx.moveTo(0, height / 2);
+        for (let x = 0; x < width; x += 25) {
+          let y = height / 2 + Math.sin(x * 0.003 + waveAngle + i * 0.9) * (50 + i * 15) + Math.cos(x * 0.002 - waveAngle) * 25;
+          ctx.lineTo(x, y);
+        }
+        ctx.lineTo(width, height);
+        ctx.lineTo(0, height);
+        ctx.closePath();
+        ctx.fillStyle = `rgba(255, 45, 77, ${0.015 + i * 0.012})`;
+        ctx.fill();
+      }
+      ctx.restore();
+
+      // Частицы и соединения
+      for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 45, 77, ${p.alpha})`;
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = '#ff2d4d';
+        ctx.fill();
+        ctx.shadowBlur = 0;
+
+        for (let j = i + 1; j < particles.length; j++) {
+          let p2 = particles[j];
+          let dx = p.x - p2.x;
+          let dy = p.y - p2.y;
+          let dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 130) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(255, 45, 77, ${0.12 * (1 - dist / 130)})`;
+            ctx.lineWidth = 0.7;
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(renderAnimatedBg);
+    }
+    renderAnimatedBg();
+
+    /* ---------- Гостевая книга (Firestore) ---------- */
     const gbMessagesContainer = document.getElementById('gbMessages');
     const gbInput = document.getElementById('gbInput');
     const gbSendBtn = document.getElementById('gbSendBtn');
@@ -1544,12 +1645,12 @@
           <div class="gb-user-row">
             <span class="gb-author">${escapeHtml(authorName)}</span>
             <span class="gb-time">${msg.time || 'Только что'}</span>
-            <button class="gb-delete-btn" onclick="deleteMessage('${msg.id}')" title="Удалить сообщение">🗑️ Удалить</button>
+            <button class="gb-delete-btn" onclick="deleteMessage('${msg.id}')" title="Удалить">🗑️ Удалить</button>
           </div>
           <div class="gb-text">${escapeHtml(messageText)}</div>
           <div class="gb-reactions">
             ${reactionsHTML}
-            <div class="emoji-picker-container">
+            <div class="emoji-picker-container" style="position:relative;">
               <button class="reaction-btn" onclick="togglePicker('${msg.id}')">➕</button>
               <div class="emoji-picker-popup" id="picker-${msg.id}">
                 <button class="picker-emoji-opt" onclick="selectEmoji('${msg.id}', '👍')">👍</button>
