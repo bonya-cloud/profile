@@ -1558,18 +1558,11 @@
       const msgDiv = document.createElement('div');
       msgDiv.className = 'gb-msg';
 
-      let userReactions = {};
-      try {
-        userReactions = JSON.parse(localStorage.getItem('discoragen_user_reactions') || '{}');
-      } catch(e) {
-        userReactions = {};
-      }
-      const msgUserVotes = userReactions[msg.id] || {};
-
       let reactionsHTML = '';
       if (msg.reactions) {
         for (const [emoji, count] of Object.entries(msg.reactions)) {
-          const isMyVote = (msgUserVotes[emoji] && msgUserVotes[emoji] > 0);
+          const voteKey = `voted_${msg.id}_${emoji}`;
+          const isMyVote = localStorage.getItem(voteKey) === 'true';
           const activeClass = isMyVote ? 'reaction-btn active' : 'reaction-btn';
           reactionsHTML += `<button class="${activeClass}" onclick="handleReaction('${msg.id}', '${emoji}')">${emoji} <span>${count}</span></button>`;
         }
@@ -1623,22 +1616,16 @@
     };
 
     window.handleReaction = function(id, emoji) {
-      let userReactions = {};
-      try {
-        userReactions = JSON.parse(localStorage.getItem('discoragen_user_reactions') || '{}');
-      } catch(e) {
-        userReactions = {};
-      }
+      const voteKey = `voted_${id}_${emoji}`;
+      const hasVoted = localStorage.getItem(voteKey) === 'true';
 
-      if (!userReactions[id]) {
-        userReactions[id] = {};
-      }
-
-      const userEmojiCount = userReactions[id][emoji] || 0;
-      
-      let totalUserReactions = 0;
-      for (const em in userReactions[id]) {
-        totalUserReactions += userReactions[id][em];
+      // Считаем общие активные реакции юзера на это сообщение
+      let totalUserVotesOnMsg = 0;
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith(`voted_${id}_`) && localStorage.getItem(key) === 'true') {
+          totalUserVotesOnMsg++;
+        }
       }
 
       const msgRef = db.collection('messages').doc(id);
@@ -1648,29 +1635,22 @@
         if (!doc.exists) return;
         let reactions = doc.data().reactions || {};
 
-        if (userEmojiCount > 0) {
-          // УДАЛЕНИЕ РЕАКЦИИ
+        if (hasVoted) {
+          // УДАЛЕНИЕ РЕАКЦИИ С ПЕРВОГО КЛИКА
           reactions[emoji] = (reactions[emoji] || 1) - 1;
           if (reactions[emoji] <= 0) {
             delete reactions[emoji];
           }
           transaction.update(msgRef, { reactions });
-
-          userReactions[id][emoji] = userEmojiCount - 1;
-          if (userReactions[id][emoji] <= 0) {
-            delete userReactions[id][emoji];
-          }
-          localStorage.setItem('discoragen_user_reactions', JSON.stringify(userReactions));
+          localStorage.removeItem(voteKey);
         } else {
-          // ДОБАВЛЕНИЕ РЕАКЦИИ С ПРОВЕРКОЙ ЛИМИТА
-          if (totalUserReactions >= 3) {
+          // ДОБАВЛЕНИЕ С ЛИМИТОМ В 3 ШТУКИ НА СООБЩЕНИЕ
+          if (totalUserVotesOnMsg >= 3) {
             throw new Error('LIMIT_REACHED');
           }
           reactions[emoji] = (reactions[emoji] || 0) + 1;
           transaction.update(msgRef, { reactions });
-
-          userReactions[id][emoji] = 1;
-          localStorage.setItem('discoragen_user_reactions', JSON.stringify(userReactions));
+          localStorage.setItem(voteKey, 'true');
         }
       }).catch(err => {
         if (err.message === 'LIMIT_REACHED' || err.toString().includes('LIMIT_REACHED')) {
