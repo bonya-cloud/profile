@@ -55,7 +55,7 @@
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l16 7-6 3-3 6z' fill='%23ff2d4d' stroke='%230a0507' stroke-width='1.5'/><circle cx='5' cy='5' r='1' fill='%23ffffff'/></svg>"), auto;
   }
 
-  a, button, .play-btn, .progress-slider, .social-btn, .tag, .volume-slider, #enterOverlay, .visitor-count, .fullscreen-btn, .username, .game-plaque, .corner-volume, .location, .gb-send-btn, .reaction-btn, .gb-delete-btn, .picker-emoji-opt, .admin-panel-link {
+  a, button, .play-btn, .progress-slider, .social-btn, .tag, .volume-slider, #enterOverlay, .visitor-count, .fullscreen-btn, .username, .game-plaque, .corner-volume, .location, .gb-send-btn, .reaction-btn, .picker-emoji-opt, .admin-panel-link {
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l16 7-6 3-3 6z' fill='%23ffffff' stroke='%23ff2d4d' stroke-width='1.5'/><circle cx='5' cy='5' r='1.5' fill='%23ff2d4d'/></svg>"), pointer;
   }
 
@@ -899,23 +899,6 @@
     color: #949ba4;
   }
 
-  .gb-delete-btn {
-    background: none;
-    border: none;
-    color: #949ba4;
-    font-size: 12px;
-    cursor: pointer;
-    margin-left: auto;
-    padding: 2px 6px;
-    border-radius: 4px;
-    transition: all 0.2s;
-  }
-
-  .gb-delete-btn:hover {
-    background: rgba(240, 71, 71, 0.15);
-    color: #f23f43;
-  }
-
   .gb-text {
     font-size: 13px;
     color: #dbdee1;
@@ -1538,13 +1521,13 @@
       const authorName = msg.author || msg.name || 'guest';
       const messageText = msg.text || msg.message || '';
 
+      // Кнопка удаления успешно убрана для профиля пользователя
       msgDiv.innerHTML = `
         <div class="gb-avatar">${authorName.charAt(0).toUpperCase()}</div>
         <div class="gb-content">
           <div class="gb-user-row">
             <span class="gb-author">${escapeHtml(authorName)}</span>
             <span class="gb-time">${msg.time || 'Только что'}</span>
-            <button class="gb-delete-btn" onclick="deleteMessage('${msg.id}')" title="Удалить сообщение">🗑️ Удалить</button>
           </div>
           <div class="gb-text">${escapeHtml(messageText)}</div>
           <div class="gb-reactions">
@@ -1592,10 +1575,6 @@
 
     window.handleReaction = function(id, emoji) {
       window.selectEmoji(id, emoji);
-    };
-
-    window.deleteMessage = function(id) {
-      db.collection('messages').doc(id).delete();
     };
 
     function postMessage() {
