@@ -1578,13 +1578,13 @@
             <div class="emoji-picker-container">
               <button class="reaction-btn" onclick="togglePicker('${msg.id}')">➕</button>
               <div class="emoji-picker-popup" id="picker-${msg.id}">
-                <button class="picker-emoji-opt" onclick="selectEmoji('${msg.id}', '👍')">👍</button>
-                <button class="picker-emoji-opt" onclick="selectEmoji('${msg.id}', '❤️')">❤️</button>
-                <button class="picker-emoji-opt" onclick="selectEmoji('${msg.id}', '🔥')">🔥</button>
-                <button class="picker-emoji-opt" onclick="selectEmoji('${msg.id}', '💀')">💀</button>
-                <button class="picker-emoji-opt" onclick="selectEmoji('${msg.id}', '🚀')">🚀</button>
-                <button class="picker-emoji-opt" onclick="selectEmoji('${msg.id}', '⭐')">⭐</button>
-                <button class="picker-emoji-opt" onclick="selectEmoji('${msg.id}', '💯')">💯</button>
+                <button class="picker-emoji-opt" onclick="handleReaction('${msg.id}', '👍')">👍</button>
+                <button class="picker-emoji-opt" onclick="handleReaction('${msg.id}', '❤️')">❤️</button>
+                <button class="picker-emoji-opt" onclick="handleReaction('${msg.id}', '🔥')">🔥</button>
+                <button class="picker-emoji-opt" onclick="handleReaction('${msg.id}', '💀')">💀</button>
+                <button class="picker-emoji-opt" onclick="handleReaction('${msg.id}', '🚀')">🚀</button>
+                <button class="picker-emoji-opt" onclick="handleReaction('${msg.id}', '⭐')">⭐</button>
+                <button class="picker-emoji-opt" onclick="handleReaction('${msg.id}', '💯')">💯</button>
               </div>
             </div>
           </div>
@@ -1605,8 +1605,8 @@
       if (picker) picker.classList.toggle('show');
     };
 
-    // Лимит реакций: не более 3 реакций с одного устройства на одно сообщение
-    window.selectEmoji = function(id, emoji) {
+    // Лимит (не более 3 реакций) + удаление/отмена реакций
+    window.handleReaction = function(id, emoji) {
       let userReactions = {};
       try {
         userReactions = JSON.parse(localStorage.getItem('discoragen_user_reactions') || '{}');
@@ -1614,31 +1614,60 @@
         userReactions = {};
       }
 
-      const currentMsgReactionsCount = userReactions[id] || 0;
-      if (currentMsgReactionsCount >= 3) {
-        toast.textContent = '⚠️ Лимит исчерпан: не более 3 реакций!';
-        toast.classList.add('show');
-        clearTimeout(toastTimeout);
-        toastTimeout = setTimeout(() => toast.classList.remove('show'), 3000);
-        return;
+      if (!userReactions[id]) {
+        userReactions[id] = {};
+      }
+
+      const userEmojiCount = userReactions[id][emoji] || 0;
+      
+      let totalUserReactions = 0;
+      for (const em in userReactions[id]) {
+        totalUserReactions += userReactions[id][em];
       }
 
       const msgRef = db.collection('messages').doc(id);
+
       db.runTransaction(async (transaction) => {
         const doc = await transaction.get(msgRef);
         if (!doc.exists) return;
-        const reactions = doc.data().reactions || {};
-        reactions[emoji] = (reactions[emoji] || 0) + 1;
-        transaction.update(msgRef, { reactions });
-      }).then(() => {
-        userReactions[id] = currentMsgReactionsCount + 1;
-        localStorage.setItem('discoragen_user_reactions', JSON.stringify(userReactions));
-        document.querySelectorAll('.emoji-picker-popup').forEach(p => p.classList.remove('show'));
-      });
-    };
+        let reactions = doc.data().reactions || {};
 
-    window.handleReaction = function(id, emoji) {
-      window.selectEmoji(id, emoji);
+        if (userEmojiCount > 0) {
+          // УДАЛЕНИЕ РЕАКЦИИ (если пользователь нажал повторно / хочет убрать)
+          reactions[emoji] = (reactions[emoji] || 1) - 1;
+          if (reactions[emoji] <= 0) {
+            delete reactions[emoji];
+          }
+          transaction.update(msgRef, { reactions });
+
+          userReactions[id][emoji] = userEmojiCount - 1;
+          if (userReactions[id][emoji] <= 0) {
+            delete userReactions[id][emoji];
+          }
+          localStorage.setItem('discoragen_user_reactions', JSON.stringify(userReactions));
+        } else {
+          // ДОБАВЛЕНИЕ РЕАКЦИИ (с проверкой лимита в 3 штуки)
+          if (totalUserReactions >= 3) {
+            throw new Error('LIMIT_REACHED');
+          }
+          reactions[emoji] = (reactions[emoji] || 0) + 1;
+          transaction.update(msgRef, { reactions });
+
+          userReactions[id][emoji] = 1;
+          localStorage.setItem('discoragen_user_reactions', JSON.stringify(userReactions));
+        }
+      }).catch(err => {
+        if (err.message === 'LIMIT_REACHED' || err.toString().includes('LIMIT_REACHED')) {
+          toast.textContent = '⚠️ Лимит исчерпан: можно поставить не более 3 реакций!';
+          toast.classList.add('show');
+          clearTimeout(toastTimeout);
+          toastTimeout = setTimeout(() => toast.classList.remove('show'), 3000);
+        } else {
+          console.error(err);
+        }
+      });
+
+      document.querySelectorAll('.emoji-picker-popup').forEach(p => p.classList.remove('show'));
     };
 
     function postMessage() {
