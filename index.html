@@ -940,6 +940,13 @@
     border-color: #4e5058;
   }
 
+  /* Подсветка активной (поставленной тобой) реакции */
+  .reaction-btn.active {
+    background: rgba(88, 101, 242, 0.25);
+    border-color: #5865F2;
+    color: #fff;
+  }
+
   /* Выпадающий выбор эмодзи */
   .emoji-picker-popup {
     position: absolute;
@@ -1551,10 +1558,20 @@
       const msgDiv = document.createElement('div');
       msgDiv.className = 'gb-msg';
 
+      let userReactions = {};
+      try {
+        userReactions = JSON.parse(localStorage.getItem('discoragen_user_reactions') || '{}');
+      } catch(e) {
+        userReactions = {};
+      }
+      const msgUserVotes = userReactions[msg.id] || {};
+
       let reactionsHTML = '';
       if (msg.reactions) {
         for (const [emoji, count] of Object.entries(msg.reactions)) {
-          reactionsHTML += `<button class="reaction-btn" onclick="handleReaction('${msg.id}', '${emoji}')">${emoji} <span>${count}</span></button>`;
+          const isMyVote = (msgUserVotes[emoji] && msgUserVotes[emoji] > 0);
+          const activeClass = isMyVote ? 'reaction-btn active' : 'reaction-btn';
+          reactionsHTML += `<button class="${activeClass}" onclick="handleReaction('${msg.id}', '${emoji}')">${emoji} <span>${count}</span></button>`;
         }
       }
 
@@ -1605,7 +1622,6 @@
       if (picker) picker.classList.toggle('show');
     };
 
-    // Лимит (не более 3 реакций) + удаление/отмена реакций
     window.handleReaction = function(id, emoji) {
       let userReactions = {};
       try {
@@ -1633,7 +1649,7 @@
         let reactions = doc.data().reactions || {};
 
         if (userEmojiCount > 0) {
-          // УДАЛЕНИЕ РЕАКЦИИ (если пользователь нажал повторно / хочет убрать)
+          // УДАЛЕНИЕ РЕАКЦИИ
           reactions[emoji] = (reactions[emoji] || 1) - 1;
           if (reactions[emoji] <= 0) {
             delete reactions[emoji];
@@ -1646,7 +1662,7 @@
           }
           localStorage.setItem('discoragen_user_reactions', JSON.stringify(userReactions));
         } else {
-          // ДОБАВЛЕНИЕ РЕАКЦИИ (с проверкой лимита в 3 штуки)
+          // ДОБАВЛЕНИЕ РЕАКЦИИ С ПРОВЕРКОЙ ЛИМИТА
           if (totalUserReactions >= 3) {
             throw new Error('LIMIT_REACHED');
           }
