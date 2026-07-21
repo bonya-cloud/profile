@@ -1605,7 +1605,24 @@
       if (picker) picker.classList.toggle('show');
     };
 
+    // Лимит реакций: не более 3 реакций с одного устройства на одно сообщение
     window.selectEmoji = function(id, emoji) {
+      let userReactions = {};
+      try {
+        userReactions = JSON.parse(localStorage.getItem('discoragen_user_reactions') || '{}');
+      } catch(e) {
+        userReactions = {};
+      }
+
+      const currentMsgReactionsCount = userReactions[id] || 0;
+      if (currentMsgReactionsCount >= 3) {
+        toast.textContent = '⚠️ Лимит исчерпан: не более 3 реакций!';
+        toast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => toast.classList.remove('show'), 3000);
+        return;
+      }
+
       const msgRef = db.collection('messages').doc(id);
       db.runTransaction(async (transaction) => {
         const doc = await transaction.get(msgRef);
@@ -1613,6 +1630,10 @@
         const reactions = doc.data().reactions || {};
         reactions[emoji] = (reactions[emoji] || 0) + 1;
         transaction.update(msgRef, { reactions });
+      }).then(() => {
+        userReactions[id] = currentMsgReactionsCount + 1;
+        localStorage.setItem('discoragen_user_reactions', JSON.stringify(userReactions));
+        document.querySelectorAll('.emoji-picker-popup').forEach(p => p.classList.remove('show'));
       });
     };
 
