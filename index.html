@@ -37,7 +37,7 @@
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l16 7-6 3-3 6z' fill='%23ff2d4d' stroke='%230a0507' stroke-width='1.5'/><circle cx='5' cy='5' r='1' fill='%23ffffff'/></svg>"), auto;
   }
 
-  a, button, .play-btn, .progress-bar, .social-btn, #enterOverlay, .visitor-count, .fullscreen-btn {
+  a, button, .play-btn, .progress-bar, .social-btn, .tag, #enterOverlay, .visitor-count, .fullscreen-btn {
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l16 7-6 3-3 6z' fill='%23ffffff' stroke='%23ff2d4d' stroke-width='1.5'/><circle cx='5' cy='5' r='1.5' fill='%23ff2d4d'/></svg>"), pointer;
   }
 
@@ -329,7 +329,7 @@
     opacity: 0.85;
   }
 
-  /* ---------- Теги-интересы ---------- */
+  /* ---------- Теги-интересы с огненным эффектом ---------- */
   .tags {
     display: flex;
     flex-wrap: wrap;
@@ -347,6 +347,15 @@
     padding: 4px 10px;
     border-radius: 999px;
     letter-spacing: 0.3px;
+    transition: all 0.25s ease;
+  }
+
+  .tag:hover {
+    background: linear-gradient(135deg, rgba(255, 45, 77, 0.3), rgba(255, 119, 0, 0.35));
+    border-color: #ff7700;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 45, 77, 0.7), 0 0 8px rgba(255, 119, 0, 0.8);
+    transform: translateY(-2px) scale(1.05);
   }
 
   .social-buttons {
