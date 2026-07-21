@@ -55,7 +55,7 @@
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l16 7-6 3-3 6z' fill='%23ff2d4d' stroke='%230a0507' stroke-width='1.5'/><circle cx='5' cy='5' r='1' fill='%23ffffff'/></svg>"), auto;
   }
 
-  a, button, .play-btn, .progress-slider, .social-btn, .tag, .volume-slider, #enterOverlay, .visitor-count, .fullscreen-btn, .username, .game-plaque, .corner-volume, .location, .gb-send-btn, .reaction-btn {
+  a, button, .play-btn, .progress-slider, .social-btn, .tag, .volume-slider, #enterOverlay, .visitor-count, .fullscreen-btn, .username, .game-plaque, .corner-volume, .location, .gb-send-btn, .reaction-btn, .gb-delete-btn, .picker-emoji-opt {
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l16 7-6 3-3 6z' fill='%23ffffff' stroke='%23ff2d4d' stroke-width='1.5'/><circle cx='5' cy='5' r='1.5' fill='%23ff2d4d'/></svg>"), pointer;
   }
 
@@ -369,7 +369,6 @@
   }
   .avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-  /* Динамический индикатор статуса с пульсацией */
   .status-dot {
     position: absolute;
     bottom: 2px;
@@ -809,7 +808,7 @@
 
   .gb-messages-container {
     padding: 14px 16px;
-    max-height: 220px;
+    max-height: 240px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -821,6 +820,7 @@
     display: flex;
     gap: 12px;
     align-items: flex-start;
+    position: relative;
   }
 
   .gb-avatar {
@@ -860,6 +860,23 @@
     color: #949ba4;
   }
 
+  .gb-delete-btn {
+    background: none;
+    border: none;
+    color: #949ba4;
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+
+  .gb-delete-btn:hover {
+    background: rgba(240, 71, 71, 0.15);
+    color: #f23f43;
+  }
+
   .gb-text {
     font-size: 13px;
     color: #dbdee1;
@@ -872,6 +889,8 @@
     flex-wrap: wrap;
     gap: 6px;
     margin-top: 6px;
+    align-items: center;
+    position: relative;
   }
 
   .reaction-btn {
@@ -892,10 +911,40 @@
     border-color: #4e5058;
   }
 
-  .reaction-btn.active {
-    background: rgba(88, 101, 242, 0.15);
-    border-color: #5865F2;
-    color: #5865F2;
+  /* Выпадающий выбор эмодзи */
+  .emoji-picker-popup {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    margin-bottom: 6px;
+    background: #2b2d31;
+    border: 1px solid #1f2023;
+    border-radius: 10px;
+    padding: 6px;
+    display: flex;
+    gap: 6px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.6);
+    z-index: 20;
+    display: none;
+  }
+
+  .emoji-picker-popup.show {
+    display: flex;
+  }
+
+  .picker-emoji-opt {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    padding: 4px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.15s;
+  }
+
+  .picker-emoji-opt:hover {
+    background: #3f4147;
+    transform: scale(1.2);
   }
 
   .gb-form-wrap {
@@ -1130,7 +1179,6 @@
         Здесь находится знаменитая штаб-квартира Русской медной компании (РМК) — первое в России здание, построенное по проекту легендарного бюро британского архитектора Нормана Фостера. Футуристичный дизайн из граненых модулей напоминает кристалл или постройку из киберпанка, что идеально отражает вайб цифрового мира и технологий.
       </p>
       <div class="map-frame-wrap">
-        <!-- Интерактивная карта OpenStreetMap с меткой на Шейнкмана 121а -->
         <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=60.589%2C56.824%2C60.609%2C56.834&amp;layer=mapnik&amp;marker=56.8291%2C60.5991"></iframe>
       </div>
     </div>
@@ -1165,13 +1213,11 @@
         hey, i'm discoragen. this is my little corner of the internet.<br>message me on telegram if you want.
       </p>
 
-      <!-- Кликабельная локация -->
       <div class="location" id="openLocationBtn" title="Нажмите, чтобы открыть карту и историю">
         <svg class="loc-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
         <span>Russia, Yekaterinburg (Шейнкмана 121а)</span>
       </div>
 
-      <!-- Хэштеги (без #linux) -->
       <div class="tags">
         <span class="tag">#python</span>
         <span class="tag">#webdev</span>
@@ -1227,9 +1273,7 @@
       <div class="gb-channel-header">
         <span>💬</span> # guestbook
       </div>
-      <div class="gb-messages-container" id="gbMessages">
-        <!-- Сюда динамически добавляются сообщения -->
-      </div>
+      <div class="gb-messages-container" id="gbMessages"></div>
       <div class="gb-form-wrap">
         <div class="gb-input-box">
           <input type="text" class="gb-input" id="gbInput" placeholder="Message #guestbook..." maxlength="80">
@@ -1293,7 +1337,6 @@
     const discordBtn = document.getElementById('discordBtn');
     const toast = document.getElementById('secretToast');
 
-    // Модалка локации
     const openLocationBtn = document.getElementById('openLocationBtn');
     const locationModal = document.getElementById('locationModal');
     const closeLocModal = document.getElementById('closeLocModal');
@@ -1391,12 +1434,11 @@
       });
     });
 
-    /* ---------- Дискорд Гостевая Книга (Guestbook Logic) ---------- */
+    /* ---------- Дискорд Гостевая Книга (С выбором эмодзи и удалением) ---------- */
     const gbMessagesContainer = document.getElementById('gbMessages');
     const gbInput = document.getElementById('gbInput');
     const gbSendBtn = document.getElementById('gbSendBtn');
 
-    // Начальные сообщения гостевой книги по умолчанию
     let defaultMessages = [
       { id: 1, author: 'visitor_52', text: 'крутой профиль, сайту респект! 🔥', time: 'Сегодня в 14:15', reactions: { '👍': 4, '🔥': 7 } },
       { id: 2, author: 'bonya', text: 'добро пожаловать в мой уголок интернета!', time: 'Сегодня в 14:20', reactions: { '❤️': 5, '💀': 2 } }
@@ -1421,11 +1463,23 @@
             <div class="gb-user-row">
               <span class="gb-author">${msg.author}</span>
               <span class="gb-time">${msg.time}</span>
+              <button class="gb-delete-btn" onclick="deleteMessage(${msg.id})" title="Удалить сообщение">🗑️ Удалить</button>
             </div>
             <div class="gb-text">${escapeHtml(msg.text)}</div>
             <div class="gb-reactions">
               ${reactionsHTML}
-              <button class="reaction-btn" onclick="addCustomReaction(${msg.id})">➕</button>
+              <div class="emoji-picker-container">
+                <button class="reaction-btn" onclick="togglePicker(${msg.id})">➕</button>
+                <div class="emoji-picker-popup" id="picker-${msg.id}">
+                  <button class="picker-emoji-opt" onclick="selectEmoji(${msg.id}, '👍')">👍</button>
+                  <button class="picker-emoji-opt" onclick="selectEmoji(${msg.id}, '❤️')">❤️</button>
+                  <button class="picker-emoji-opt" onclick="selectEmoji(${msg.id}, '🔥')">🔥</button>
+                  <button class="picker-emoji-opt" onclick="selectEmoji(${msg.id}, '💀')">💀</button>
+                  <button class="picker-emoji-opt" onclick="selectEmoji(${msg.id}, '🚀')">🚀</button>
+                  <button class="picker-emoji-opt" onclick="selectEmoji(${msg.id}, '⭐')">⭐</button>
+                  <button class="picker-emoji-opt" onclick="selectEmoji(${msg.id}, '💯')">💯</button>
+                </div>
+              </div>
             </div>
           </div>
         `;
@@ -1438,6 +1492,23 @@
       return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     }
 
+    window.togglePicker = function(id) {
+      // Закрыть остальные пикеры
+      document.querySelectorAll('.emoji-picker-popup').forEach(p => {
+        if (p.id !== `picker-${id}`) p.classList.remove('show');
+      });
+      const picker = document.getElementById(`picker-${id}`);
+      if (picker) picker.classList.toggle('show');
+    };
+
+    window.selectEmoji = function(id, emoji) {
+      const msg = guestbookMessages.find(m => m.id === id);
+      if (msg) {
+        msg.reactions[emoji] = (msg.reactions[emoji] || 0) + 1;
+        saveAndRender();
+      }
+    };
+
     window.handleReaction = function(id, emoji) {
       const msg = guestbookMessages.find(m => m.id === id);
       if (msg) {
@@ -1446,10 +1517,9 @@
       }
     };
 
-    window.addCustomReaction = function(id) {
-      const emojis = ['👍', '❤️', '🔥', '💀', '🚀', '⭐'];
-      const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-      handleReaction(id, randomEmoji);
+    window.deleteMessage = function(id) {
+      guestbookMessages = guestbookMessages.filter(m => m.id !== id);
+      saveAndRender();
     };
 
     function postMessage() {
@@ -1468,7 +1538,7 @@
       };
 
       guestbookMessages.push(newMsg);
-      if (guestbookMessages.length > 20) guestbookMessages.shift(); // Ограничение истории
+      if (guestbookMessages.length > 25) guestbookMessages.shift();
       saveAndRender();
       gbInput.value = '';
     }
@@ -1477,6 +1547,13 @@
       localStorage.setItem('discoragen_guestbook', JSON.stringify(guestbookMessages));
       renderGuestbook();
     }
+
+    // Закрытие пикера при клике вне его
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.emoji-picker-container')) {
+        document.querySelectorAll('.emoji-picker-popup').forEach(p => p.classList.remove('show'));
+      }
+    });
 
     gbSendBtn.addEventListener('click', postMessage);
     gbInput.addEventListener('keydown', (e) => {
