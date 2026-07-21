@@ -37,8 +37,51 @@
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l16 7-6 3-3 6z' fill='%23ff2d4d' stroke='%230a0507' stroke-width='1.5'/><circle cx='5' cy='5' r='1' fill='%23ffffff'/></svg>"), auto;
   }
 
-  a, button, .play-btn, .progress-bar, .social-btn, #enterOverlay, .visitor-count {
+  a, button, .play-btn, .progress-bar, .social-btn, #enterOverlay, .visitor-count, .fullscreen-btn {
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l16 7-6 3-3 6z' fill='%23ffffff' stroke='%23ff2d4d' stroke-width='1.5'/><circle cx='5' cy='5' r='1.5' fill='%23ff2d4d'/></svg>"), pointer;
+  }
+
+  /* ---------- Кнопка полноэкранного режима ---------- */
+  .fullscreen-btn {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 100;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(20px);
+    transition: all 0.2s ease;
+    outline: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  }
+
+  .fullscreen-btn:hover {
+    background: var(--red);
+    border-color: var(--red);
+    box-shadow: 0 0 15px var(--red-glow);
+    transform: scale(1.05);
+  }
+
+  .fullscreen-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: var(--text);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.2s ease;
+  }
+
+  .fullscreen-btn:hover svg {
+    stroke: #000;
   }
 
   /* ---------- Экран входа ---------- */
@@ -439,6 +482,18 @@
 </head>
 <body>
 
+  <!-- Кнопка полноэкранного режима -->
+  <button class="fullscreen-btn" id="fullscreenBtn" title="Полноэкранный режим">
+    <!-- Иконка разворачивания (Войти) -->
+    <svg id="enterFsIcon" viewBox="0 0 24 24">
+      <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+    </svg>
+    <!-- Иконка сворачивания (Выйти) -->
+    <svg id="exitFsIcon" viewBox="0 0 24 24" style="display: none;">
+      <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
+    </svg>
+  </button>
+
   <!-- Экран входа -->
   <div id="enterOverlay">
     <div class="enter-ring"></div>
@@ -595,6 +650,48 @@
     volumeSlider.addEventListener('input', e => {
       audio.volume = e.target.value;
     });
+
+    /* ---------- Полноэкранный режим ---------- */
+    (function() {
+      const fsBtn = document.getElementById('fullscreenBtn');
+      const enterIcon = document.getElementById('enterFsIcon');
+      const exitIcon = document.getElementById('exitFsIcon');
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+          const docEl = document.documentElement;
+          if (docEl.requestFullscreen) {
+            docEl.requestFullscreen();
+          } else if (docEl.webkitRequestFullscreen) {
+            docEl.webkitRequestFullscreen();
+          }
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          }
+        }
+      }
+
+      function updateFsIcons() {
+        const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+        if (isFs) {
+          enterIcon.style.display = 'none';
+          exitIcon.style.display = 'block';
+        } else {
+          enterIcon.style.display = 'block';
+          exitIcon.style.display = 'none';
+        }
+      }
+
+      if (fsBtn) {
+        fsBtn.addEventListener('click', toggleFullscreen);
+      }
+
+      document.addEventListener('fullscreenchange', updateFsIcons);
+      document.addEventListener('webkitfullscreenchange', updateFsIcons);
+    })();
 
     /* ---------- Динамическая анимация заголовка вкладки ---------- */
     (function () {
