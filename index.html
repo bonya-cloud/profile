@@ -960,7 +960,7 @@
     color: var(--muted);
   }
 
-  /* ---------- Кнопка перехода в админ-панель ---------- */
+  /* ---------- Кнопка перехода на сайт ---------- */
   .admin-panel-link {
     display: flex;
     align-items: center;
@@ -1073,7 +1073,7 @@
     color: #f2f3f5;
   }
 
-  /* Выделение вашего ника желтым цветом */
+  /* Выделение ника желтым цветом */
   .gb-author.admin-author {
     color: #fee75c !important;
     text-shadow: 0 0 8px rgba(254, 231, 92, 0.4);
@@ -1544,7 +1544,7 @@
 
       <a href="https://open.spotify.com/playlist/7CJUktkN56BXL478Nbl9ad?si=534772bca9e44d4b" target="_blank" class="spotify-link-btn">
         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.44a.622.622 0 0 1-.86.207c-2.35-1.435-5.305-1.76-8.786-.965a.623.623 0 1 1-.277-1.216c3.809-.87 7.077-.496 9.716 1.115.3.183.394.575.207.86zm1.223-2.723a.78.78 0 0 1-1.075.257c-2.69-1.653-6.79-2.132-9.974-1.166a.78.78 0 1 1-.452-1.492c3.636-1.104 8.152-.568 11.244 1.328a.78.78 0 0 1 .257 1.073zm.105-2.835C14.692 9.033 9.375 8.85 6.297 9.798a.936.936 0 1 1-.543-1.79c3.532-1.073 9.404-.865 13.115 1.338a.936.936 0 0 1-.955 1.606z"/></svg>
-        <span>Плейлист в Spotify</span>
+        <span>Spotify</span>
       </a>
     </div>
 
@@ -1601,7 +1601,7 @@
     <!-- Кнопка перехода на основной сайт -->
     <a href="https://bonya-cloud.github.io/discoragen.github.io/" target="_blank" class="admin-panel-link">
       <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59L9 13.59 10.41 15 19 6.41V10h2V3h-7zM5 5h5V3H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-5h-2v5H5V5z"/></svg>
-      <span>Перейти на сайт Общажня</span>
+      <span>Перейти на сайт </span>
     </a>
   </div>
 
@@ -1665,7 +1665,7 @@
     const tracks = [
       { title: 'LEGACY',  src: 'assets/track.mp3',  cover: 'assets/cover.jpg' },
       { title: 'Кинолента — Баста', src: 'assets/track2.mp3', cover: 'assets/cover.jpg' },
-      { title: '2 Goyead', src: 'assets/track3.mp3', cover: 'assets/cover.jpg' }
+      { title: '2 Goyaad', src: 'assets/track3.mp3', cover: 'assets/cover.jpg' }
     ];
     let currentTrackIndex = 0;
 
@@ -1751,11 +1751,7 @@
       navigator.mediaSession.setActionHandler('nexttrack', () => loadTrack(currentTrackIndex + 1, true));
     }
 
-    /* ---------- Автообнаружение новых треков ----------
-       Чтобы добавить трек: просто закинь файл assets/track4.mp3 (потом track5.mp3,
-       track6.mp3 и т.д. по порядку) — при открытии страницы код сам проверит,
-       существует ли файл, и если да — прочитает его ID3-теги (название/исполнителя)
-       и добавит в плейлист без правки кода. Если тегов нет — трек назовётся "Трек N". */
+    /* ---------- Автообнаружение новых треков ---------- */
     const MAX_AUTO_TRACK_INDEX = 25;
 
     function readTrackTags(src, num) {
