@@ -199,7 +199,7 @@
     background: #ff7700;
   }
  
-  /* ---------- Экран входа с огненным анимационным лоадером ---------- */
+  /* ---------- Экран входа с анимацией горящего огонька ---------- */
   #enterOverlay {
     position: fixed;
     inset: 0;
@@ -219,57 +219,58 @@
     pointer-events: none;
   }
  
-  .enter-ring {
+  .enter-flame-wrap {
     position: relative;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: conic-gradient(from 0deg, var(--red), #ff7700, #ffea00, var(--red));
-    animation: fireSpin 1.8s linear infinite, firePulse 1.2s ease-in-out infinite alternate;
-    box-shadow: 0 0 25px rgba(255, 45, 77, 0.6), inset 0 0 15px rgba(255, 119, 0, 0.4);
+    width: 90px;
+    height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
- 
-  .enter-ring::before {
+
+  .enter-flame {
+    position: absolute;
+    width: 55px;
+    height: 75px;
+    background: linear-gradient(to top, #ff2d4d, #ff7700, #ffea00);
+    border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+    animation: flameDance 0.8s ease-in-out infinite alternate, flameGlow 1.2s ease-in-out infinite alternate;
+    box-shadow: 0 0 30px rgba(255, 45, 77, 0.8), 0 0 50px rgba(255, 119, 0, 0.6);
+    filter: blur(0.5px);
+  }
+
+  .enter-flame::before {
     content: '';
     position: absolute;
-    inset: 4px;
-    background: #050203;
-    border-radius: 50%;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 45px;
+    background: linear-gradient(to top, #ff7700, #ffea00, #ffffff);
+    border-radius: 50% 50% 30% 30% / 60% 60% 40% 40%;
+    animation: coreFlicker 0.4s ease-in-out infinite alternate;
   }
- 
-  .enter-ring::after {
-    content: '';
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    background: #ffea00;
-    border-radius: 50%;
-    box-shadow: 0 0 15px #ff7700, 0 0 25px var(--red);
-    animation: coreFlicker 0.8s ease-in-out infinite alternate;
-    z-index: 2;
-  }
- 
-  @keyframes fireSpin {
-    to { transform: rotate(360deg); }
-  }
- 
-  @keyframes firePulse {
+
+  @keyframes flameDance {
     0% {
-      transform: scale(0.95);
-      box-shadow: 0 0 15px rgba(255, 45, 77, 0.5), inset 0 0 10px rgba(255, 119, 0, 0.3);
+      transform: scale(0.92) rotate(-3deg) skewX(-2deg);
+      border-radius: 50% 45% 20% 25% / 60% 55% 45% 40%;
     }
     100% {
-      transform: scale(1.08);
-      box-shadow: 0 0 35px rgba(255, 119, 0, 0.85), inset 0 0 20px rgba(255, 234, 0, 0.6);
+      transform: scale(1.08) rotate(3deg) skewX(2deg);
+      border-radius: 45% 50% 25% 20% / 55% 60% 40% 45%;
     }
+  }
+
+  @keyframes flameGlow {
+    0% { box-shadow: 0 0 20px rgba(255, 45, 77, 0.6), 0 0 40px rgba(255, 119, 0, 0.4); }
+    100% { box-shadow: 0 0 35px rgba(255, 119, 0, 0.9), 0 0 65px rgba(255, 234, 0, 0.7); }
   }
  
   @keyframes coreFlicker {
-    0% { transform: scale(0.85); opacity: 0.7; }
-    100% { transform: scale(1.2); opacity: 1; }
+    0% { transform: translateX(-50%) scale(0.85); opacity: 0.8; }
+    100% { transform: translateX(-50%) scale(1.15); opacity: 1; }
   }
  
   .enter-text {
@@ -1412,9 +1413,11 @@
     </div>
   </div>
  
-  <!-- Экран входа -->
+  <!-- Экран входа с анимацией огня -->
   <div id="enterOverlay">
-    <div class="enter-ring"></div>
+    <div class="enter-flame-wrap">
+      <div class="enter-flame"></div>
+    </div>
     <div class="enter-text">click to enter</div>
     <div class="enter-sub">sound on</div>
   </div>
@@ -1549,7 +1552,7 @@
  
       <a href="https://open.spotify.com/playlist/7CJUktkN56BXL478Nbl9ad?si=534772bca9e44d4b" target="_blank" class="spotify-link-btn">
         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.44a.622.622 0 0 1-.86.207c-2.35-1.435-5.305-1.76-8.786-.965a.623.623 0 1 1-.277-1.216c3.809-.87 7.077-.496 9.716 1.115.3.183.394.575.207.86zm1.223-2.723a.78.78 0 0 1-1.075.257c-2.69-1.653-6.79-2.132-9.974-1.166a.78.78 0 1 1-.452-1.492c3.636-1.104 8.152-.568 11.244 1.328a.78.78 0 0 1 .257 1.073zm.105-2.835C14.692 9.033 9.375 8.85 6.297 9.798a.936.936 0 1 1-.543-1.79c3.532-1.073 9.404-.865 13.115 1.338a.936.936 0 0 1-.955 1.606z"/></svg>
-        <span>Spotify</span>
+        <span>Плейлист в Spotify</span>
       </a>
     </div>
  
@@ -1606,7 +1609,7 @@
     <!-- Кнопка перехода на основной сайт -->
     <a href="https://bonya-cloud.github.io/discoragen.github.io/" target="_blank" class="admin-panel-link">
       <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59L9 13.59 10.41 15 19 6.41V10h2V3h-7zM5 5h5V3H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-5h-2v5H5V5z"/></svg>
-      <span>Перейти на сайт</span>
+      <span>Перейти на сайт Общажня</span>
     </a>
   </div>
  
@@ -1670,7 +1673,7 @@
     const tracks = [
       { title: 'LEGACY',  src: 'assets/track.mp3',  cover: 'assets/cover.jpg' },
       { title: 'Кинолента — Баста', src: 'assets/track2.mp3', cover: 'assets/cover.jpg' },
-      { title: '2 Goyard', src: 'assets/track3.mp3', cover: 'assets/cover.jpg' }
+      { title: '2 Goyead', src: 'assets/track3.mp3', cover: 'assets/cover.jpg' }
     ];
     let currentTrackIndex = 0;
  
