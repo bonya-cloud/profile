@@ -199,7 +199,7 @@
     background: #ff7700;
   }
  
-  /* ---------- Экран входа с анимацией горящего огонька ---------- */
+  /* ---------- Экран входа с супер-интенсивным огненным анимационным лоадером ---------- */
   #enterOverlay {
     position: fixed;
     inset: 0;
@@ -219,66 +219,72 @@
     pointer-events: none;
   }
  
-  .enter-flame-wrap {
+  .enter-ring {
     position: relative;
-    width: 90px;
-    height: 90px;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #ff2d4d, #ff7700, #ffea00, #ff4500, #ff2d4d);
+    animation: fireSpin 1.1s linear infinite, firePulse 0.7s ease-in-out infinite alternate;
+    box-shadow: 0 0 50px rgba(255, 45, 77, 0.9), 0 0 90px rgba(255, 119, 0, 0.7), inset 0 0 25px rgba(255, 234, 0, 0.8);
     display: flex;
     align-items: center;
     justify-content: center;
   }
-
-  .enter-flame {
-    position: absolute;
-    width: 55px;
-    height: 75px;
-    background: linear-gradient(to top, #ff2d4d, #ff7700, #ffea00);
-    border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
-    animation: flameDance 0.8s ease-in-out infinite alternate, flameGlow 1.2s ease-in-out infinite alternate;
-    box-shadow: 0 0 30px rgba(255, 45, 77, 0.8), 0 0 50px rgba(255, 119, 0, 0.6);
-    filter: blur(0.5px);
-  }
-
-  .enter-flame::before {
+ 
+  .enter-ring::before {
     content: '';
     position: absolute;
-    bottom: 4px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 45px;
-    background: linear-gradient(to top, #ff7700, #ffea00, #ffffff);
-    border-radius: 50% 50% 30% 30% / 60% 60% 40% 40%;
-    animation: coreFlicker 0.4s ease-in-out infinite alternate;
+    inset: 5px;
+    background: #050203;
+    border-radius: 50%;
   }
-
-  @keyframes flameDance {
+ 
+  .enter-ring::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ffea00;
+    border-radius: 50%;
+    box-shadow: 0 0 25px #ffea00, 0 0 45px #ff7700, 0 0 65px var(--red);
+    animation: coreFlicker 0.4s ease-in-out infinite alternate;
+    z-index: 2;
+  }
+ 
+  @keyframes fireSpin {
+    to { transform: rotate(360deg); }
+  }
+ 
+  @keyframes firePulse {
     0% {
-      transform: scale(0.92) rotate(-3deg) skewX(-2deg);
-      border-radius: 50% 45% 20% 25% / 60% 55% 45% 40%;
+      transform: scale(0.9);
+      box-shadow: 0 0 30px rgba(255, 45, 77, 0.7), inset 0 0 15px rgba(255, 119, 0, 0.5);
     }
     100% {
-      transform: scale(1.08) rotate(3deg) skewX(2deg);
-      border-radius: 45% 50% 25% 20% / 55% 60% 40% 45%;
+      transform: scale(1.15);
+      box-shadow: 0 0 60px rgba(255, 119, 0, 1), 0 0 100px rgba(255, 45, 77, 0.9), inset 0 0 30px rgba(255, 234, 0, 0.9);
     }
-  }
-
-  @keyframes flameGlow {
-    0% { box-shadow: 0 0 20px rgba(255, 45, 77, 0.6), 0 0 40px rgba(255, 119, 0, 0.4); }
-    100% { box-shadow: 0 0 35px rgba(255, 119, 0, 0.9), 0 0 65px rgba(255, 234, 0, 0.7); }
   }
  
   @keyframes coreFlicker {
-    0% { transform: translateX(-50%) scale(0.85); opacity: 0.8; }
-    100% { transform: translateX(-50%) scale(1.15); opacity: 1; }
+    0% { transform: scale(0.7); opacity: 0.6; }
+    100% { transform: scale(1.35); opacity: 1; }
   }
  
   .enter-text {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 13px;
-    letter-spacing: 3px;
+    font-size: 14px;
+    letter-spacing: 4px;
     text-transform: uppercase;
     color: var(--text);
+    text-shadow: 0 0 15px rgba(255, 45, 77, 0.8);
+    animation: textFlicker 1.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes textFlicker {
+    0% { opacity: 0.8; text-shadow: 0 0 10px rgba(255, 45, 77, 0.5); }
+    100% { opacity: 1; text-shadow: 0 0 25px rgba(255, 119, 0, 0.9), 0 0 10px rgba(255, 234, 0, 0.8); }
   }
  
   .enter-sub {
@@ -336,11 +342,11 @@
   
   .avatar-ring {
     position: absolute;
-    inset: -6px;
+    inset: -8px;
     border-radius: 50%;
-    background: conic-gradient(from 0deg, var(--red), #ff7700, #ffea00, var(--red-dim), var(--red));
-    animation: spin 3s linear infinite, fireGlow 2s ease-in-out infinite alternate;
-    filter: blur(0.8px);
+    background: conic-gradient(from 0deg, #ff2d4d, #ff7700, #ffea00, #ff2d4d-dim, #ff2d4d);
+    animation: spin 2.2s linear infinite, fireGlow 1.2s ease-in-out infinite alternate;
+    filter: blur(0.5px);
     z-index: 1;
   }
  
@@ -349,24 +355,25 @@
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    background: conic-gradient(from 180deg, transparent, rgba(255, 45, 77, 0.9), transparent);
-    animation: spin 1.5s linear reverse infinite;
+    background: conic-gradient(from 180deg, transparent, rgba(255, 45, 77, 1), rgba(255, 119, 0, 0.9), transparent);
+    animation: spin 1s linear reverse infinite;
+    filter: drop-shadow(0 0 10px #ff7700);
   }
  
   @keyframes spin { to { transform: rotate(360deg); } }
  
   @keyframes fireGlow {
     0% {
-      box-shadow: 0 0 10px rgba(255, 45, 77, 0.4), inset 0 0 8px rgba(255, 119, 0, 0.2);
+      box-shadow: 0 0 18px rgba(255, 45, 77, 0.6), inset 0 0 12px rgba(255, 119, 0, 0.4);
       transform: scale(1);
     }
     50% {
-      box-shadow: 0 0 25px rgba(255, 119, 0, 0.75), 0 0 12px rgba(255, 45, 77, 0.9);
-      transform: scale(1.03);
+      box-shadow: 0 0 40px rgba(255, 119, 0, 0.95), 0 0 20px rgba(255, 234, 0, 0.8), inset 0 0 18px rgba(255, 45, 77, 0.9);
+      transform: scale(1.05);
     }
     100% {
-      box-shadow: 0 0 16px rgba(255, 45, 77, 0.5), inset 0 0 12px rgba(255, 234, 0, 0.4);
-      transform: scale(1.01);
+      box-shadow: 0 0 30px rgba(255, 45, 77, 0.8), inset 0 0 15px rgba(255, 234, 0, 0.6);
+      transform: scale(1.02);
     }
   }
  
@@ -1330,18 +1337,22 @@
     transform: translateY(-2px);
   }
  
-  /* Пасхалки и эффекты */
+  /* Пасхалки и эффекты: Усиленная анимация горящих границ экрана после клика */
   .fire-border {
     position: fixed; inset: 0; z-index: 1000; pointer-events: none;
     box-shadow: inset 0 0 0 rgba(255, 45, 77, 0);
     transition: box-shadow 0.3s ease;
   }
   .fire-border.active {
-    animation: scaryFirePulse 0.6s ease-in-out infinite alternate;
+    animation: screenFireBurn 0.45s ease-in-out infinite alternate;
   }
-  @keyframes scaryFirePulse {
-    0% { box-shadow: inset 0 0 40px rgba(255, 45, 77, 0.7), inset 0 0 90px rgba(255, 119, 0, 0.5); }
-    100% { box-shadow: inset 0 0 70px rgba(255, 77, 0, 0.9), inset 0 0 130px rgba(255, 0, 0, 0.7); }
+  @keyframes screenFireBurn {
+    0% { 
+      box-shadow: inset 0 0 60px rgba(255, 45, 77, 0.85), inset 0 0 120px rgba(255, 119, 0, 0.7), inset 0 0 180px rgba(255, 234, 0, 0.5); 
+    }
+    100% { 
+      box-shadow: inset 0 0 100px rgba(255, 60, 0, 1), inset 0 0 180px rgba(255, 0, 0, 0.9), inset 0 0 250px rgba(255, 234, 0, 0.8); 
+    }
   }
  
   .pumpkin-overlay {
@@ -1413,11 +1424,9 @@
     </div>
   </div>
  
-  <!-- Экран входа с анимацией огня -->
+  <!-- Экран входа -->
   <div id="enterOverlay">
-    <div class="enter-flame-wrap">
-      <div class="enter-flame"></div>
-    </div>
+    <div class="enter-ring"></div>
     <div class="enter-text">click to enter</div>
     <div class="enter-sub">sound on</div>
   </div>
@@ -1643,6 +1652,7 @@
     const statusDot = document.getElementById('statusDot');
     const discordBtn = document.getElementById('discordBtn');
     const toast = document.getElementById('secretToast');
+    const fireBorder = document.getElementById('fireBorder');
  
     const openLocationBtn = document.getElementById('openLocationBtn');
     const locationModal = document.getElementById('locationModal');
@@ -1668,8 +1678,6 @@
     }
  
     /* ---------- Плейлист ---------- */
-    // Первые 3 трека — с точными названиями. Треки 4+ можно просто закидывать в assets/
-    // (track4.mp3, track5.mp3...) — они подхватятся сами, см. probeExtraTracks() ниже.
     const tracks = [
       { title: 'LEGACY',  src: 'assets/track.mp3',  cover: 'assets/cover.jpg' },
       { title: 'Кинолента — Баста', src: 'assets/track2.mp3', cover: 'assets/cover.jpg' },
@@ -1746,7 +1754,6 @@
       playlistToggle.classList.toggle('open');
     });
  
-    // Управление плеером с экрана блокировки / шторки уведомлений
     if ('mediaSession' in navigator) {
       navigator.mediaSession.setActionHandler('play', () => {
         audio.play().then(() => setPlayingIcons(true)).catch(() => {});
@@ -1759,12 +1766,6 @@
       navigator.mediaSession.setActionHandler('nexttrack', () => loadTrack(currentTrackIndex + 1, true));
     }
  
-    /* ---------- Автообнаружение новых треков ----------
-       Чтобы добавить трек: просто закинь файл assets/track4.mp3 (потом track5.mp3,
-       track6.mp3 и т.д. по порядку) — при открытии страницы код сам проверит,
-       существует ли файл, и добавит его в плейлист без правки кода. Если получится
-       прочитать ID3-теги (название/исполнителя) — трек получит красивое имя,
-       если нет — назовётся "Трек N". */
     const MAX_AUTO_TRACK_INDEX = 25;
  
     function upgradeTrackTitleFromTags(track, num) {
@@ -1778,12 +1779,10 @@
                 renderPlaylist();
               }
             },
-            onError: () => { /* оставляем название "Трек N" */ }
+            onError: () => {}
           });
         }
-      } catch (e) {
-        console.warn('[playlist] не удалось прочитать теги для', track.src, e);
-      }
+      } catch (e) {}
     }
  
     async function probeExtraTracks() {
@@ -1791,8 +1790,6 @@
         const src = `assets/track${i}.mp3`;
         let exists = false;
         try {
-          // GitHub Pages не всегда корректно отвечает на HEAD-запросы,
-          // поэтому запрашиваем только первый байт файла через Range
           const res = await fetch(src, {
             method: 'GET',
             headers: { Range: 'bytes=0-1' },
@@ -1805,15 +1802,9 @@
         }
  
         if (!exists) continue;
- 
-        // Сначала добавляем трек с дефолтным названием — чтобы он появился в списке
-        // сразу и гарантированно, даже если библиотека чтения тегов даст сбой
         const track = { title: `Трек ${i}`, src, cover: 'assets/cover.jpg' };
         tracks.push(track);
         renderPlaylist();
-        console.info('[playlist] найден новый трек:', src);
- 
-        // А затем в фоне пытаемся улучшить название через ID3-теги файла
         upgradeTrackTitleFromTags(track, i);
       }
     }
@@ -1821,9 +1812,19 @@
     loadTrack(0, false);
     probeExtraTracks();
  
+    // Эффект горящих границ экрана при клике на «click to enter» и переходе в профиль
     enterOverlay.addEventListener('click', () => {
       enterOverlay.classList.add('hidden');
       stage.classList.add('revealed');
+ 
+      // Запуск анимации горящих границ экрана
+      fireBorder.classList.remove('active');
+      void fireBorder.offsetWidth;
+      fireBorder.classList.add('active');
+ 
+      setTimeout(() => {
+        fireBorder.classList.remove('active');
+      }, 2500);
  
       audio.play().then(() => setPlayingIcons(true)).catch(() => {});
     }, { once: true });
@@ -1888,7 +1889,6 @@
       });
     });
  
-    // Функция форматирования времени в стиле Discord
     function formatMessageTime(createdAt) {
       if (!createdAt || !createdAt.toDate) return { display: 'Только что', tooltip: '' };
       const date = createdAt.toDate();
@@ -1921,7 +1921,6 @@
       return { display, tooltip };
     }
  
-    /* ---------- Дискорд Гостевая Книга (Firestore Реальное Время) ---------- */
     const gbMessagesContainer = document.getElementById('gbMessages');
     const gbInput = document.getElementById('gbInput');
     const gbInputBox = document.getElementById('gbInputBox');
@@ -2015,7 +2014,6 @@
       const voteKey = `voted_${id}_${emoji}`;
       const hasVoted = localStorage.getItem(voteKey) === 'true';
  
-      // Считаем общие активные реакции юзера на это сообщение
       let totalUserVotesOnMsg = 0;
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
@@ -2032,7 +2030,6 @@
         let reactions = doc.data().reactions || {};
  
         if (hasVoted) {
-          // УДАЛЕНИЕ РЕАКЦИИ С ПЕРВОГО КЛИКА
           reactions[emoji] = (reactions[emoji] || 1) - 1;
           if (reactions[emoji] <= 0) {
             delete reactions[emoji];
@@ -2040,7 +2037,6 @@
           transaction.update(msgRef, { reactions });
           localStorage.removeItem(voteKey);
         } else {
-          // ДОБАВЛЕНИЕ С ЛИМИТОМ В 3 ШТУКИ НА СООБЩЕНИЕ
           if (totalUserVotesOnMsg >= 3) {
             throw new Error('LIMIT_REACHED');
           }
@@ -2054,15 +2050,12 @@
           toast.classList.add('show');
           clearTimeout(toastTimeout);
           toastTimeout = setTimeout(() => toast.classList.remove('show'), 3000);
-        } else {
-          console.error(err);
         }
       });
  
       document.querySelectorAll('.emoji-picker-popup').forEach(p => p.classList.remove('show'));
     };
  
-    const SITE_URL = 'https://bonya-cloud.github.io/discoragen.github.io/';
     const authModal = document.getElementById('authModal');
     const closeAuthModal = document.getElementById('closeAuthModal');
  
@@ -2089,7 +2082,6 @@
  
     loadMessages();
  
-    /* Статус сети */
     function updateOnlineStatus() {
       if (!navigator.onLine || document.hidden) {
         statusDot.classList.add('offline');
@@ -2104,7 +2096,6 @@
     document.addEventListener('visibilitychange', updateOnlineStatus);
     updateOnlineStatus();
  
-    /* Полноэкранный режим */
     (function() {
       const fsBtn = document.getElementById('fullscreenBtn');
       const enterIcon = document.getElementById('enterFsIcon');
@@ -2132,7 +2123,6 @@
       document.addEventListener('webkitfullscreenchange', updateFsIcons);
     })();
  
-    /* Заголовок тайпинг */
     (function () {
       const fullText = "@discoragen";
       let charIndex = 0;
@@ -2148,20 +2138,16 @@
       typeEffect();
     })();
  
-    /* Реальный счётчик просмотров (Firestore, общий для всех посетителей) */
     (function () {
       const el = document.getElementById('visitorCount');
       const statsRef = db.collection('stats').doc('profile');
       const sessionKey = 'discoragen_counted_session';
  
-      // Показываем текущее значение сразу, не дожидаясь записи
       statsRef.get().then((doc) => {
         const current = doc.exists ? (doc.data().views || 0) : 0;
         el.textContent = current;
       }).catch(() => {});
  
-      // Засчитываем визит только 1 раз за сессию вкладки, чтобы обновление
-      // страницы не накручивало счётчик
       if (!sessionStorage.getItem(sessionKey)) {
         sessionStorage.setItem(sessionKey, 'true');
         statsRef.set({
@@ -2174,12 +2160,10 @@
       }
     })();
  
-    /* Секретное слово */
     (function () {
       const secretWord = 'discoragen';
       let buffer = '';
       const flash = document.getElementById('glitchFlash');
-      const fireBorder = document.getElementById('fireBorder');
  
       window.addEventListener('keydown', (e) => {
         if (e.key.length !== 1) return;
@@ -2199,7 +2183,6 @@
       });
     })();
  
-    /* Пасхалка по клику на ник */
     (function () {
       const usernameEl = document.getElementById('usernameEl');
       const pumpkinOverlay = document.getElementById('pumpkinOverlay');
