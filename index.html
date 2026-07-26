@@ -199,7 +199,7 @@
     background: #ff7700;
   }
  
-  /* ---------- Экран входа с супер-интенсивным огненным анимационным лоадером ---------- */
+  /* ---------- Экран входа с огненным анимационным лоадером (стикер) ---------- */
   #enterOverlay {
     position: fixed;
     inset: 0;
@@ -219,72 +219,70 @@
     pointer-events: none;
   }
  
-  .enter-ring {
+  .enter-flame-wrap {
     position: relative;
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    background: conic-gradient(from 0deg, #ff2d4d, #ff7700, #ffea00, #ff4500, #ff2d4d);
-    animation: fireSpin 1.1s linear infinite, firePulse 0.7s ease-in-out infinite alternate;
-    box-shadow: 0 0 50px rgba(255, 45, 77, 0.9), 0 0 90px rgba(255, 119, 0, 0.7), inset 0 0 25px rgba(255, 234, 0, 0.8);
+    width: 90px;
+    height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
- 
-  .enter-ring::before {
-    content: '';
+
+  .enter-flame-outer {
     position: absolute;
-    inset: 5px;
-    background: #050203;
-    border-radius: 50%;
+    inset: 0;
+    border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+    background: conic-gradient(from 0deg, var(--red), #ff7700, #ffea00, var(--red));
+    animation: flameFlicker 1.5s ease-in-out infinite alternate, flameRotate 3s linear infinite;
+    filter: blur(4px);
+    opacity: 0.8;
   }
- 
-  .enter-ring::after {
-    content: '';
+
+  .enter-flame-middle {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background: #ffea00;
+    inset: 6px;
+    border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+    background: radial-gradient(circle at 50% 70%, #ffea00 0%, #ff7700 45%, var(--red) 80%);
+    box-shadow: 0 0 25px #ff7700, inset 0 0 10px #ffea00;
+    animation: flamePulse 1s ease-in-out infinite alternate;
+  }
+
+  .enter-flame-core {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #ffffff;
     border-radius: 50%;
-    box-shadow: 0 0 25px #ffea00, 0 0 45px #ff7700, 0 0 65px var(--red);
-    animation: coreFlicker 0.4s ease-in-out infinite alternate;
+    box-shadow: 0 0 15px #ffea00, 0 0 30px #ff7700, 0 0 45px var(--red);
+    animation: coreFlicker 0.6s ease-in-out infinite alternate;
     z-index: 2;
   }
  
-  @keyframes fireSpin {
+  @keyframes flameRotate {
     to { transform: rotate(360deg); }
   }
+
+  @keyframes flameFlicker {
+    0% { transform: scale(0.92) skewX(-2deg); opacity: 0.75; }
+    100% { transform: scale(1.06) skewX(2deg); opacity: 0.95; }
+  }
  
-  @keyframes firePulse {
-    0% {
-      transform: scale(0.9);
-      box-shadow: 0 0 30px rgba(255, 45, 77, 0.7), inset 0 0 15px rgba(255, 119, 0, 0.5);
-    }
-    100% {
-      transform: scale(1.15);
-      box-shadow: 0 0 60px rgba(255, 119, 0, 1), 0 0 100px rgba(255, 45, 77, 0.9), inset 0 0 30px rgba(255, 234, 0, 0.9);
-    }
+  @keyframes flamePulse {
+    0% { transform: scale(0.94); border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%; }
+    100% { transform: scale(1.05); border-radius: 45% 45% 50% 50% / 55% 55% 45% 45%; }
   }
  
   @keyframes coreFlicker {
-    0% { transform: scale(0.7); opacity: 0.6; }
-    100% { transform: scale(1.35); opacity: 1; }
+    0% { transform: scale(0.8); opacity: 0.8; }
+    100% { transform: scale(1.25); opacity: 1; }
   }
  
   .enter-text {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 14px;
-    letter-spacing: 4px;
+    font-size: 13px;
+    letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--text);
-    text-shadow: 0 0 15px rgba(255, 45, 77, 0.8);
-    animation: textFlicker 1.5s ease-in-out infinite alternate;
-  }
-
-  @keyframes textFlicker {
-    0% { opacity: 0.8; text-shadow: 0 0 10px rgba(255, 45, 77, 0.5); }
-    100% { opacity: 1; text-shadow: 0 0 25px rgba(255, 119, 0, 0.9), 0 0 10px rgba(255, 234, 0, 0.8); }
   }
  
   .enter-sub {
@@ -342,11 +340,11 @@
   
   .avatar-ring {
     position: absolute;
-    inset: -8px;
+    inset: -6px;
     border-radius: 50%;
-    background: conic-gradient(from 0deg, #ff2d4d, #ff7700, #ffea00, #ff2d4d-dim, #ff2d4d);
-    animation: spin 2.2s linear infinite, fireGlow 1.2s ease-in-out infinite alternate;
-    filter: blur(0.5px);
+    background: conic-gradient(from 0deg, var(--red), #ff7700, #ffea00, var(--red-dim), var(--red));
+    animation: spin 3s linear infinite, fireGlow 2s ease-in-out infinite alternate;
+    filter: blur(0.8px);
     z-index: 1;
   }
  
@@ -355,25 +353,24 @@
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    background: conic-gradient(from 180deg, transparent, rgba(255, 45, 77, 1), rgba(255, 119, 0, 0.9), transparent);
-    animation: spin 1s linear reverse infinite;
-    filter: drop-shadow(0 0 10px #ff7700);
+    background: conic-gradient(from 180deg, transparent, rgba(255, 45, 77, 0.9), transparent);
+    animation: spin 1.5s linear reverse infinite;
   }
  
   @keyframes spin { to { transform: rotate(360deg); } }
  
   @keyframes fireGlow {
     0% {
-      box-shadow: 0 0 18px rgba(255, 45, 77, 0.6), inset 0 0 12px rgba(255, 119, 0, 0.4);
+      box-shadow: 0 0 10px rgba(255, 45, 77, 0.4), inset 0 0 8px rgba(255, 119, 0, 0.2);
       transform: scale(1);
     }
     50% {
-      box-shadow: 0 0 40px rgba(255, 119, 0, 0.95), 0 0 20px rgba(255, 234, 0, 0.8), inset 0 0 18px rgba(255, 45, 77, 0.9);
-      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 119, 0, 0.75), 0 0 12px rgba(255, 45, 77, 0.9);
+      transform: scale(1.03);
     }
     100% {
-      box-shadow: 0 0 30px rgba(255, 45, 77, 0.8), inset 0 0 15px rgba(255, 234, 0, 0.6);
-      transform: scale(1.02);
+      box-shadow: 0 0 16px rgba(255, 45, 77, 0.5), inset 0 0 12px rgba(255, 234, 0, 0.4);
+      transform: scale(1.01);
     }
   }
  
@@ -1337,22 +1334,18 @@
     transform: translateY(-2px);
   }
  
-  /* Пасхалки и эффекты: Усиленная анимация горящих границ экрана после клика */
+  /* Пасхалки и эффекты */
   .fire-border {
     position: fixed; inset: 0; z-index: 1000; pointer-events: none;
     box-shadow: inset 0 0 0 rgba(255, 45, 77, 0);
     transition: box-shadow 0.3s ease;
   }
   .fire-border.active {
-    animation: screenFireBurn 0.45s ease-in-out infinite alternate;
+    animation: scaryFirePulse 0.6s ease-in-out infinite alternate;
   }
-  @keyframes screenFireBurn {
-    0% { 
-      box-shadow: inset 0 0 60px rgba(255, 45, 77, 0.85), inset 0 0 120px rgba(255, 119, 0, 0.7), inset 0 0 180px rgba(255, 234, 0, 0.5); 
-    }
-    100% { 
-      box-shadow: inset 0 0 100px rgba(255, 60, 0, 1), inset 0 0 180px rgba(255, 0, 0, 0.9), inset 0 0 250px rgba(255, 234, 0, 0.8); 
-    }
+  @keyframes scaryFirePulse {
+    0% { box-shadow: inset 0 0 40px rgba(255, 45, 77, 0.7), inset 0 0 90px rgba(255, 119, 0, 0.5); }
+    100% { box-shadow: inset 0 0 70px rgba(255, 77, 0, 0.9), inset 0 0 130px rgba(255, 0, 0, 0.7); }
   }
  
   .pumpkin-overlay {
@@ -1409,11 +1402,6 @@
     <svg id="exitFsIcon" viewBox="0 0 24 24" style="display: none;"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
   </button>
  
-  <!-- Кнопка копирования ссылки на профиль -->
-  <button class="share-btn" id="shareBtn" title="Скопировать ссылку на профиль">
-    <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
-  </button>
- 
   <!-- Регулятор громкости -->
   <div class="corner-volume" id="cornerVolume" title="Громкость (Клик — выкл/вкл звук)">
     <button class="corner-volume-btn" id="muteToggleBtn" title="Выключить / Включить звук">
@@ -1424,9 +1412,13 @@
     </div>
   </div>
  
-  <!-- Экран входа -->
+  <!-- Экран входа с анимированным огоньком -->
   <div id="enterOverlay">
-    <div class="enter-ring"></div>
+    <div class="enter-flame-wrap">
+      <div class="enter-flame-outer"></div>
+      <div class="enter-flame-middle"></div>
+      <div class="enter-flame-core"></div>
+    </div>
     <div class="enter-text">click to enter</div>
     <div class="enter-sub">sound on</div>
   </div>
@@ -1652,7 +1644,6 @@
     const statusDot = document.getElementById('statusDot');
     const discordBtn = document.getElementById('discordBtn');
     const toast = document.getElementById('secretToast');
-    const fireBorder = document.getElementById('fireBorder');
  
     const openLocationBtn = document.getElementById('openLocationBtn');
     const locationModal = document.getElementById('locationModal');
@@ -1802,6 +1793,7 @@
         }
  
         if (!exists) continue;
+ 
         const track = { title: `Трек ${i}`, src, cover: 'assets/cover.jpg' };
         tracks.push(track);
         renderPlaylist();
@@ -1812,19 +1804,9 @@
     loadTrack(0, false);
     probeExtraTracks();
  
-    // Эффект горящих границ экрана при клике на «click to enter» и переходе в профиль
     enterOverlay.addEventListener('click', () => {
       enterOverlay.classList.add('hidden');
       stage.classList.add('revealed');
- 
-      // Запуск анимации горящих границ экрана
-      fireBorder.classList.remove('active');
-      void fireBorder.offsetWidth;
-      fireBorder.classList.add('active');
- 
-      setTimeout(() => {
-        fireBorder.classList.remove('active');
-      }, 2500);
  
       audio.play().then(() => setPlayingIcons(true)).catch(() => {});
     }, { once: true });
@@ -2050,6 +2032,8 @@
           toast.classList.add('show');
           clearTimeout(toastTimeout);
           toastTimeout = setTimeout(() => toast.classList.remove('show'), 3000);
+        } else {
+          console.error(err);
         }
       });
  
@@ -2156,7 +2140,7 @@
           statsRef.get().then((doc) => {
             if (doc.exists) el.textContent = doc.data().views || 0;
           });
-        }).catch((err) => console.error('Ошибка счётчика просмотров:', err));
+        }).catch((err) => console.error(err));
       }
     })();
  
@@ -2164,6 +2148,7 @@
       const secretWord = 'discoragen';
       let buffer = '';
       const flash = document.getElementById('glitchFlash');
+      const fireBorder = document.getElementById('fireBorder');
  
       window.addEventListener('keydown', (e) => {
         if (e.key.length !== 1) return;
