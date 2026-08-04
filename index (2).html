@@ -1,0 +1,4413 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@discoragen | Разработчик, Стример, Творец Контента</title>
+<meta name="theme-color" content="#0a0507">
+
+<!-- SEO Базовые теги -->
+<meta name="description" content="discoragen - разработчик, стример на Twitch, создатель контента. Портфолио проектов, гостевая книга, донаты. Hey, I'm discoragen. This is my little corner of the internet.">
+<meta name="keywords" content="discoragen, разработчик, developer, стример, twitch, python, webdev, portfolio, контент, gaming, открытый исходный код">
+<meta name="author" content="discoragen">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="canonical" href="https://bonya-cloud.github.io/profile/">
+<link rel="alternate" hreflang="ru" href="https://bonya-cloud.github.io/profile/">
+<link rel="alternate" hreflang="en" href="https://bonya-cloud.github.io/profile/?lang=en">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="@discoragen | Разработчик и Стример">
+<meta property="og:description" content="Портфолио разработчика с проектами, гостевой книгой и донатами. Twitch стриммер, Python/WebDev энтузиаст.">
+<meta property="og:image" content="https://bonya-cloud.github.io/profile/assets/cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://bonya-cloud.github.io/profile/">
+<meta property="og:site_name" content="discoragen Profile">
+<meta property="profile:username" content="discoragen">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@discoragen">
+<meta name="twitter:creator" content="@discoragen">
+<meta name="twitter:title" content="@discoragen | Разработчик и Стример">
+<meta name="twitter:description" content="Портфолио разработчика, проекты, гостевая книга, Twitch стримы">
+<meta name="twitter:image" content="https://bonya-cloud.github.io/profile/assets/cover.jpg">
+
+<!-- Favicons & Web App -->
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+<!-- PWA: манифест и мета-теги "добавить на экран" -->
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="discoragen">
+<meta name="mobile-web-app-capable" content="yes">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- JSON-LD Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "discoragen",
+  "url": "https://bonya-cloud.github.io/profile/",
+  "image": "https://bonya-cloud.github.io/profile/assets/cover.jpg",
+  "description": "Разработчик, стример на Twitch, творец контента",
+  "sameAs": [
+    "https://github.com/bonya-cloud",
+    "https://www.twitch.tv/bezobaz1e",
+    "https://t.me/Discoragen"
+  ],
+  "givenName": "discoragen",
+  "jobTitle": ["Веб разработчик", "Стример"],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Независимый разработчик"
+  }
+}
+</script>
+
+<!-- Website Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "discoragen Profile",
+  "url": "https://bonya-cloud.github.io/profile/",
+  "description": "Портфолио разработчика discoragen с проектами, гостевой книгой и информацией о стримах",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://bonya-cloud.github.io/profile/?search={search_term}"
+  }
+}
+</script>
+
+<style>
+  :root {
+    --bg: #0a0507;
+    --card: rgba(18, 8, 10, 0.70);
+    --card-border: rgba(255, 45, 77, 0.3);
+    --red: #ff2d4d;
+    --red-dim: #7a0c1f;
+    --red-glow: rgba(255, 45, 77, 0.35);
+    --text: #f2e6e8;
+    --muted: #9c7b80;
+  }
+ 
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+  html, body {
+    min-height: 100%;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+ 
+  /* Кастомный скроллбар */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--red-dim);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--red);
+  }
+ 
+  /* ---------- Кастомный геймерский/кибер-курсор ---------- */
+  body {
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+    position: relative;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l16 7-6 3-3 6z' fill='%23ff2d4d' stroke='%230a0507' stroke-width='1.5'/><circle cx='5' cy='5' r='1' fill='%23ffffff'/></svg>"), auto;
+  }
+ 
+  a, button, .play-btn, .progress-slider, .social-btn, .tag, .volume-slider, #enterOverlay, .visitor-count, .fullscreen-btn, .username, .game-plaque, .corner-volume, .vibe-status, .gb-send-btn, .reaction-btn, .picker-emoji-opt, .neon-door-link, .gb-input-box, .gb-input, .player-mini-btn, .playlist-toggle, .playlist-track, .spotify-link-btn {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l16 7-6 3-3 6z' fill='%23ffffff' stroke='%23ff2d4d' stroke-width='1.5'/><circle cx='5' cy='5' r='1.5' fill='%23ff2d4d'/></svg>"), pointer;
+  }
+ 
+  /* ---------- Карточка скачивания CV ---------- */
+  .cv-download-link {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+    transition: all 0.25s ease;
+  }
+
+  .cv-download-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 45%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    transform: skewX(-20deg);
+    pointer-events: none;
+  }
+
+  .cv-download-link:hover::before {
+    animation: cvShine 0.85s ease;
+  }
+
+  @keyframes cvShine {
+    0% { left: -75%; }
+    100% { left: 125%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cv-download-link:hover::before { animation: none; }
+  }
+
+  .cv-download-link:hover {
+    background: rgba(255, 45, 77, 0.12);
+    border-color: var(--red);
+    box-shadow: 0 0 20px var(--red-glow);
+    transform: translateY(-2px);
+    color: #fff;
+  }
+
+  .cv-download-link svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--red);
+    transition: transform 0.2s ease;
+  }
+
+  .cv-download-link:hover svg {
+    transform: scale(1.15);
+  }
+
+  /* ---------- Карточка поддержки разработчика (DonationAlerts) ---------- */
+  :root {
+    --da-orange: #F57D07;
+    --da-orange-deep: #F57507;
+    --da-orange-light: #F59C07;
+    --da-glow: rgba(245, 125, 7, 0.4);
+    --da-dark: #1F1F1F;
+    --da-darker: #191919;
+  }
+
+  .donate-section {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    background: linear-gradient(135deg, var(--da-orange-light), var(--da-orange-deep));
+    border: none;
+    border-radius: 999px;
+    padding: 16px 24px;
+    box-shadow: 0 8px 24px rgba(245, 125, 7, 0.4);
+    cursor: pointer;
+    outline: none;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.25s ease;
+  }
+
+  .donate-section:hover {
+    box-shadow: 0 10px 32px rgba(245, 125, 7, 0.55);
+    filter: brightness(1.06);
+    animation: donateBreathe 1.6s ease-in-out infinite;
+  }
+
+  @keyframes donateBreathe {
+    0%, 100% { transform: translateY(-2px) scale(1); }
+    50% { transform: translateY(-2px) scale(1.02); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .donate-section:hover { animation: none; transform: translateY(-2px); }
+  }
+
+  .donate-section:active {
+    transform: translateY(0) scale(0.98);
+    animation: none;
+  }
+
+  .donate-icon-wrap {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: #171717;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+    transition: transform 0.25s ease;
+  }
+
+  .donate-section:hover .donate-icon-wrap {
+    transform: scale(1.08) rotate(-6deg);
+  }
+
+  .donate-icon-wrap svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .donate-text {
+    flex: 0 1 auto;
+    min-width: 0;
+    text-align: left;
+  }
+
+  .donate-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #fff;
+  }
+
+  .donate-sub {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-top: 2px;
+  }
+
+  /* ---------- Кнопка полноэкранного режима ---------- */
+  .fullscreen-btn {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 100;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(20px);
+    transition: all 0.2s ease;
+    outline: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  }
+ 
+  .fullscreen-btn:hover {
+    background: var(--red);
+    border-color: var(--red);
+    box-shadow: 0 0 15px var(--red-glow);
+    transform: scale(1.05);
+  }
+ 
+  .fullscreen-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: var(--text);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.2s ease;
+  }
+ 
+  .fullscreen-btn:hover svg {
+    stroke: #000;
+  }
+ 
+  /* ---------- Модальное окно донатов ---------- */
+  .donate-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 16px;
+  }
+
+  .donate-modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .donate-modal-content {
+    background: radial-gradient(120% 140% at 50% -10%, rgba(245, 125, 7, 0.10), transparent 55%), linear-gradient(180deg, var(--da-dark), var(--da-darker));
+    border: 2px solid var(--da-orange);
+    border-radius: 16px;
+    padding: 22px;
+    text-align: center;
+    max-width: 440px;
+    width: 100%;
+    max-height: 88vh;
+    overflow-y: auto;
+    box-shadow: 0 0 40px var(--da-glow), 0 20px 40px rgba(0,0,0,0.6);
+    animation: modalScaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+  }
+
+  .donate-modal-content::-webkit-scrollbar {
+    width: 6px;
+  }
+  .donate-modal-content::-webkit-scrollbar-thumb {
+    background: var(--da-orange-deep);
+    border-radius: 4px;
+  }
+
+  @keyframes modalScaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+      filter: blur(8px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+      filter: blur(0);
+    }
+  }
+
+  .donate-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background: rgba(245, 125, 7, 0.15);
+    border: 1px solid var(--da-orange);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+    color: var(--text);
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .donate-modal-close:hover {
+    background: var(--da-orange);
+    color: #191919;
+  }
+
+  .donate-modal-title {
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text);
+    text-shadow: 0 0 10px var(--da-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  /* Разделы методов доната */
+  .donate-method-section {
+    background: rgba(245, 125, 7, 0.06);
+    border: 1px solid rgba(245, 125, 7, 0.4);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  /* ---------- Карточка цели сбора (Goal Card) ---------- */
+  .donate-goal-card {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    border: 1px solid rgba(245, 125, 7, 0.4);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    text-align: left;
+  }
+
+  .donate-goal-photo {
+    position: relative;
+    height: 110px;
+    background-size: cover;
+    background-position: center 55%;
+  }
+
+  .donate-goal-photo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(25, 25, 25, 0.15) 0%, rgba(25, 25, 25, 0.55) 55%, var(--da-darker) 100%);
+  }
+
+  .donate-goal-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(25, 25, 25, 0.7);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(245, 125, 7, 0.5);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--da-orange-light);
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  .donate-goal-badge .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--da-orange);
+    box-shadow: 0 0 8px var(--da-orange);
+    animation: goalDotPulse 1.6s ease-in-out infinite;
+  }
+
+  @keyframes goalDotPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+
+  .donate-goal-name {
+    position: absolute;
+    bottom: 12px;
+    left: 16px;
+    right: 16px;
+    z-index: 2;
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+  }
+
+  .donate-goal-name span {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    color: var(--da-orange-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+    text-shadow: none;
+  }
+
+  .donate-goal-body {
+    background: linear-gradient(180deg, var(--da-dark), var(--da-darker));
+    padding: 12px 14px 14px;
+    text-align: center;
+  }
+
+  .donate-goal-target-only {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .donate-goal-target-only b {
+    color: #fff;
+    font-size: 15px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    margin-left: 2px;
+  }
+
+  .donate-method-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--da-orange-light);
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    opacity: 0.9;
+  }
+
+  .donate-method-icon {
+    font-size: 18px;
+    margin-right: 6px;
+  }
+
+  .donate-method-description {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .donate-qr-container {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(245, 125, 7, 0.35);
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .donate-qr-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    max-height: 150px;
+    background: white;
+    padding: 4px;
+  }
+
+  .donate-qr-hint {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 12px;
+  }
+
+  .donate-modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .donate-link-btn {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--da-orange-light), var(--da-orange-deep));
+    border: 1px solid var(--da-orange);
+    border-radius: 8px;
+    color: #191919;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 0 15px var(--da-glow);
+  }
+
+  .donate-link-btn:hover {
+    background: linear-gradient(135deg, var(--da-orange-deep), var(--da-orange-light));
+    box-shadow: 0 0 25px var(--da-glow);
+    transform: translateY(-2px);
+  }
+
+  .donate-link-btn:active {
+    transform: translateY(0);
+  }
+
+  .donate-copy-btn {
+    padding: 10px 16px;
+    background: transparent;
+    border: 1px solid var(--da-orange);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+
+  .donate-copy-btn:hover {
+    background: rgba(245, 125, 7, 0.15);
+    box-shadow: 0 0 15px var(--da-glow);
+  }
+
+  /* Предупреждение */
+  .donate-warning {
+    background: rgba(255, 45, 77, 0.12);
+    border: 1px solid rgba(255, 45, 77, 0.3);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .donate-warning-icon {
+    display: inline-block;
+    margin-right: 6px;
+  }
+
+  /* Вариант предупреждения: донат добровольный (в тонах DonationAlerts) */
+  .donate-warning.donate-voluntary {
+    background: rgba(245, 125, 7, 0.10);
+    border: 1px solid rgba(245, 125, 7, 0.35);
+    color: #d8c6bd;
+  }
+
+  /* Контактная информация */
+  .donate-contact {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(245, 125, 7, 0.2);
+  }
+
+  .donate-contact-link {
+    color: var(--da-orange-light);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .donate-contact-link:hover {
+    color: var(--da-orange);
+    text-decoration: underline;
+  }
+
+  /* ---------- Выдвижной регулятор громкости в верхнем левом углу ---------- */
+  .corner-volume {
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 22px;
+    padding: 6px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+ 
+  .corner-volume:hover {
+    background: rgba(255, 255, 255, 0.19);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+ 
+  .corner-volume-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 12px;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    flex-shrink: 0;
+  }
+ 
+  .corner-volume-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: var(--text);
+    transition: fill 0.2s ease;
+  }
+ 
+  .corner-volume:hover .corner-volume-btn svg {
+    fill: #fff;
+  }
+ 
+  .corner-volume-slider-wrap {
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, margin 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+  }
+ 
+  .corner-volume:hover .corner-volume-slider-wrap {
+    width: 96px;
+    opacity: 1;
+    margin-left: 10px;
+    margin-right: 4px;
+  }
+ 
+  .volume-slider {
+    width: 90px;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    outline: none;
+  }
+ 
+  .volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    transition: transform 0.15s ease;
+  }
+ 
+  .volume-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.5);
+  }
+
+  .volume-slider::-moz-range-thumb {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #fff;
+    border: none;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+  }
+
+  .volume-slider::-moz-range-track {
+    background: transparent;
+  }
+ 
+  /* ---------- Экран входа с огненным анимационным лоадером ---------- */
+  #enterOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: #050203;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    transition: opacity 0.7s ease, visibility 0.7s ease;
+  }
+ 
+  #enterOverlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+ 
+  .enter-flame {
+    position: relative;
+    width: 84px;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: flameGlow 0.9s ease-in-out infinite alternate;
+  }
+ 
+  .flame-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+ 
+  .flame-outer {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: flameFlickerOuter 1.5s ease-in-out infinite;
+  }
+ 
+  .flame-mid {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: flameFlickerMid 1.05s ease-in-out infinite;
+  }
+ 
+  .flame-core {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: flameFlickerCore 0.7s ease-in-out infinite;
+  }
+ 
+  @keyframes flameGlow {
+    0% {
+      filter: drop-shadow(0 0 18px rgba(255, 119, 0, 0.65)) drop-shadow(0 0 34px rgba(255, 45, 77, 0.45)) drop-shadow(0 0 6px rgba(255, 234, 0, 0.6));
+    }
+    100% {
+      filter: drop-shadow(0 0 32px rgba(255, 170, 0, 0.95)) drop-shadow(0 0 55px rgba(255, 45, 77, 0.7)) drop-shadow(0 0 10px rgba(255, 234, 0, 0.85));
+    }
+  }
+ 
+  @keyframes flameFlickerOuter {
+    0%, 100% { transform: scaleY(1) scaleX(1) skewX(0deg) translateX(0); }
+    18% { transform: scaleY(1.06) scaleX(0.95) skewX(-2.5deg) translateX(-1px); }
+    38% { transform: scaleY(0.93) scaleX(1.05) skewX(2deg) translateX(1px); }
+    58% { transform: scaleY(1.09) scaleX(0.9) skewX(-1.5deg) translateX(-1px); }
+    78% { transform: scaleY(0.96) scaleX(1.03) skewX(1.5deg) translateX(0); }
+  }
+ 
+  @keyframes flameFlickerMid {
+    0%, 100% { transform: scaleY(1) scaleX(1) skewX(0deg); opacity: 1; }
+    25% { transform: scaleY(1.1) scaleX(0.92) skewX(-3deg); opacity: 0.9; }
+    50% { transform: scaleY(0.9) scaleX(1.08) skewX(2.5deg); opacity: 1; }
+    75% { transform: scaleY(1.07) scaleX(0.94) skewX(-2deg); opacity: 0.92; }
+  }
+ 
+  @keyframes flameFlickerCore {
+    0%, 100% { transform: scaleY(1) scaleX(1); opacity: 1; }
+    30% { transform: scaleY(1.15) scaleX(0.88); opacity: 0.85; }
+    50% { transform: scaleY(0.88) scaleX(1.1); opacity: 1; }
+    70% { transform: scaleY(1.1) scaleX(0.9); opacity: 0.88; }
+  }
+ 
+  .enter-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+ 
+  .enter-sub {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+ 
+  /* ---------- Фон ---------- */
+  .backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(0deg, rgba(10, 5, 7, 0.4), rgba(10, 5, 7, 0.4)), url('assets/bg.gif') center/cover no-repeat;
+  }
+
+  /* ---------- Динамический фон (плавающие блики) ---------- */
+  .dynamic-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    filter: blur(70px);
+    opacity: 0.6;
+  }
+
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    will-change: transform;
+  }
+
+  .blob-1 {
+    width: 42vmax; height: 42vmax;
+    background: radial-gradient(circle, rgba(255,45,77,0.55), transparent 70%);
+    top: -15%; left: -15%;
+    animation: blobFloat1 24s ease-in-out infinite;
+  }
+
+  .blob-2 {
+    width: 36vmax; height: 36vmax;
+    background: radial-gradient(circle, rgba(255,119,0,0.35), transparent 70%);
+    bottom: -18%; right: -12%;
+    animation: blobFloat2 28s ease-in-out infinite;
+  }
+
+  .blob-3 {
+    width: 28vmax; height: 28vmax;
+    background: radial-gradient(circle, rgba(122,12,31,0.55), transparent 70%);
+    top: 38%; left: 55%;
+    animation: blobFloat3 32s ease-in-out infinite;
+  }
+
+  @keyframes blobFloat1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(18vw, 12vh) scale(1.15); }
+    66% { transform: translate(6vw, 22vh) scale(0.9); }
+  }
+
+  @keyframes blobFloat2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-16vw, -16vh) scale(1.2); }
+  }
+
+  @keyframes blobFloat3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-10vw, 8vh) scale(1.1); }
+    75% { transform: translate(10vw, -10vh) scale(0.95); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blob { animation: none !important; }
+  }
+
+  /* ---------- Частицы от курсора ---------- */
+  .cursor-fx {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    pointer-events: none;
+  }
+ 
+  .scanlines {
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background: repeating-linear-gradient(0deg, rgba(255,45,77,0.02) 0px, transparent 2px);
+    opacity: 0.8;
+  }
+ 
+  /* ---------- Контейнер профиля ---------- */
+  .stage {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* Stagger-анимация появления секций: каждый прямой child стейджа
+     всплывает по очереди, а не всё разом */
+  .stage > * {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+
+  .stage.revealed > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .stage.revealed > *:nth-child(1) { transition-delay: 0.05s; }
+  .stage.revealed > *:nth-child(2) { transition-delay: 0.12s; }
+  .stage.revealed > *:nth-child(3) { transition-delay: 0.19s; }
+  .stage.revealed > *:nth-child(4) { transition-delay: 0.26s; }
+  .stage.revealed > *:nth-child(5) { transition-delay: 0.33s; }
+  .stage.revealed > *:nth-child(6) { transition-delay: 0.40s; }
+  .stage.revealed > *:nth-child(7) { transition-delay: 0.47s; }
+  .stage.revealed > *:nth-child(8) { transition-delay: 0.54s; }
+  .stage.revealed > *:nth-child(9) { transition-delay: 0.61s; }
+  .stage.revealed > *:nth-child(n+10) { transition-delay: 0.68s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stage > * { transition-delay: 0s !important; }
+  }
+
+  /* ================= РЕЖИМ «КОМНАТА» ================= */
+
+  .room-nav {
+    display: flex;
+    gap: 6px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 6px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+    position: sticky;
+    top: 10px;
+    z-index: 20;
+  }
+
+  .room-tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 9px 4px 8px;
+    border-radius: 11px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .room-tab svg {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    transition: transform 0.25s ease;
+  }
+
+  .room-tab span {
+    font-size: 9.5px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .room-tab:hover {
+    color: var(--text);
+    background: rgba(255, 45, 77, 0.08);
+  }
+
+  .room-tab.active {
+    color: var(--red);
+    background: rgba(255, 45, 77, 0.12);
+    border-color: rgba(255, 45, 77, 0.35);
+    box-shadow: 0 0 14px var(--red-glow);
+  }
+
+  .room-tab.active svg { transform: scale(1.08); }
+
+  .room-tab:active { transform: scale(0.94); }
+
+  .rooms-viewport {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .room {
+    display: none;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .room.active {
+    display: flex;
+  }
+
+  .room.enter-from-right { animation: roomInRight 0.38s cubic-bezier(0.22, 1, 0.36, 1); }
+  .room.enter-from-left { animation: roomInLeft 0.38s cubic-bezier(0.22, 1, 0.36, 1); }
+
+  @keyframes roomInRight {
+    from { opacity: 0; transform: translateX(28px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes roomInLeft {
+    from { opacity: 0; transform: translateX(-28px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .room.enter-from-right, .room.enter-from-left { animation: none; }
+  }
+
+  /* --- Комната «Музыка»: визуализатор --- */
+  .viz-wrap {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(255, 45, 77, 0.2);
+    border-radius: 14px;
+    padding: 10px;
+  }
+
+  .viz-canvas {
+    display: block;
+    width: 100%;
+    height: 96px;
+  }
+
+  .room-music .player {
+    padding-bottom: 20px;
+  }
+
+  /* --- Комната «Проекты»: крупные карточки --- */
+  #room-projects .projects-section {
+    padding: 14px;
+  }
+
+  #room-projects .projects-grid {
+    gap: 16px;
+  }
+
+  #room-projects .project-card {
+    padding: 0;
+    overflow: hidden;
+    gap: 0;
+  }
+
+  #room-projects .project-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  #room-projects .project-thumb {
+    width: 100%;
+    height: 150px;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid rgba(255, 45, 77, 0.25);
+  }
+
+  #room-projects .project-info {
+    padding: 14px 14px 4px;
+  }
+
+  #room-projects .project-name {
+    font-size: 16px;
+  }
+
+  #room-projects .project-desc {
+    font-size: 12.5px;
+  }
+
+  #room-projects .project-tags {
+    padding: 0 14px 14px;
+  }
+
+  /* --- Комната «Гостевая»: во весь экран --- */
+  #room-guestbook .guestbook-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: min(62vh, 560px);
+  }
+
+  #room-guestbook .gb-messages-container {
+    flex: 1;
+    max-height: none;
+  }
+ 
+  .card {
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 32px 24px 28px;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  }
+ 
+  .avatar-wrap { position: relative; width: 92px; height: 92px; margin: 0 auto 16px; }
+  
+  .avatar-ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, var(--red), #ff7700, #ffea00, var(--red-dim), var(--red));
+    animation: spin 3s linear infinite, fireGlow 2s ease-in-out infinite alternate;
+    filter: blur(0.8px);
+    z-index: 1;
+    transition: filter 0.4s ease;
+  }
+
+  /* Кольцо светится сильнее, когда играет музыка — связывает аватар и плеер */
+  .avatar-wrap.playing .avatar-ring {
+    animation: spin 2s linear infinite, fireGlowPlaying 1s ease-in-out infinite alternate;
+    filter: blur(1.1px);
+  }
+
+  @keyframes fireGlowPlaying {
+    0% {
+      box-shadow: 0 0 16px rgba(255, 45, 77, 0.6), inset 0 0 10px rgba(255, 119, 0, 0.3);
+      transform: scale(1.01);
+    }
+    50% {
+      box-shadow: 0 0 38px rgba(255, 119, 0, 0.95), 0 0 20px rgba(255, 45, 77, 1);
+      transform: scale(1.06);
+    }
+    100% {
+      box-shadow: 0 0 24px rgba(255, 45, 77, 0.7), inset 0 0 16px rgba(255, 234, 0, 0.5);
+      transform: scale(1.02);
+    }
+  }
+ 
+  .avatar-ring::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(from 180deg, transparent, rgba(255, 45, 77, 0.9), transparent);
+    animation: spin 1.5s linear reverse infinite;
+  }
+ 
+  @keyframes spin { to { transform: rotate(360deg); } }
+ 
+  @keyframes fireGlow {
+    0% {
+      box-shadow: 0 0 10px rgba(255, 45, 77, 0.4), inset 0 0 8px rgba(255, 119, 0, 0.2);
+      transform: scale(1);
+    }
+    50% {
+      box-shadow: 0 0 25px rgba(255, 119, 0, 0.75), 0 0 12px rgba(255, 45, 77, 0.9);
+      transform: scale(1.03);
+    }
+    100% {
+      box-shadow: 0 0 16px rgba(255, 45, 77, 0.5), inset 0 0 12px rgba(255, 234, 0, 0.4);
+      transform: scale(1.01);
+    }
+  }
+ 
+  .avatar {
+    width: 92px; height: 92px; border-radius: 50%;
+    background: #1a0d10;
+    border: 3px solid #0a0507;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+  }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
+ 
+  .status-dot {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 14px;
+    height: 14px;
+    background: var(--red);
+    border: 2px solid #0a0507;
+    border-radius: 50%;
+    z-index: 3;
+    box-shadow: 0 0 10px var(--red);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+ 
+  .status-dot::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 1px solid var(--red);
+    animation: statusPulse 1.5s infinite;
+    opacity: 0.7;
+  }
+ 
+  .status-dot.offline {
+    background: #555566;
+    box-shadow: none;
+  }
+ 
+  .status-dot.offline::after {
+    display: none;
+  }
+ 
+  @keyframes statusPulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.8); opacity: 0; }
+  }
+ 
+  .username {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+    display: inline-block;
+    background: linear-gradient(
+      100deg,
+      var(--text) 35%,
+      #fff 48%,
+      #ffd7dc 52%,
+      var(--text) 65%
+    );
+    background-size: 260% 100%;
+    background-position: 200% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: usernameShine 5s ease-in-out infinite;
+    user-select: none;
+  }
+ 
+  @keyframes usernameShine {
+    0%, 55% { background-position: 200% 0; }
+    75% { background-position: -60% 0; }
+    100% { background-position: -60% 0; }
+  }
+ 
+  .bio { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 14px; }
+ 
+  .vibe-status {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 45, 77, 0.15);
+    transition: all 0.2s ease;
+    max-width: 100%;
+  }
+ 
+  .vibe-status:hover {
+    border-color: var(--red);
+    background: rgba(255, 45, 77, 0.08);
+    box-shadow: 0 0 12px var(--red-glow);
+    transform: translateY(-1px);
+  }
+
+ 
+  .vibe-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--red);
+    box-shadow: 0 0 6px var(--red);
+    flex-shrink: 0;
+    animation: vibePulse 1.8s ease-in-out infinite;
+    transition: background 0.4s ease, box-shadow 0.4s ease;
+  }
+ 
+  @keyframes vibePulse {
+    0%, 100% { opacity: 0.5; transform: scale(0.85); }
+    50% { opacity: 1; transform: scale(1.1); }
+  }
+ 
+  .vibe-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: opacity 0.3s ease;
+  }
+ 
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    margin-bottom: 18px;
+  }
+ 
+  .tag {
+    position: relative;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--red);
+    background: rgba(255, 45, 77, 0.08);
+    border: 1px solid rgba(255, 45, 77, 0.25);
+    padding: 4px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.3px;
+    transition: all 0.25s ease;
+  }
+
+  /* Микро-искры при наведении на теги */
+  .tag-spark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #ffb200;
+    box-shadow: 0 0 6px #ffb200;
+    pointer-events: none;
+    animation: tagSparkFly 0.5s ease-out forwards;
+  }
+
+  @keyframes tagSparkFly {
+    0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.3); }
+  }
+ 
+  .tag:hover {
+    background: linear-gradient(135deg, rgba(255, 45, 77, 0.3), rgba(255, 119, 0, 0.35));
+    border-color: #ff7700;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 45, 77, 0.7), 0 0 8px rgba(255, 119, 0, 0.8);
+    transform: translateY(-2px) scale(1.05);
+  }
+ 
+  .social-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+  }
+ 
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 45, 77, 0.12);
+    border: 1px solid rgba(255, 45, 77, 0.4);
+    color: var(--text);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    outline: none;
+  }
+ 
+  .social-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--text);
+    transition: fill 0.2s ease;
+  }
+ 
+  .social-btn:hover {
+    transform: translateY(-2px);
+  }
+ 
+  .social-btn:hover svg {
+    fill: #000;
+  }
+ 
+  .social-btn.telegram-btn:hover {
+    background: #229ED9;
+    border-color: #229ED9;
+    box-shadow: 0 0 15px rgba(34, 158, 217, 0.6);
+  }
+ 
+  .social-btn.github-btn:hover {
+    background: #ff5c8a;
+    border-color: #ff5c8a;
+    box-shadow: 0 0 15px rgba(255, 92, 138, 0.6);
+  }
+ 
+  .social-btn.discord-btn:hover {
+    background: #5865F2;
+    border-color: #5865F2;
+    box-shadow: 0 0 15px rgba(88, 101, 242, 0.6);
+  }
+
+  .social-btn.twitch-btn:hover {
+    background: #9146FF;
+    border-color: #9146FF;
+    box-shadow: 0 0 20px rgba(145, 70, 255, 0.7), 0 0 35px rgba(145, 70, 255, 0.4);
+    transform: translateY(-3px) scale(1.06);
+  }
+ 
+  .visitor-count {
+    position: absolute;
+    bottom: 12px;
+    left: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: rgba(242, 230, 232, 0.7);
+    transition: color 0.2s ease;
+    user-select: none;
+  }
+ 
+  .visitor-count:hover {
+    color: var(--text);
+  }
+ 
+  .visitor-count svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+  }
+ 
+  .visitor-label {
+    max-width: 0;
+    opacity: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: max-width 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+    font-size: 10px;
+    color: var(--muted);
+  }
+ 
+  .visitor-count:hover .visitor-label {
+    max-width: 80px;
+    opacity: 1;
+    margin-left: 2px;
+  }
+ 
+  /* ---------- Плеер ---------- */
+  .player {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+  }
+ 
+  .player-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+ 
+  .track-cover {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: #1a0d10;
+    border: 1px solid var(--card-border);
+    overflow: hidden;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .track-cover img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Эквалайзер поверх обложки — делает плеер "живым" */
+  .equalizer {
+    position: absolute;
+    left: 3px;
+    bottom: 3px;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 14px;
+    padding: 2px 3px 1px;
+    background: rgba(5, 2, 3, 0.55);
+    border-radius: 4px;
+    z-index: 2;
+  }
+  .eq-bar {
+    width: 2.5px;
+    height: 3px;
+    background: var(--red);
+    border-radius: 1px;
+    opacity: 0.5;
+    transition: opacity 0.25s ease;
+  }
+  .player.playing .eq-bar {
+    opacity: 1;
+    animation: eqBounce 0.9s ease-in-out infinite;
+  }
+  .player.playing .eq-bar:nth-child(1) { animation-duration: 0.7s; animation-delay: 0s; }
+  .player.playing .eq-bar:nth-child(2) { animation-duration: 0.95s; animation-delay: 0.15s; }
+  .player.playing .eq-bar:nth-child(3) { animation-duration: 0.8s; animation-delay: 0.3s; }
+
+  @keyframes eqBounce {
+    0%, 100% { height: 3px; }
+    50% { height: 13px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .player.playing .eq-bar { animation: none; height: 8px; opacity: 0.9; }
+  }
+ 
+  .track-info { flex: 1; min-width: 0; display: flex; align-items: center; gap: 6px; }
+  .track-title { font-weight: 600; font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* Пульсирующая точка "сейчас играет" */
+  .now-playing-dot {
+    flex-shrink: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--red);
+    opacity: 0.25;
+    transition: opacity 0.25s ease;
+  }
+  .now-playing-dot.playing {
+    opacity: 1;
+    animation: nowPlayingPulse 1.4s ease-in-out infinite;
+  }
+  @keyframes nowPlayingPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 45, 77, 0.55); transform: scale(1); }
+    50% { box-shadow: 0 0 0 5px rgba(255, 45, 77, 0); transform: scale(1.2); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .now-playing-dot.playing { animation: none; }
+  }
+ 
+  .progress-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+ 
+  .progress-slider {
+    width: 100%;
+    height: 6px;
+    -webkit-appearance: none;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+  }
+ 
+  .progress-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--red);
+    box-shadow: 0 0 10px var(--red);
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+ 
+  .progress-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.3);
+    background: #ff7700;
+  }
+ 
+  .time-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--muted);
+  }
+ 
+  .play-btn {
+    position: relative;
+    background: linear-gradient(135deg, var(--red), #ff7700);
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 15px rgba(255, 45, 77, 0.45);
+    transition: all 0.2s ease;
+  }
+ 
+  .play-btn::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 255, 255, 0.5);
+    animation: spin 5s linear infinite;
+  }
+ 
+  .play-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 22px rgba(255, 119, 0, 0.8), 0 0 10px var(--red);
+    border-color: #ffea00;
+  }
+ 
+  .play-btn:active { transform: scale(0.93); }
+ 
+  .play-btn svg { 
+    fill: #fff; 
+    width: 15px; 
+    height: 15px; 
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.6));
+    margin-left: 1px;
+  }
+ 
+  /* ---------- Кнопки prev/next и плейлист ---------- */
+  .player-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+ 
+  .player-mini-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 45, 77, 0.12);
+    border: 1px solid rgba(255, 45, 77, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+ 
+  .player-mini-btn svg {
+    width: 13px;
+    height: 13px;
+    fill: var(--text);
+    transition: fill 0.2s ease;
+  }
+ 
+  .player-mini-btn:hover {
+    background: var(--red);
+    border-color: var(--red);
+    box-shadow: 0 0 12px var(--red-glow);
+    transform: scale(1.06);
+  }
+ 
+  .player-mini-btn:hover svg { fill: #000; }
+  .player-mini-btn:active { transform: scale(0.92); }
+ 
+  .playlist-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 45, 77, 0.18);
+    border-radius: 10px;
+    padding: 7px;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: all 0.2s ease;
+  }
+ 
+  .playlist-toggle:hover {
+    border-color: var(--red);
+    color: var(--text);
+    background: rgba(255, 45, 77, 0.06);
+  }
+ 
+  .playlist-toggle svg {
+    width: 13px;
+    height: 13px;
+    fill: currentColor;
+    transition: transform 0.25s ease;
+  }
+ 
+  .playlist-toggle.open svg { transform: rotate(180deg); }
+ 
+  .playlist-panel {
+    max-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.25s ease, margin 0.3s ease;
+  }
+ 
+  .playlist-panel.open {
+    max-height: 400px;
+    opacity: 1;
+    margin-top: 2px;
+  }
+ 
+  .playlist-track {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+ 
+  .playlist-track:hover {
+    background: rgba(255, 45, 77, 0.08);
+    border-color: rgba(255, 45, 77, 0.3);
+  }
+ 
+  .playlist-track.active {
+    border-color: var(--red);
+    background: rgba(255, 45, 77, 0.12);
+  }
+ 
+  .playlist-track-thumb {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid var(--card-border);
+  }
+ 
+  .playlist-track-thumb img { width: 100%; height: 100%; object-fit: cover; }
+ 
+  .playlist-track-name {
+    font-size: 12px;
+    font-weight: 600;
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+ 
+  .playlist-track-badge {
+    font-size: 11px;
+    color: var(--red);
+    flex-shrink: 0;
+    width: 14px;
+    text-align: center;
+  }
+ 
+  .spotify-link-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(29, 185, 84, 0.10);
+    border: 1px solid rgba(29, 185, 84, 0.35);
+    border-radius: 10px;
+    padding: 9px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #1ed760;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+ 
+  .spotify-link-btn:hover {
+    background: #1DB954;
+    border-color: #1DB954;
+    color: #000;
+    box-shadow: 0 0 15px rgba(29, 185, 84, 0.5);
+    transform: translateY(-1px);
+  }
+ 
+  .spotify-link-btn svg {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
+    transition: fill 0.2s ease;
+  }
+ 
+  /* ---------- Секция любимых игр ---------- */
+  .games-section {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 16px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+ 
+  .games-header {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+  }
+ 
+  .games-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+ 
+  .game-plaque {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 45, 77, 0.2);
+    border-radius: 12px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.25s ease;
+  }
+ 
+  .game-plaque:hover {
+    background: rgba(255, 45, 77, 0.08);
+    border-color: var(--red);
+    box-shadow: 0 0 15px var(--red-glow);
+    transform: translateY(-2px);
+  }
+ 
+  .game-thumb {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 45, 77, 0.3);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+ 
+  .game-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+ 
+  .game-plaque:hover .game-thumb img {
+    transform: scale(1.1);
+  }
+ 
+  .game-info {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+  }
+ 
+  .game-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+  }
+ 
+  .game-genre {
+    font-size: 11px;
+    color: var(--muted);
+  }
+ 
+  /* ---------- Секция "стек технологий" ---------- */
+  .stack-section {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 16px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .stack-header {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+    gap: 10px;
+  }
+
+  .stack-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 6px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 45, 77, 0.2);
+    border-radius: 12px;
+    transition: all 0.25s ease;
+  }
+
+  .stack-item:hover {
+    background: rgba(255, 45, 77, 0.08);
+    border-color: var(--red);
+    box-shadow: 0 0 15px var(--red-glow);
+    transform: translateY(-2px);
+  }
+
+  .stack-item img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    opacity: 0.9;
+    transition: transform 0.25s ease;
+  }
+
+  .stack-item:hover img {
+    transform: scale(1.15);
+  }
+
+  .stack-item span {
+    font-size: 10.5px;
+    color: var(--muted);
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .stack-item:hover span {
+    color: var(--text);
+  }
+
+  /* ---------- Секция "проекты / портфолио" ---------- */
+  .projects-section {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 16px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .projects-header {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .project-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 45, 77, 0.2);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.25s ease;
+  }
+
+  .project-card:hover {
+    background: rgba(255, 45, 77, 0.08);
+    border-color: var(--red);
+    box-shadow: 0 0 15px var(--red-glow);
+    transform: translateY(-2px);
+  }
+
+  .project-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .project-thumb {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 45, 77, 0.3);
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #1a0d10;
+  }
+
+  .project-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .project-info { flex: 1; min-width: 0; text-align: left; }
+
+  .project-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .project-name svg {
+    width: 13px;
+    height: 13px;
+    fill: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .project-desc {
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .project-tag {
+    font-size: 9.5px;
+    font-weight: 600;
+    color: var(--red);
+    background: rgba(255, 45, 77, 0.08);
+    border: 1px solid rgba(255, 45, 77, 0.25);
+    padding: 2px 8px;
+    border-radius: 999px;
+  }
+
+  /* ---------- Кнопка перехода на сайт: неоновая "дверь" ---------- */
+  .neon-door-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, rgba(255,45,77,0.12), rgba(10,5,7,0.92) 55%, rgba(255,119,0,0.08));
+    background-size: 200% 200%;
+    border: 1px solid rgba(255,45,77,0.45);
+    border-radius: 18px;
+    padding: 15px 18px;
+    text-decoration: none;
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.5), 0 0 14px rgba(255,45,77,0.18);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease, color 0.25s ease;
+    animation: doorBreathe 3.4s ease-in-out infinite;
+  }
+
+  @keyframes doorBreathe {
+    0%, 100% { box-shadow: 0 6px 24px rgba(0,0,0,0.5), 0 0 14px rgba(255,45,77,0.18); background-position: 0% 50%; }
+    50% { box-shadow: 0 6px 24px rgba(0,0,0,0.5), 0 0 24px rgba(255,45,77,0.32); background-position: 100% 50%; }
+  }
+
+  .neon-door-link:hover {
+    border-color: var(--red);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.55), 0 0 30px var(--red-glow), 0 0 46px rgba(255,119,0,0.28);
+    transform: translateY(-2px);
+    color: #fff;
+    animation-play-state: paused;
+  }
+
+  .neon-door-arrow {
+    width: 18px;
+    height: 18px;
+    fill: var(--red);
+    flex-shrink: 0;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), fill 0.25s ease;
+  }
+
+  .neon-door-link:hover .neon-door-arrow {
+    transform: translateX(5px);
+    fill: #ff7700;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .neon-door-link { animation: none; }
+  }
+ 
+  /* ---------- Discord Guestbook (Гостевая книга) ---------- */
+  .guestbook-section {
+    background: #313338;
+    border: 1px solid #1e1f22;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+  }
+ 
+  .gb-channel-header {
+    background: #2b2d31;
+    padding: 12px 16px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #dbdee1;
+    border-bottom: 1px solid #1f2023;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+ 
+  .gb-messages-container {
+    padding: 14px 16px;
+    max-height: 240px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #313338;
+  }
+ 
+  .gb-msg {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    position: relative;
+  }
+ 
+  .gb-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #5865F2;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+ 
+  .gb-content {
+    flex: 1;
+    min-width: 0;
+  }
+ 
+  .gb-user-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 2px;
+  }
+ 
+  .gb-author {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #f2f3f5;
+  }
+ 
+  /* Выделение вашего ника желтым цветом */
+  .gb-author.admin-author {
+    color: #fee75c !important;
+    text-shadow: 0 0 8px rgba(254, 231, 92, 0.4);
+  }
+ 
+  .gb-time {
+    font-size: 10px;
+    color: #949ba4;
+    cursor: help;
+  }
+ 
+  .gb-text {
+    font-size: 13px;
+    color: #dbdee1;
+    word-break: break-word;
+    line-height: 1.4;
+  }
+ 
+  .gb-reactions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+    align-items: center;
+    position: relative;
+  }
+ 
+  .reaction-btn {
+    background: #2b2d31;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 3px 8px;
+    font-size: 12px;
+    color: #b5bac1;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s ease;
+  }
+ 
+  .reaction-btn:hover {
+    background: #3f4147;
+    border-color: #4e5058;
+  }
+ 
+  /* Подсветка активной (поставленной тобой) реакции */
+  .reaction-btn.active {
+    background: rgba(88, 101, 242, 0.25);
+    border-color: #5865F2;
+    color: #fff;
+  }
+ 
+  /* Выпадающий выбор эмодзи */
+  .emoji-picker-popup {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    margin-bottom: 6px;
+    background: #2b2d31;
+    border: 1px solid #1f2023;
+    border-radius: 10px;
+    padding: 6px;
+    display: flex;
+    gap: 6px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.6);
+    z-index: 20;
+    display: none;
+  }
+ 
+  .emoji-picker-popup.show {
+    display: flex;
+  }
+ 
+  .picker-emoji-opt {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    padding: 4px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.15s;
+  }
+ 
+  .picker-emoji-opt:hover {
+    background: #3f4147;
+    transform: scale(1.2);
+  }
+ 
+  .gb-form-wrap {
+    padding: 12px 16px;
+    background: #2b2d31;
+    border-top: 1px solid #1f2023;
+  }
+ 
+  .gb-input-box {
+    background: #383a40;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px 0 14px;
+    border: 1px solid transparent;
+    transition: border-color 0.2s;
+    cursor: pointer;
+  }
+ 
+  .gb-input[readonly] {
+    cursor: pointer;
+  }
+ 
+  .gb-input-box:focus-within {
+    border-color: #5865F2;
+  }
+ 
+  .gb-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #dbdee1;
+    font-size: 13px;
+    padding: 10px 0;
+  }
+ 
+  .gb-input::placeholder {
+    color: #878992;
+  }
+ 
+  .gb-send-btn {
+    background: #5865F2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+ 
+  .gb-send-btn:hover {
+    background: #4752c4;
+  }
+ 
+  /* ---------- Модальные окна (Карта локации) ---------- */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    background: rgba(5, 2, 3, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 16px;
+  }
+ 
+  .modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+ 
+  .modal-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 420px;
+    padding: 24px;
+    backdrop-filter: blur(25px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+    transform: scale(0.92);
+    filter: blur(8px);
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+ 
+  .modal-overlay.active .modal-card {
+    transform: scale(1);
+    filter: blur(0);
+  }
+ 
+  .modal-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+ 
+  .modal-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+  }
+ 
+  .modal-close-x {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 20px;
+    line-height: 1;
+    transition: color 0.2s;
+  }
+ 
+  .modal-close-x:hover {
+    color: var(--red);
+  }
+ 
+  .modal-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+ 
+  /* ---------- Кнопка QR-кода профиля ---------- */
+  .qr-btn {
+    position: fixed;
+    top: 18px;
+    right: 66px;
+    z-index: 100;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(20px);
+    transition: all 0.2s ease;
+    outline: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  }
+
+  .qr-btn:hover {
+    background: var(--red);
+    border-color: var(--red);
+    box-shadow: 0 0 15px var(--red-glow);
+    transform: scale(1.05);
+  }
+
+  .qr-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--text);
+    transition: fill 0.2s ease;
+  }
+
+  .qr-btn:hover svg {
+    fill: #000;
+  }
+
+  .qr-canvas-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+    background: #f2e6e8;
+    border-radius: 14px;
+  }
+
+  .qr-canvas-wrap img, .qr-canvas-wrap canvas {
+    border-radius: 6px;
+  }
+
+  .qr-hint {
+    font-size: 11.5px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .map-frame-wrap {
+    width: 100%;
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+    background: #111;
+  }
+ 
+  .map-frame-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: invert(90%) hue-rotate(180deg) contrast(120%);
+  }
+ 
+  .modal-primary-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--red), #ff7700);
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px var(--red-glow);
+    transition: all 0.2s ease;
+  }
+ 
+  .modal-primary-btn:hover {
+    box-shadow: 0 0 22px rgba(255, 119, 0, 0.8), 0 0 10px var(--red);
+    transform: translateY(-2px);
+  }
+ 
+  /* Пасхалки и эффекты */
+  .fire-border {
+    position: fixed; inset: 0; z-index: 1000; pointer-events: none;
+    box-shadow: inset 0 0 0 rgba(255, 45, 77, 0);
+    transition: box-shadow 0.3s ease;
+  }
+  .fire-border.active {
+    animation: scaryFirePulse 0.6s ease-in-out infinite alternate;
+  }
+  @keyframes scaryFirePulse {
+    0% { box-shadow: inset 0 0 40px rgba(255, 45, 77, 0.7), inset 0 0 90px rgba(255, 119, 0, 0.5); }
+    100% { box-shadow: inset 0 0 70px rgba(255, 77, 0, 0.9), inset 0 0 130px rgba(255, 0, 0, 0.7); }
+  }
+ 
+  .pumpkin-overlay {
+    position: fixed; inset: 0; z-index: 2000;
+    background: rgba(5, 2, 3, 0.9); backdrop-filter: blur(12px);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .pumpkin-overlay.active { opacity: 1; visibility: visible; pointer-events: auto; }
+  .pumpkin-container { font-size: 120px; animation: pumpkinShake 0.2s ease-in-out infinite alternate; filter: drop-shadow(0 0 35px #ff7700); }
+  .pumpkin-title { font-family: 'Space Grotesk', sans-serif; font-size: 22px; color: #ffea00; letter-spacing: 4px; text-transform: uppercase; }
+ 
+  @keyframes pumpkinShake {
+    0% { transform: scale(1) rotate(-5deg); }
+    100% { transform: scale(1.1) rotate(5deg); }
+  }
+
+  /* ---------- Пасхалка с монстром ---------- */
+  .monster-overlay {
+    position: fixed; inset: 0; z-index: 3000;
+    background: rgba(3, 1, 1, 0.93); backdrop-filter: blur(10px);
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    padding-top: 8vh;
+    opacity: 0; visibility: hidden; pointer-events: none;
+    overflow: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .monster-overlay.active { opacity: 1; visibility: visible; pointer-events: auto; }
+
+  .monster-drop {
+    position: relative;
+    transform: translateY(-160%);
+  }
+  .monster-overlay.active .monster-drop {
+    animation: monsterDrop 0.75s cubic-bezier(.36, 1.6, .4, 1) forwards,
+               monsterShake 0.12s ease-in-out 0.75s infinite alternate;
+  }
+
+  @keyframes monsterDrop {
+    0%   { transform: translateY(-160%); }
+    65%  { transform: translateY(8%); }
+    82%  { transform: translateY(-3%); }
+    100% { transform: translateY(0%); }
+  }
+
+  @keyframes monsterShake {
+    0%   { transform: translateY(0) rotate(-1.5deg); }
+    100% { transform: translateY(2px) rotate(1.5deg); }
+  }
+
+  .monster-eye {
+    animation: eyeFlicker 0.55s ease-in-out infinite alternate;
+    transform-origin: center;
+  }
+
+  @keyframes eyeFlicker {
+    0%   { opacity: 0.65; }
+    100% { opacity: 1; filter: drop-shadow(0 0 10px #ff2d4d); }
+  }
+
+  .fang { filter: drop-shadow(0 2px 2px rgba(0,0,0,0.6)); }
+
+  .blood-drip {
+    position: absolute;
+    width: 9px; height: 9px;
+    background: #a8021c;
+    border-radius: 0 50% 50% 50%;
+    transform: rotate(45deg);
+    box-shadow: 0 0 6px rgba(168, 2, 28, 0.85);
+    opacity: 0;
+  }
+  .monster-overlay.active .blood-drip {
+    animation: bloodDrip 1.7s ease-in infinite;
+  }
+  .blood-drip-left  { left: 118px; top: 202px; animation-delay: 0.85s; }
+  .blood-drip-right { left: 188px; top: 202px; animation-delay: 1.25s; }
+  .blood-drip-left2  { left: 122px; top: 202px; animation-delay: 1.55s; }
+  .blood-drip-right2 { left: 184px; top: 202px; animation-delay: 1.95s; }
+
+  @keyframes bloodDrip {
+    0%   { opacity: 0; transform: translateY(0) rotate(45deg) scale(0.6); }
+    10%  { opacity: 1; transform: translateY(0) rotate(45deg) scale(1); }
+    80%  { opacity: 1; transform: translateY(75px) rotate(45deg) scale(1); }
+    100% { opacity: 0; transform: translateY(92px) rotate(45deg) scale(0.8); }
+  }
+
+  .monster-title {
+    margin-top: 22px;
+    text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #ff2d4d;
+    text-shadow: 0 0 14px rgba(255, 45, 77, 0.85);
+    opacity: 0;
+  }
+  .monster-overlay.active .monster-title {
+    animation: monsterTitleIn 0.4s ease forwards 0.65s;
+  }
+  @keyframes monsterTitleIn {
+    to { opacity: 1; }
+  }
+ 
+  .glitch-flash {
+    position: fixed; inset: 0; z-index: 1000; background: var(--red); opacity: 0; pointer-events: none; mix-blend-mode: overlay;
+  }
+  .glitch-flash.active { animation: glitchFlash 0.4s steps(2, end); }
+  @keyframes glitchFlash {
+    0% { opacity: 0; }
+    25% { opacity: 0.5; transform: translateX(-6px); }
+    50% { opacity: 0.2; transform: translateX(6px); }
+    100% { opacity: 0; transform: translateX(0); }
+  }
+ 
+  .secret-toast {
+    position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(10px); z-index: 1001;
+    background: rgba(10, 5, 7, 0.92); border: 1px solid var(--red); color: var(--text);
+    font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 1px;
+    padding: 10px 18px; border-radius: 10px; box-shadow: 0 0 20px var(--red-glow);
+    opacity: 0; pointer-events: none; transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .secret-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ---------- Тосты скрытых достижений ---------- */
+  .achievement-container {
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    pointer-events: none;
+    max-width: 92vw;
+  }
+
+  .achievement-toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(10, 5, 7, 0.92);
+    border: 1px solid var(--red);
+    border-radius: 14px;
+    padding: 10px 16px 10px 12px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.6), 0 0 20px var(--red-glow);
+    backdrop-filter: blur(16px);
+    opacity: 0;
+    transform: translateY(-14px) scale(0.95);
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .achievement-toast.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .achievement-toast.hide {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.97);
+  }
+
+  .achievement-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, var(--red), #ff7700, #ffea00, var(--red-dim), var(--red));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 0 10px var(--red-glow);
+  }
+
+  .achievement-label {
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .achievement-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .achievement-toast { transition: opacity 0.3s ease; }
+  }
+ 
+  @media (max-width: 420px) {
+    .stage { max-width: 92vw; }
+    
+    .donate-modal-content {
+      padding: 18px 14px;
+      max-width: 100%;
+      margin: 0 16px;
+    }
+    
+    .donate-modal-title {
+      font-size: 19px;
+      margin-bottom: 14px;
+    }
+    
+    .donate-method-section {
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+    
+    .donate-link-btn {
+      font-size: 13px;
+      padding: 12px 20px;
+    }
+  }
+</style>
+ 
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+ 
+  <!-- Кнопка полноэкранного режима -->
+  <button class="fullscreen-btn" id="fullscreenBtn" title="Полноэкранный режим">
+    <svg id="enterFsIcon" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+    <svg id="exitFsIcon" viewBox="0 0 24 24" style="display: none;"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+  </button>
+ 
+  <!-- Модальное окно донатов -->
+  <div class="donate-modal" id="donateModal">
+    <div class="donate-modal-content">
+      <button class="donate-modal-close" id="donatecloseBtn">×</button>
+      <h2 class="donate-modal-title">❤️ ПОДДЕРЖАТЬ ПРОЕКТ</h2>
+
+      <!-- Карточка цели сбора -->
+      <div class="donate-goal-card">
+        <div class="donate-goal-photo" style="background-image: url('assets/goal-audi-rs4.jpg');">
+          <div class="donate-goal-badge"><span class="dot"></span>Цель сбора</div>
+          <div class="donate-goal-name">
+            <span>Копим на мечту</span>
+            Audi RS4 IV (B9), 2019
+          </div>
+        </div>
+        <div class="donate-goal-body">
+          <div class="donate-goal-target-only">Цель: <b>5 750 000 ₽</b></div>
+        </div>
+      </div>
+      
+      <!-- Раздел DaLink -->
+      <div class="donate-method-section">
+        <div class="donate-method-title">
+          <span class="donate-method-icon">💳</span> ПЕРЕВОД ЧЕРЕЗ DALINK
+        </div>
+        <p class="donate-method-description">Откроется страница DaLink — выберите удобный способ оплаты и укажите сумму.</p>
+        
+        <p style="font-size: 12px; color: var(--muted); margin-bottom: 16px;">Или отсканируйте QR-код камерой телефона:</p>
+        
+        <div class="donate-qr-container">
+          <img src="dalink-qr-code.png" alt="QR код для донатов" id="donateQr">
+        </div>
+        
+        <div class="donate-modal-buttons">
+          <a href="https://dalink.to/d1scoragen" target="_blank" class="donate-link-btn">ПЕРЕЙТИ К ОПЛАТЕ →</a>
+        </div>
+      </div>
+
+      <!-- Предупреждение: донат добровольный -->
+      <div class="donate-warning donate-voluntary">
+        <span class="donate-warning-icon">🤍</span>
+        <strong>Донат — это исключительно добровольная поддержка. Я никого не заставляю и не принуждаю переводить деньги — это просто приятный бонус, если тебе самому(ой) хочется поддержать проект.</strong>
+      </div>
+
+      <!-- Контактная информация -->
+      <div class="donate-contact">
+        Остались вопросы? Пишите в <a href="https://t.me/discoragen" target="_blank" class="donate-contact-link">Telegram @discoragen</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Кнопка копирования ссылки на профиль -->
+  <button class="share-btn" id="shareBtn" title="Скопировать ссылку на профиль">
+    <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+  </button>
+
+  <!-- Кнопка QR-кода профиля -->
+  <button class="qr-btn" id="qrBtn" title="QR-код профиля">
+    <svg viewBox="0 0 24 24"><path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v2h-3v-2zm0 3h3v2h-2v3h-2v-3h-3v-2h4v-2zm-3 5h2v2h-2v-2zm4 0h2v2h-2v-2z"/></svg>
+  </button>
+ 
+  <!-- Регулятор громкости -->
+  <div class="corner-volume" id="cornerVolume" title="Громкость (Клик — выкл/вкл звук)">
+    <button class="corner-volume-btn" id="muteToggleBtn" title="Выключить / Включить звук">
+      <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+    </button>
+    <div class="corner-volume-slider-wrap">
+      <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.01" value="0.8">
+    </div>
+  </div>
+ 
+  <!-- Экран входа -->
+  <div id="enterOverlay">
+    <div class="enter-flame">
+      <svg class="flame-svg" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="flameOuterGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#ff2d4d"/>
+            <stop offset="45%" stop-color="#ff7700"/>
+            <stop offset="100%" stop-color="#ffb200"/>
+          </linearGradient>
+          <linearGradient id="flameMidGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#ff7700"/>
+            <stop offset="60%" stop-color="#ffb800"/>
+            <stop offset="100%" stop-color="#ffea00"/>
+          </linearGradient>
+          <linearGradient id="flameCoreGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#ffea00"/>
+            <stop offset="100%" stop-color="#fff6c8"/>
+          </linearGradient>
+        </defs>
+        <path class="flame-outer" fill="url(#flameOuterGrad)" d="M50 6 C29 32 14 54 14 79 C14 107 30 128 50 132 C70 128 86 107 86 79 C86 54 71 32 50 6 Z"/>
+        <path class="flame-mid" fill="url(#flameMidGrad)" d="M50 34 C37 52 28 68 28 86 C28 104 38 117 50 119 C62 117 72 104 72 86 C72 68 63 52 50 34 Z"/>
+        <path class="flame-core" fill="url(#flameCoreGrad)" d="M50 62 C43 74 39 84 39 94 C39 105 44 111 50 112 C56 111 61 105 61 94 C61 84 57 74 50 62 Z"/>
+      </svg>
+    </div>
+    <div class="enter-text">click to enter</div>
+    <div class="enter-sub">sound on</div>
+  </div>
+ 
+  <!-- Модальное окно: QR-код профиля -->
+  <div class="modal-overlay" id="qrModal">
+    <div class="modal-card">
+      <div class="modal-title-row">
+        <div class="modal-title">📱 QR-код профиля</div>
+        <button class="modal-close-x" id="closeQrModal">&times;</button>
+      </div>
+      <p class="modal-desc">
+        Наведи камеру телефона, чтобы открыть этот профиль.
+      </p>
+      <div class="qr-canvas-wrap" id="qrCanvasWrap"></div>
+      <p class="qr-hint">discoragen • bonya-cloud.github.io</p>
+    </div>
+  </div>
+
+  <!-- Модальное окно: нужна авторизация для гостевой книги -->
+  <div class="modal-overlay" id="authModal">
+    <div class="modal-card">
+      <div class="modal-title-row">
+        <div class="modal-title">🔒 Нужна авторизация</div>
+        <button class="modal-close-x" id="closeAuthModal">&times;</button>
+      </div>
+      <p class="modal-desc">
+        Чтобы оставить сообщение в гостевой книге, войди в аккаунт на сайте «Общажня» — это тот же аккаунт, что и в моей соцсети. После входа возвращайся сюда и пиши смело.
+      </p>
+      <a href="https://bonya-cloud.github.io/discoragen.github.io/" target="_blank" class="modal-primary-btn">Перейти на сайт</a>
+    </div>
+  </div>
+ 
+  <!-- Пасхалка с тыквой -->
+  <div class="pumpkin-overlay" id="pumpkinOverlay">
+    <div class="pumpkin-container">🎃</div>
+    <div class="pumpkin-title">nightmare mode unlocked</div>
+  </div>
+
+  <!-- Пасхалка с монстром -->
+  <div class="monster-overlay" id="monsterOverlay">
+    <div class="monster-drop">
+      <svg viewBox="0 0 300 230" width="260" height="200">
+        <defs>
+          <radialGradient id="eyeGlowGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#fff200"/>
+            <stop offset="55%" stop-color="#ff2d4d"/>
+            <stop offset="100%" stop-color="#7a0c1f"/>
+          </radialGradient>
+          <linearGradient id="monsterBodyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#241012"/>
+            <stop offset="100%" stop-color="#3a0a10"/>
+          </linearGradient>
+        </defs>
+        <path d="M40 0 C14 36 10 92 38 138 C66 178 108 202 150 206 C192 202 234 178 262 138 C290 92 286 36 260 0 Z" fill="url(#monsterBodyGrad)" stroke="#ff2d4d" stroke-width="2"/>
+        <path d="M40 0 C60 26 60 46 40 66 C24 46 24 26 40 0 Z" fill="url(#monsterBodyGrad)" stroke="#ff2d4d" stroke-width="1.5"/>
+        <path d="M260 0 C240 26 240 46 260 66 C276 46 276 26 260 0 Z" fill="url(#monsterBodyGrad)" stroke="#ff2d4d" stroke-width="1.5"/>
+        <ellipse class="monster-eye" cx="108" cy="88" rx="17" ry="21" fill="url(#eyeGlowGrad)"/>
+        <ellipse class="monster-eye" cx="192" cy="88" rx="17" ry="21" fill="url(#eyeGlowGrad)"/>
+        <ellipse cx="108" cy="90" rx="6" ry="9" fill="#0d0304"/>
+        <ellipse cx="192" cy="90" rx="6" ry="9" fill="#0d0304"/>
+        <path d="M65 142 Q150 190 235 142 Q150 168 65 142 Z" fill="#0d0304"/>
+        <path class="fang fang-left" d="M118 148 L126 200 L134 148 Z" fill="#f2e6e8"/>
+        <path class="fang fang-right" d="M166 148 L174 200 L182 148 Z" fill="#f2e6e8"/>
+      </svg>
+      <div class="blood-drip blood-drip-left"></div>
+      <div class="blood-drip blood-drip-right"></div>
+      <div class="blood-drip blood-drip-left2"></div>
+      <div class="blood-drip blood-drip-right2"></div>
+    </div>
+    <div class="monster-title">run.</div>
+  </div>
+ 
+  <div class="backdrop"></div>
+  <div class="dynamic-bg" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+  </div>
+  <canvas class="cursor-fx" id="cursorFx"></canvas>
+  <div class="scanlines"></div>
+  <div class="fire-border" id="fireBorder"></div>
+  <div class="glitch-flash" id="glitchFlash"></div>
+  <div class="secret-toast" id="secretToast">you found me 67🩸</div>
+
+  <!-- Тосты скрытых достижений -->
+  <div class="achievement-container" id="achievementContainer"></div>
+ 
+  <div class="stage" id="stage">
+    <!-- Навигация по комнатам -->
+    <nav class="room-nav" id="roomNav">
+      <button class="room-tab active" data-room="profile" title="Профиль">
+        <svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <span>Профиль</span>
+      </button>
+      <button class="room-tab" data-room="music" title="Музыка">
+        <svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm11-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/></svg>
+        <span>Музыка</span>
+      </button>
+      <button class="room-tab" data-room="projects" title="Проекты">
+        <svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg>
+        <span>Проекты</span>
+      </button>
+      <button class="room-tab" data-room="guestbook" title="Гостевая">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>Гостевая</span>
+      </button>
+    </nav>
+
+    <div class="rooms-viewport" id="roomsViewport">
+
+    <!-- ===== Комната: Профиль ===== -->
+    <div class="room room-profile active" id="room-profile" data-room="profile">
+    <!-- Главная карточка -->
+    <div class="card">
+      <div class="avatar-wrap" id="avatarWrap">
+        <div class="avatar-ring"></div>
+        <div class="avatar">
+          <img src="assets/avatar.jpg" alt="avatar">
+        </div>
+        <div class="status-dot" id="statusDot" title="Статус: В сети"></div>
+      </div>
+ 
+      <h1 class="username" id="usernameEl">discoragen</h1>
+ 
+      <p class="bio">
+        hey, i'm discoragen. this is my little corner of the internet.<br>message me on telegram if you want.
+      </p>
+ 
+      <div class="vibe-status" id="vibeStatus" title="меняется само по себе">
+        <span class="vibe-dot" id="vibeDot"></span>
+        <span class="vibe-text" id="vibeText">🎧 в наушниках весь день</span>
+      </div>
+ 
+      <div class="tags">
+        <span class="tag">#python</span>
+        <span class="tag">#webdev</span>
+        <span class="tag">#opensource</span>
+        <span class="tag">#learning</span>
+      </div>
+ 
+      <div class="social-buttons">
+        <a href="https://t.me/Discoragen" target="_blank" class="social-btn telegram-btn" title="Telegram">
+          <svg viewBox="0 0 496 512"><path d="M248,8C111,8,0,119,0,256S111,504,248,504,496,393,496,256,385,8,248,8ZM362,169.9c-3.7,39.2-19.9,134.4-28.1,178.3-3.5,18.6-10.3,24.8-16.9,25.4-14.4,1.3-25.3-9.5-39.3-18.7-21.8-14.3-34.2-23.2-55.3-37.2-24.5-16.1-8.6-25,5.3-39.5,3.7-3.8,67.1-61.5,68.3-66.7.2-.7.3-3.1-1.2-4.4s-3.6-.8-5.1-.5q-3.3.7-104.6,69.1-14.8,10.2-26.9,9.9c-8.9-.2-25.9-5-38.6-9.1-15.5-5-27.9-7.7-26.8-16.3q.8-6.7,18.5-13.7,108.4-47.2,144.6-62.3c68.9-28.6,83.2-33.6,92.5-33.8,2.1,0,6.6.5,9.6,2.9a10.5,10.5,0,0,1,3.5,6.7A43.8,43.8,0,0,1,362,169.9Z"/></svg>
+        </a>
+        <a href="https://github.com/bonya-cloud" target="_blank" class="social-btn github-btn" title="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.7-1.4-1.7-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6a4.7 4.7 0 0 1 1.2-3.2 4.3 4.3 0 0 1 .1-3.2s1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2a4.3 4.3 0 0 1 .1 3.2 4.7 4.7 0 0 1 1.2 3.2c0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg>
+        </a>
+        <a href="https://www.twitch.tv/bezobaz1e" target="_blank" class="social-btn twitch-btn" title="Twitch">
+          <svg viewBox="0 0 24 24"><path d="M11.571 4.714h1.429v4.286h-1.429V4.714zm4.286 0h1.429v4.286h-1.429V4.714zM6 0L1.714 4.286v15.429h5.143V24l4.286-4.286h3.429L22.286 12V0H6zm14.571 11.143l-3.429 3.429h-3.429l-3 3v-3h-4.286V1.429h14.143v9.714z" fill="currentColor"/></svg>
+        </a>
+        <button class="social-btn discord-btn" id="discordBtn" title="Копировать Discord ID">
+          <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        </button>
+      </div>
+ 
+      <div class="visitor-count">
+        <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+        <span id="visitorCount">506</span>
+        <span class="visitor-label">views</span>
+      </div>
+    </div>
+
+    <!-- Кнопка скачивания CV -->
+    <a href="resume.pdf" download="Nikita_Resume.pdf" class="cv-download-link">
+      <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      <span>Скачать CV</span>
+    </a>
+ 
+    <!-- Секция стека технологий -->
+    <div class="stack-section">
+      <div class="stack-header">tech stack</div>
+      <div class="stack-grid">
+        <div class="stack-item">
+          <img src="https://cdn.simpleicons.org/python/f2e6e8" alt="Python">
+          <span>Python</span>
+        </div>
+        <div class="stack-item">
+          <img src="https://cdn.simpleicons.org/javascript/f2e6e8" alt="JavaScript">
+          <span>JavaScript</span>
+        </div>
+        <div class="stack-item">
+          <img src="https://cdn.simpleicons.org/html5/f2e6e8" alt="HTML5">
+          <span>HTML5</span>
+        </div>
+        <div class="stack-item">
+          <img src="https://miro.medium.com/1*Aenej4dxqEZ9j7zsI9pSnw.png" alt="CSS3">
+          <span>CSS3</span>
+        </div>
+        <div class="stack-item">
+          <img src="https://cdn.simpleicons.org/nodedotjs/f2e6e8" alt="Node.js">
+          <span>Node.js</span>
+        </div>
+        <div class="stack-item">
+          <img src="https://cdn.simpleicons.org/git/f2e6e8" alt="Git">
+          <span>Git</span>
+        </div>
+        <div class="stack-item">
+          <img src="https://cdn.simpleicons.org/github/f2e6e8" alt="GitHub">
+          <span>GitHub</span>
+        </div>
+        <div class="stack-item">
+          <img src="https://cdn.simpleicons.org/firebase/f2e6e8" alt="Firebase">
+          <span>Firebase</span>
+        </div>
+      </div>
+    </div>
+
+    </div>
+    <!-- ===== /Комната: Профиль ===== -->
+
+    <!-- ===== Комната: Музыка ===== -->
+    <div class="room room-music" id="room-music" data-room="music">
+    <!-- Плеер -->
+    <div class="player" id="player">
+      <div class="player-top">
+        <div class="track-cover">
+          <img id="trackCoverImg" src="assets/cover.jpg" alt="cover">
+          <div class="equalizer" id="equalizer" aria-hidden="true">
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+          </div>
+        </div>
+        <div class="track-info">
+          <span class="now-playing-dot" id="nowPlayingDot" title="сейчас играет"></span>
+          <div class="track-title" id="trackTitleEl">LEGACY</div>
+        </div>
+        <div class="player-controls">
+          <button class="player-mini-btn" id="prevBtn" title="Предыдущий трек">
+            <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6V6zm3.5 6l8.5 6V6l-8.5 6z"/></svg>
+          </button>
+          <button class="play-btn" id="playBtn" title="Play/Pause">
+            <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+          <button class="player-mini-btn" id="nextBtn" title="Следующий трек">
+            <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+          </button>
+        </div>
+      </div>
+ 
+      <div class="viz-wrap">
+        <canvas class="viz-canvas" id="vizCanvas"></canvas>
+      </div>
+
+      <div class="progress-section">
+        <input type="range" class="progress-slider" id="progressSlider" min="0" max="100" value="0" step="0.1">
+        <div class="time-row">
+          <span class="time-text" id="currentTime">0:00</span>
+          <span class="time-text" id="duration">0:00</span>
+        </div>
+      </div>
+ 
+      <button class="playlist-toggle" id="playlistToggle">
+        <span>плейлист</span>
+        <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+      </button>
+ 
+      <div class="playlist-panel" id="playlistPanel"></div>
+ 
+      <a href="https://open.spotify.com/playlist/7CJUktkN56BXL478Nbl9ad?si=534772bca9e44d4b" target="_blank" class="spotify-link-btn">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.44a.622.622 0 0 1-.86.207c-2.35-1.435-5.305-1.76-8.786-.965a.623.623 0 1 1-.277-1.216c3.809-.87 7.077-.496 9.716 1.115.3.183.394.575.207.86zm1.223-2.723a.78.78 0 0 1-1.075.257c-2.69-1.653-6.79-2.132-9.974-1.166a.78.78 0 1 1-.452-1.492c3.636-1.104 8.152-.568 11.244 1.328a.78.78 0 0 1 .257 1.073zm.105-2.835C14.692 9.033 9.375 8.85 6.297 9.798a.936.936 0 1 1-.543-1.79c3.532-1.073 9.404-.865 13.115 1.338a.936.936 0 0 1-.955 1.606z"/></svg>
+        <span>Плейлист в Spotify</span>
+      </a>
+    </div>
+    </div>
+    <!-- ===== /Комната: Музыка ===== -->
+
+    <!-- ===== Комната: Гостевая ===== -->
+    <div class="room room-guestbook" id="room-guestbook" data-room="guestbook">
+    <!-- Discord Guestbook (Гостевая книга с Firebase) -->
+    <div class="guestbook-section">
+      <div class="gb-channel-header">
+        <span>💬</span> # guestbook
+      </div>
+      <div class="gb-messages-container" id="gbMessages"></div>
+      <div class="gb-form-wrap">
+        <div class="gb-input-box" id="gbInputBox">
+          <input type="text" class="gb-input" id="gbInput" placeholder="🔒 Войдите на сайте, чтобы написать..." maxlength="200" readonly>
+          <button class="gb-send-btn" id="gbSendBtn">Send</button>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- ===== /Комната: Гостевая ===== -->
+
+    <!-- ===== Комната: Профиль (продолжение) ===== -->
+    <div class="room room-profile" data-room="profile">
+    <!-- Кнопка поддержки разработчика (DonationAlerts) -->
+    <button class="donate-section" id="donateBtn" title="Поддержать разработчика">
+      <div class="donate-icon-wrap">
+        <svg viewBox="0 0 24 24" aria-label="DonationAlerts">
+          <defs>
+            <linearGradient id="daLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#F59C07"/>
+              <stop offset="100%" stop-color="#F57507"/>
+            </linearGradient>
+          </defs>
+          <path fill="url(#daLogoGrad)" d="M7,3 L17,3 L21,7 L21,15 L17,19 L8,19 L6,23 L4,19 L3,17 L3,7 Z"/>
+          <rect x="10.9" y="6.6" width="2.2" height="6.6" rx="1.1" fill="#171717"/>
+          <circle cx="12" cy="15.4" r="1.3" fill="#171717"/>
+        </svg>
+      </div>
+      <div class="donate-text">
+        <div class="donate-title">Поддержать разработчика</div>
+        <div class="donate-sub">через DonationAlerts</div>
+      </div>
+    </button>
+ 
+    <!-- Секция любимых игр -->
+    <div class="games-section">
+      <div class="games-header">favorite games</div>
+      <div class="games-grid">
+        <div class="game-plaque">
+          <div class="game-thumb">
+            <img src="https://i.pinimg.com/736x/3c/1e/87/3c1e871625f3c31c9b7d10ed179205e9.jpg" alt="Counter-Strike 2">
+          </div>
+          <div class="game-info">
+            <div class="game-name">Counter-Strike 2</div>
+            <div class="game-genre">Tactical Shooter</div>
+          </div>
+        </div>
+ 
+        <div class="game-plaque">
+          <div class="game-thumb">
+            <img src="https://i.pinimg.com/vwebp/1200x/1d/b7/aa/1db7aaaa585345bfba67d2b8d8483471.webp" alt="Minecraft">
+          </div>
+          <div class="game-info">
+            <div class="game-name">Minecraft</div>
+            <div class="game-genre">Sandbox / Survival</div>
+          </div>
+        </div>
+ 
+        <div class="game-plaque">
+          <div class="game-thumb">
+            <img src="https://i.pinimg.com/1200x/e1/ef/e1/e1efe12d92089b2d9d8bf81d60cab243.jpg" alt="PUBG PC">
+          </div>
+          <div class="game-info">
+            <div class="game-name">PUBG (PC)</div>
+            <div class="game-genre">Battle Royale</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- ===== /Комната: Профиль (продолжение) ===== -->
+
+    <!-- ===== Комната: Проекты ===== -->
+    <div class="room room-projects" id="room-projects" data-room="projects">
+    <!-- Секция проектов/портфолио -->
+    <!-- ЗАМЕНИ картинки, названия, описания, теги и ссылки на свои реальные проекты -->
+    <div class="projects-section">
+      <div class="projects-header">projects</div>
+      <div class="projects-grid">
+        <a href="https://github.com/bonya-cloud/discoragen.github.io" target="_blank" class="project-card">
+          <div class="project-top">
+            <div class="project-thumb">
+              <img src="assets/cover.jpg" alt="Общажня">
+            </div>
+            <div class="project-info">
+              <div class="project-name">
+                Общажня
+                <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59L9 13.59 10.41 15 19 6.41V10h2V3h-7zM5 5h5V3H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-5h-2v5H5V5z"/></svg>
+              </div>
+              <div class="project-desc">Основной сайт с аккаунтами и авторизацией для гостевой книги.</div>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">python</span>
+            <span class="project-tag">firebase</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/bonya-cloud" target="_blank" class="project-card">
+          <div class="project-top">
+            <div class="project-thumb">
+              <img src="assets/avatar.jpg" alt="discoragen profile">
+            </div>
+            <div class="project-info">
+              <div class="project-name">
+                discoragen profile
+                <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59L9 13.59 10.41 15 19 6.41V10h2V3h-7zM5 5h5V3H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-5h-2v5H5V5z"/></svg>
+              </div>
+              <div class="project-desc">Эта самая страница: плеер, гостевая книга на Firestore, пасхалки.</div>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">html/css/js</span>
+            <span class="project-tag">firebase</span>
+          </div>
+        </a>
+        <a href="https://bonya-cloud.github.io/sashahvup-site/" target="_blank" class="project-card">
+          <div class="project-top">
+            <div class="project-thumb">
+              <img src="https://bonya-cloud.github.io/sashahvup-site/assets/avatar.jpg" alt="@sashahvup profile" onerror="this.src='https://ui-avatars.com/api/?name=Sasha+Hvup&background=00ff88&color=000'">
+            </div>
+            <div class="project-info">
+              <div class="project-name">
+                @sashahvup profile
+                <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59L9 13.59 10.41 15 19 6.41V10h2V3h-7zM5 5h5V3H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-5h-2v5H5V5z"/></svg>
+              </div>
+              <div class="project-desc">Похожий bio-профиль для друга: плеер с эквалайзером, статус-бейдж, ссылки на Telegram и Steam.</div>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">html/css/js</span>
+            <span class="project-tag">font awesome</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    </div>
+    <!-- ===== /Комната: Проекты ===== -->
+
+    <!-- ===== Комната: Профиль (финал) ===== -->
+    <div class="room room-profile" data-room="profile">
+    <!-- Кнопка перехода на основной сайт -->
+    <a href="https://bonya-cloud.github.io/discoragen.github.io/" target="_blank" class="neon-door-link">
+      <span>Перейти на сайт Общажня</span>
+      <svg class="neon-door-arrow" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+    </a>
+    </div>
+    <!-- ===== /Комната: Профиль (финал) ===== -->
+
+    </div>
+    <!-- /rooms-viewport -->
+  </div>
+ 
+  <audio id="audio" preload="metadata"></audio>
+ 
+  <script>
+    // Конфигурация Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyDcgAxaEm0rKEbfL597920nX4fqgyD3BdE",
+      authDomain: "guestbook-site-5b1ab.firebaseapp.com",
+      projectId: "guestbook-site-5b1ab",
+      storageBucket: "guestbook-site-5b1ab.firebasestorage.app",
+      messagingSenderId: "593355741478",
+      appId: "1:593355741478:web:472142384f1347cbabc9e7"
+    };
+ 
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+ 
+    const audio = document.getElementById('audio');
+    const playBtn = document.getElementById('playBtn');
+    const playIcon = document.getElementById('playIcon');
+    const pauseIcon = document.getElementById('pauseIcon');
+    const progressSlider = document.getElementById('progressSlider');
+    const currentTimeEl = document.getElementById('currentTime');
+    const durationEl = document.getElementById('duration');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const muteToggleBtn = document.getElementById('muteToggleBtn');
+    const enterOverlay = document.getElementById('enterOverlay');
+    const stage = document.getElementById('stage');
+    const statusDot = document.getElementById('statusDot');
+    const discordBtn = document.getElementById('discordBtn');
+    const toast = document.getElementById('secretToast');
+ 
+    /* QR-код профиля */
+    (function () {
+      const qrBtn = document.getElementById('qrBtn');
+      const qrModal = document.getElementById('qrModal');
+      const closeQrModal = document.getElementById('closeQrModal');
+      const qrWrap = document.getElementById('qrCanvasWrap');
+      let qrGenerated = false;
+
+      qrBtn.addEventListener('click', () => {
+        qrModal.classList.add('active');
+        if (!qrGenerated) {
+          new QRCode(qrWrap, {
+            text: 'https://bonya-cloud.github.io/discoragen.github.io/',
+            width: 176,
+            height: 176,
+            colorDark: '#0a0507',
+            colorLight: '#f2e6e8',
+            correctLevel: QRCode.CorrectLevel.H
+          });
+          qrGenerated = true;
+        }
+      });
+
+      closeQrModal.addEventListener('click', () => qrModal.classList.remove('active'));
+      qrModal.addEventListener('click', (e) => {
+        if (e.target === qrModal) qrModal.classList.remove('active');
+      });
+    })();
+
+    /* Частицы/дым от курсора */
+    (function () {
+      const canvas = document.getElementById('cursorFx');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let particles = [];
+      let w, h;
+
+      function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      function spawn(x, y) {
+        if (reduceMotion) return;
+        for (let i = 0; i < 2; i++) {
+          particles.push({
+            x, y,
+            vx: (Math.random() - 0.5) * 0.6,
+            vy: -Math.random() * 0.8 - 0.2,
+            life: 1,
+            size: Math.random() * 5 + 3,
+            hue: Math.random() > 0.5 ? '255,45,77' : '255,119,0'
+          });
+        }
+        if (particles.length > 160) particles.splice(0, particles.length - 160);
+      }
+
+      let lastX = null, lastY = null;
+      function handleMove(x, y) {
+        if (lastX !== null) {
+          const dist = Math.hypot(x - lastX, y - lastY);
+          if (dist > 4) { spawn(x, y); lastX = x; lastY = y; }
+        } else {
+          spawn(x, y); lastX = x; lastY = y;
+        }
+      }
+
+      window.addEventListener('mousemove', (e) => handleMove(e.clientX, e.clientY));
+      window.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches[0]) handleMove(e.touches[0].clientX, e.touches[0].clientY);
+      }, { passive: true });
+
+      function tick() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.life -= 0.02;
+          p.size *= 0.98;
+        });
+        particles = particles.filter(p => p.life > 0 && p.size > 0.3);
+
+        particles.forEach(p => {
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(${p.hue}, ${p.life * 0.5})`;
+          ctx.shadowColor = `rgba(${p.hue}, ${p.life})`;
+          ctx.shadowBlur = 10;
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        requestAnimationFrame(tick);
+      }
+      if (!reduceMotion) requestAnimationFrame(tick);
+    })();
+
+    /* Parallax-наклон карточек */
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+      function attachTilt(el, maxTilt) {
+        el.style.transition = 'transform 0.15s ease-out, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease';
+        el.addEventListener('mousemove', (e) => {
+          const rect = el.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * maxTilt;
+          const rotateX = -((y - rect.height / 2) / (rect.height / 2)) * maxTilt;
+          el.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.015)`;
+        });
+        el.addEventListener('mouseleave', () => {
+          el.style.transform = '';
+        });
+      }
+
+      document.querySelectorAll('.card, .game-plaque, .project-card').forEach(el => {
+        attachTilt(el, el.classList.contains('card') ? 5 : 9);
+      });
+    })();
+
+    /* Микро-искры при наведении на теги */
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      document.querySelectorAll('.tag').forEach((tagEl) => {
+        tagEl.addEventListener('mouseenter', () => {
+          const count = 3;
+          for (let i = 0; i < count; i++) {
+            const spark = document.createElement('span');
+            spark.className = 'tag-spark';
+            const angle = Math.random() * Math.PI * 2;
+            const dist = 14 + Math.random() * 10;
+            spark.style.setProperty('--tx', `${Math.cos(angle) * dist}px`);
+            spark.style.setProperty('--ty', `${Math.sin(angle) * dist}px`);
+            tagEl.appendChild(spark);
+            spark.addEventListener('animationend', () => spark.remove());
+          }
+        });
+      });
+    })();
+
+    /* Регистрация service worker для PWA */
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js').catch((err) => {
+          console.error('Ошибка регистрации service worker:', err);
+        });
+      });
+    }
+
+ 
+    let toastTimeout;
+    let isSeeking = false;
+    let previousVolume = 0.8;
+ 
+    audio.volume = 0.8;
+
+    /* Заполненный вид ползунка громкости (без "дешёвого" тонкого трека) */
+    function updateVolumeFill(vol) {
+      const pct = Math.round(vol * 100);
+      volumeSlider.style.background = `linear-gradient(to right, #fff ${pct}%, rgba(255,255,255,0.16) ${pct}%)`;
+    }
+    updateVolumeFill(audio.volume);
+ 
+    function formatTime(sec) {
+      if (isNaN(sec)) return '0:00';
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+ 
+    /* ---------- Плейлист ---------- */
+    // Первые 3 трека — с точными названиями. Треки 4+ можно просто закидывать в assets/
+    // (track4.mp3, track5.mp3...) — они подхватятся сами, см. probeExtraTracks() ниже.
+    const tracks = [
+      { title: 'LEGACY',  src: 'assets/track.mp3',  cover: 'assets/cover.jpg' },
+      { title: 'Кинолента — Баста', src: 'assets/track2.mp3', cover: 'assets/cover.jpg' },
+      { title: '2 Goyead', src: 'assets/track3.mp3', cover: 'assets/cover.jpg' }
+    ];
+    let currentTrackIndex = 0;
+ 
+    const trackCoverImg = document.getElementById('trackCoverImg');
+    const trackTitleEl = document.getElementById('trackTitleEl');
+    const nowPlayingDot = document.getElementById('nowPlayingDot');
+    const playerEl = document.getElementById('player');
+    const avatarWrapEl = document.getElementById('avatarWrap');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const playlistToggle = document.getElementById('playlistToggle');
+    const playlistPanel = document.getElementById('playlistPanel');
+ 
+    function renderPlaylist() {
+      playlistPanel.innerHTML = tracks.map((t, i) => `
+        <div class="playlist-track ${i === currentTrackIndex ? 'active' : ''}" data-index="${i}">
+          <div class="playlist-track-thumb"><img src="${t.cover}" alt=""></div>
+          <div class="playlist-track-name">${t.title}</div>
+          <div class="playlist-track-badge">${i === currentTrackIndex ? '▶' : ''}</div>
+        </div>
+      `).join('');
+ 
+      playlistPanel.querySelectorAll('.playlist-track').forEach(el => {
+        el.addEventListener('click', () => {
+          loadTrack(parseInt(el.dataset.index, 10), true);
+        });
+      });
+    }
+ 
+    function setPlayingIcons(isPlaying) {
+      playIcon.style.display = isPlaying ? 'none' : 'block';
+      pauseIcon.style.display = isPlaying ? 'block' : 'none';
+      if (nowPlayingDot) nowPlayingDot.classList.toggle('playing', isPlaying);
+      if (playerEl) playerEl.classList.toggle('playing', isPlaying);
+      if (avatarWrapEl) avatarWrapEl.classList.toggle('playing', isPlaying);
+    }
+ 
+    function updateMediaSession(t) {
+      if (!('mediaSession' in navigator)) return;
+      try {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: t.title,
+          artist: '@discoragen',
+          album: 'Общажня',
+          artwork: [{ src: t.cover, sizes: '512x512', type: 'image/jpeg' }]
+        });
+      } catch (e) {}
+    }
+ 
+    function loadTrack(index, autoplay) {
+      currentTrackIndex = (index + tracks.length) % tracks.length;
+      const t = tracks[currentTrackIndex];
+      audio.src = t.src;
+      trackTitleEl.textContent = t.title;
+      trackCoverImg.src = t.cover;
+      progressSlider.value = 0;
+      currentTimeEl.textContent = '0:00';
+      durationEl.textContent = '0:00';
+      renderPlaylist();
+      updateMediaSession(t);
+ 
+      if (autoplay) {
+        audio.play().then(() => setPlayingIcons(true)).catch(() => setPlayingIcons(false));
+      } else {
+        setPlayingIcons(false);
+      }
+    }
+ 
+    prevBtn.addEventListener('click', () => loadTrack(currentTrackIndex - 1, true));
+    nextBtn.addEventListener('click', () => loadTrack(currentTrackIndex + 1, true));
+ 
+    audio.addEventListener('ended', () => loadTrack(currentTrackIndex + 1, true));
+ 
+    playlistToggle.addEventListener('click', () => {
+      playlistPanel.classList.toggle('open');
+      playlistToggle.classList.toggle('open');
+    });
+ 
+    // Управление плеером с экрана блокировки / шторки уведомлений
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.setActionHandler('play', () => {
+        audio.play().then(() => setPlayingIcons(true)).catch(() => {});
+      });
+      navigator.mediaSession.setActionHandler('pause', () => {
+        audio.pause();
+        setPlayingIcons(false);
+      });
+      navigator.mediaSession.setActionHandler('previoustrack', () => loadTrack(currentTrackIndex - 1, true));
+      navigator.mediaSession.setActionHandler('nexttrack', () => loadTrack(currentTrackIndex + 1, true));
+    }
+ 
+    /* ---------- Автообнаружение новых треков ----------
+       Чтобы добавить трек: просто закинь файл assets/track4.mp3 (потом track5.mp3,
+       track6.mp3 и т.д. по порядку) — при открытии страницы код сам проверит,
+       существует ли файл, и добавит его в плейлист без правки кода. Если получится
+       прочитать ID3-теги (название/исполнителя) — трек получит красивое имя,
+       если нет — назовётся "Трек N". */
+    const MAX_AUTO_TRACK_INDEX = 25;
+ 
+    function upgradeTrackTitleFromTags(track, num) {
+      try {
+        if (window.jsmediatags && typeof window.jsmediatags.read === 'function') {
+          window.jsmediatags.read(track.src, {
+            onSuccess: (tag) => {
+              const info = (tag && tag.tags) || {};
+              if (info.title) {
+                track.title = info.artist ? `${info.title} — ${info.artist}` : info.title;
+                renderPlaylist();
+              }
+            },
+            onError: () => { /* оставляем название "Трек N" */ }
+          });
+        }
+      } catch (e) {
+        console.warn('[playlist] не удалось прочитать теги для', track.src, e);
+      }
+    }
+ 
+    async function probeExtraTracks() {
+      for (let i = 4; i <= MAX_AUTO_TRACK_INDEX; i++) {
+        const src = `assets/track${i}.mp3`;
+        let exists = false;
+        try {
+          // GitHub Pages не всегда корректно отвечает на HEAD-запросы,
+          // поэтому запрашиваем только первый байт файла через Range
+          const res = await fetch(src, {
+            method: 'GET',
+            headers: { Range: 'bytes=0-1' },
+            cache: 'no-store'
+          });
+          if (res.body && res.body.cancel) { res.body.cancel().catch(() => {}); }
+          exists = res.ok;
+        } catch (e) {
+          exists = false;
+        }
+ 
+        if (!exists) continue;
+ 
+        // Сначала добавляем трек с дефолтным названием — чтобы он появился в списке
+        // сразу и гарантированно, даже если библиотека чтения тегов даст сбой
+        const track = { title: `Трек ${i}`, src, cover: 'assets/cover.jpg' };
+        tracks.push(track);
+        renderPlaylist();
+        console.info('[playlist] найден новый трек:', src);
+ 
+        // А затем в фоне пытаемся улучшить название через ID3-теги файла
+        upgradeTrackTitleFromTags(track, i);
+      }
+    }
+ 
+    loadTrack(0, false);
+    probeExtraTracks();
+ 
+    enterOverlay.addEventListener('click', () => {
+      enterOverlay.classList.add('hidden');
+      stage.classList.add('revealed');
+ 
+      audio.play().then(() => setPlayingIcons(true)).catch(() => {});
+    }, { once: true });
+ 
+    playBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play().then(() => setPlayingIcons(true)).catch(err => console.error(err));
+      } else {
+        audio.pause();
+        setPlayingIcons(false);
+      }
+    });
+ 
+    audio.addEventListener('timeupdate', () => {
+      if (!isSeeking && audio.duration) {
+        currentTimeEl.textContent = formatTime(audio.currentTime);
+        progressSlider.value = (audio.currentTime / audio.duration) * 100;
+      }
+    });
+ 
+    audio.addEventListener('loadedmetadata', () => {
+      durationEl.textContent = formatTime(audio.duration);
+    });
+ 
+    progressSlider.addEventListener('input', () => {
+      isSeeking = true;
+      if (audio.duration) {
+        const time = (progressSlider.value / 100) * audio.duration;
+        currentTimeEl.textContent = formatTime(time);
+      }
+    });
+ 
+    progressSlider.addEventListener('change', () => {
+      if (audio.duration) {
+        audio.currentTime = (progressSlider.value / 100) * audio.duration;
+      }
+      isSeeking = false;
+    });
+ 
+    volumeSlider.addEventListener('input', e => {
+      audio.volume = e.target.value;
+      if (audio.volume > 0) previousVolume = audio.volume;
+      updateVolumeFill(audio.volume);
+    });
+ 
+    muteToggleBtn.addEventListener('click', () => {
+      if (audio.volume > 0) {
+        previousVolume = audio.volume;
+        audio.volume = 0;
+        volumeSlider.value = 0;
+      } else {
+        audio.volume = previousVolume > 0 ? previousVolume : 0.8;
+        volumeSlider.value = audio.volume;
+      }
+      updateVolumeFill(audio.volume);
+    });
+ 
+    discordBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText('775704094748180480').then(() => {
+        toast.textContent = 'Discord ID copied! 📋';
+        toast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => toast.classList.remove('show'), 2500);
+      });
+    });
+ 
+    // Функция форматирования времени в стиле Discord
+    function formatMessageTime(createdAt) {
+      if (!createdAt || !createdAt.toDate) return { display: 'Только что', tooltip: '' };
+      const date = createdAt.toDate();
+      const now = new Date();
+ 
+      const hours = String(date.getHours()).padStart(2, '0');
+      const minutes = String(date.getMinutes()).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const year = date.getFullYear();
+ 
+      const timeStr = `${hours}:${minutes}`;
+      const dateStr = `${day}.${month}.${year}`;
+      const tooltip = `${timeStr} ${dateStr}`;
+ 
+      const isToday = date.toDateString() === now.toDateString();
+      const yesterday = new Date(now);
+      yesterday.setDate(now.getDate() - 1);
+      const isYesterday = date.toDateString() === yesterday.toDateString();
+ 
+      let display = '';
+      if (isToday) {
+        display = `сегодня в ${timeStr}`;
+      } else if (isYesterday) {
+        display = `вчера в ${timeStr}`;
+      } else {
+        display = `${dateStr} в ${timeStr}`;
+      }
+ 
+      return { display, tooltip };
+    }
+ 
+    /* ---------- Дискорд Гостевая Книга (Firestore Реальное Время) ---------- */
+    const gbMessagesContainer = document.getElementById('gbMessages');
+    const gbInput = document.getElementById('gbInput');
+    const gbInputBox = document.getElementById('gbInputBox');
+    const gbSendBtn = document.getElementById('gbSendBtn');
+ 
+    function loadMessages() {
+      db.collection('messages').onSnapshot((snapshot) => {
+        gbMessagesContainer.innerHTML = '';
+        const messagesList = [];
+        
+        snapshot.forEach((doc) => {
+          messagesList.push({ id: doc.id, ...doc.data() });
+        });
+ 
+        messagesList.sort((a, b) => {
+          const timeA = a.createdAt?.toMillis ? a.createdAt.toMillis() : 0;
+          const timeB = b.createdAt?.toMillis ? b.createdAt.toMillis() : 0;
+          return timeA - timeB;
+        });
+ 
+        messagesList.forEach((msg) => {
+          renderMessage(msg);
+        });
+        
+        gbMessagesContainer.scrollTop = gbMessagesContainer.scrollHeight;
+      });
+    }
+ 
+    function renderMessage(msg) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = 'gb-msg';
+ 
+      let reactionsHTML = '';
+      if (msg.reactions) {
+        for (const [emoji, count] of Object.entries(msg.reactions)) {
+          const voteKey = `voted_${msg.id}_${emoji}`;
+          const isMyVote = localStorage.getItem(voteKey) === 'true';
+          const activeClass = isMyVote ? 'reaction-btn active' : 'reaction-btn';
+          reactionsHTML += `<button class="${activeClass}" onclick="handleReaction('${msg.id}', '${emoji}')">${emoji} <span>${count}</span></button>`;
+        }
+      }
+ 
+      const authorName = msg.author || msg.name || 'guest';
+      const messageText = msg.text || msg.message || '';
+      const timeInfo = formatMessageTime(msg.createdAt);
+      
+      const isOwner = authorName === '@discoragen' || msg.isAdminPost;
+      const authorClass = isOwner ? 'gb-author admin-author' : 'gb-author';
+ 
+      msgDiv.innerHTML = `
+        <div class="gb-avatar" style="${isOwner ? 'background: #fee75c; color: #000;' : ''}">${authorName.charAt(0).toUpperCase()}</div>
+        <div class="gb-content">
+          <div class="gb-user-row">
+            <span class="${authorClass}">${escapeHtml(authorName)}</span>
+            <span class="gb-time" title="${timeInfo.tooltip}">${timeInfo.display}</span>
+          </div>
+          <div class="gb-text">${escapeHtml(messageText)}</div>
+          <div class="gb-reactions">
+            ${reactionsHTML}
+            <div class="emoji-picker-container">
+              <button class="reaction-btn" onclick="togglePicker('${msg.id}')">➕</button>
+              <div class="emoji-picker-popup" id="picker-${msg.id}">
+                <button class="picker-emoji-opt" onclick="handleReaction('${msg.id}', '👍')">👍</button>
+                <button class="picker-emoji-opt" onclick="handleReaction('${msg.id}', '❤️')">❤️</button>
+                <button class="picker-emoji-opt" onclick="handleReaction('${msg.id}', '🔥')">🔥</button>
+                <button class="picker-emoji-opt" onclick="handleReaction('${msg.id}', '💀')">💀</button>
+                <button class="picker-emoji-opt" onclick="handleReaction('${msg.id}', '🚀')">🚀</button>
+                <button class="picker-emoji-opt" onclick="handleReaction('${msg.id}', '⭐')">⭐</button>
+                <button class="picker-emoji-opt" onclick="handleReaction('${msg.id}', '💯')">💯</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      gbMessagesContainer.appendChild(msgDiv);
+    }
+ 
+    function escapeHtml(text) {
+      return String(text || '').replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+ 
+    window.togglePicker = function(id) {
+      document.querySelectorAll('.emoji-picker-popup').forEach(p => {
+        if (p.id !== `picker-${id}`) p.classList.remove('show');
+      });
+      const picker = document.getElementById(`picker-${id}`);
+      if (picker) picker.classList.toggle('show');
+    };
+ 
+    window.handleReaction = function(id, emoji) {
+      const voteKey = `voted_${id}_${emoji}`;
+      const hasVoted = localStorage.getItem(voteKey) === 'true';
+ 
+      // Считаем общие активные реакции юзера на это сообщение
+      let totalUserVotesOnMsg = 0;
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith(`voted_${id}_`) && localStorage.getItem(key) === 'true') {
+          totalUserVotesOnMsg++;
+        }
+      }
+ 
+      const msgRef = db.collection('messages').doc(id);
+ 
+      db.runTransaction(async (transaction) => {
+        const doc = await transaction.get(msgRef);
+        if (!doc.exists) return;
+        let reactions = doc.data().reactions || {};
+ 
+        if (hasVoted) {
+          // УДАЛЕНИЕ РЕАКЦИИ С ПЕРВОГО КЛИКА
+          reactions[emoji] = (reactions[emoji] || 1) - 1;
+          if (reactions[emoji] <= 0) {
+            delete reactions[emoji];
+          }
+          transaction.update(msgRef, { reactions });
+          localStorage.removeItem(voteKey);
+        } else {
+          // ДОБАВЛЕНИЕ С ЛИМИТОМ В 3 ШТУКИ НА СООБЩЕНИЕ
+          if (totalUserVotesOnMsg >= 3) {
+            throw new Error('LIMIT_REACHED');
+          }
+          reactions[emoji] = (reactions[emoji] || 0) + 1;
+          transaction.update(msgRef, { reactions });
+          localStorage.setItem(voteKey, 'true');
+        }
+      }).then(() => {
+        if (!hasVoted) unlockAchievement('reaction', 'Оставил реакцию', '💬');
+      }).catch(err => {
+        if (err.message === 'LIMIT_REACHED' || err.toString().includes('LIMIT_REACHED')) {
+          toast.textContent = '⚠️ Лимит исчерпан: можно поставить не более 3 реакций!';
+          toast.classList.add('show');
+          clearTimeout(toastTimeout);
+          toastTimeout = setTimeout(() => toast.classList.remove('show'), 3000);
+        } else {
+          console.error(err);
+        }
+      });
+ 
+      document.querySelectorAll('.emoji-picker-popup').forEach(p => p.classList.remove('show'));
+    };
+ 
+    const SITE_URL = 'https://bonya-cloud.github.io/discoragen.github.io/';
+    const authModal = document.getElementById('authModal');
+    const closeAuthModal = document.getElementById('closeAuthModal');
+ 
+    function promptAuthAndRedirect() {
+      authModal.classList.add('active');
+    }
+ 
+    closeAuthModal.addEventListener('click', () => authModal.classList.remove('active'));
+    authModal.addEventListener('click', (e) => {
+      if (e.target === authModal) authModal.classList.remove('active');
+    });
+ 
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.emoji-picker-container')) {
+        document.querySelectorAll('.emoji-picker-popup').forEach(p => p.classList.remove('show'));
+      }
+    });
+ 
+    gbSendBtn.addEventListener('click', promptAuthAndRedirect);
+    gbInputBox.addEventListener('click', promptAuthAndRedirect);
+    gbInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') promptAuthAndRedirect();
+    });
+ 
+    loadMessages();
+ 
+    /* Статус сети */
+    function updateOnlineStatus() {
+      if (!navigator.onLine || document.hidden) {
+        statusDot.classList.add('offline');
+        statusDot.title = 'Статус: Не в сети';
+      } else {
+        statusDot.classList.remove('offline');
+        statusDot.title = 'Статус: В сети';
+      }
+    }
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+    document.addEventListener('visibilitychange', updateOnlineStatus);
+    updateOnlineStatus();
+ 
+    /* Полноэкранный режим */
+    (function() {
+      const fsBtn = document.getElementById('fullscreenBtn');
+      const enterIcon = document.getElementById('enterFsIcon');
+      const exitIcon = document.getElementById('exitFsIcon');
+ 
+      function toggleFullscreen() {
+        if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+          const docEl = document.documentElement;
+          if (docEl.requestFullscreen) docEl.requestFullscreen();
+          else if (docEl.webkitRequestFullscreen) docEl.webkitRequestFullscreen();
+        } else {
+          if (document.exitFullscreen) document.exitFullscreen();
+          else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        }
+      }
+ 
+      function updateFsIcons() {
+        const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+        enterIcon.style.display = isFs ? 'none' : 'block';
+        exitIcon.style.display = isFs ? 'block' : 'none';
+      }
+ 
+      if (fsBtn) fsBtn.addEventListener('click', toggleFullscreen);
+      document.addEventListener('fullscreenchange', updateFsIcons);
+      document.addEventListener('webkitfullscreenchange', updateFsIcons);
+    })();
+ 
+    /* Заголовок тайпинг */
+    (function () {
+      const fullText = "@discoragen";
+      let charIndex = 0;
+      let isDeleting = false;
+      function typeEffect() {
+        document.title = fullText.substring(0, charIndex) || "@";
+        let speed = isDeleting ? 120 : 180;
+        if (!isDeleting && charIndex === fullText.length) { speed = 2000; isDeleting = true; }
+        else if (isDeleting && charIndex === 1) { speed = 600; isDeleting = false; }
+        else { charIndex += isDeleting ? -1 : 1; }
+        setTimeout(typeEffect, speed);
+      }
+      typeEffect();
+    })();
+ 
+    /* Реальный счётчик просмотров (Firestore, общий для всех посетителей) */
+    (function () {
+      const el = document.getElementById('visitorCount');
+      const statsRef = db.collection('stats').doc('profile');
+      const sessionKey = 'discoragen_counted_session';
+ 
+      // Показываем текущее значение сразу, не дожидаясь записи
+      statsRef.get().then((doc) => {
+        const current = doc.exists ? (doc.data().views || 0) : 0;
+        el.textContent = current;
+      }).catch(() => {});
+ 
+      // Засчитываем визит только 1 раз за сессию вкладки, чтобы обновление
+      // страницы не накручивало счётчик
+      if (!sessionStorage.getItem(sessionKey)) {
+        sessionStorage.setItem(sessionKey, 'true');
+        statsRef.set({
+          views: firebase.firestore.FieldValue.increment(1)
+        }, { merge: true }).then(() => {
+          statsRef.get().then((doc) => {
+            if (doc.exists) el.textContent = doc.data().views || 0;
+          });
+        }).catch((err) => console.error('Ошибка счётчика просмотров:', err));
+      }
+    })();
+ 
+    /* Ротация статуса "vibe" */
+    (function () {
+      const el = document.getElementById('vibeText');
+      const dot = document.getElementById('vibeDot');
+      if (!el) return;
+      const vibes = [
+        { text: '🎧 в наушниках весь день', color: '#ff2d4d' },
+        { text: '💻 коммичу что-то в 3 часа ночи', color: '#7a0c1f' },
+        { text: '🔥 дебажу то, что сам сломал', color: '#ff7700' },
+        { text: '🎮 залип в CS2 на 10 минут (уже час)', color: '#ff2d4d' },
+        { text: '⚔️ депаю в case battle', color: '#ff7700' },
+        { text: '🐛 фиксим баги', color: '#ff2d4d' },
+        { text: '📦 деплою и молюсь', color: '#ffea00' }
+      ];
+      let i = 0;
+      setInterval(() => {
+        i = (i + 1) % vibes.length;
+        el.style.opacity = '0';
+        setTimeout(() => {
+          el.textContent = vibes[i].text;
+          el.style.opacity = '1';
+          if (dot) {
+            dot.style.background = vibes[i].color;
+            dot.style.boxShadow = `0 0 6px ${vibes[i].color}`;
+          }
+        }, 300);
+      }, 4000);
+    })();
+ 
+    /* ---------- Система скрытых достижений ---------- */
+    const achievementContainer = document.getElementById('achievementContainer');
+    const unlockedAchievements = new Set();
+
+    function unlockAchievement(id, title, icon) {
+      if (unlockedAchievements.has(id)) return;
+      if (localStorage.getItem(`discoragen_achv_${id}`) === 'true') {
+        unlockedAchievements.add(id);
+        return;
+      }
+      unlockedAchievements.add(id);
+      localStorage.setItem(`discoragen_achv_${id}`, 'true');
+      if (!achievementContainer) return;
+
+      const el = document.createElement('div');
+      el.className = 'achievement-toast';
+      el.innerHTML = `
+        <div class="achievement-icon">${icon}</div>
+        <div>
+          <div class="achievement-label">Достижение открыто</div>
+          <div class="achievement-title">${title}</div>
+        </div>
+      `;
+      achievementContainer.appendChild(el);
+      requestAnimationFrame(() => el.classList.add('show'));
+
+      setTimeout(() => {
+        el.classList.remove('show');
+        el.classList.add('hide');
+        setTimeout(() => el.remove(), 400);
+      }, 4000);
+    }
+
+    /* Ачивка: прослушал 3 разных трека */
+    (function () {
+      const playedTracks = new Set();
+      audio.addEventListener('play', () => {
+        playedTracks.add(currentTrackIndex);
+        if (playedTracks.size >= 3) {
+          unlockAchievement('three_tracks', 'Послушал 3 трека', '🎧');
+        }
+      });
+    })();
+
+    /* Секретное слово */
+    (function () {
+      const secretWord = 'discoragen';
+      let buffer = '';
+      const flash = document.getElementById('glitchFlash');
+      const fireBorder = document.getElementById('fireBorder');
+ 
+      window.addEventListener('keydown', (e) => {
+        if (e.key.length !== 1) return;
+        buffer = (buffer + e.key.toLowerCase()).slice(-secretWord.length);
+        if (buffer === secretWord) {
+          flash.classList.remove('active'); void flash.offsetWidth; flash.classList.add('active');
+          fireBorder.classList.remove('active'); void fireBorder.offsetWidth; fireBorder.classList.add('active');
+          toast.textContent = 'you found me 67🩸';
+          toast.classList.add('show');
+          clearTimeout(toastTimeout);
+          toastTimeout = setTimeout(() => {
+            toast.classList.remove('show');
+            fireBorder.classList.remove('active');
+          }, 3500);
+          buffer = '';
+          unlockAchievement('easter_egg', 'Нашёл пасхалку', '🥚');
+        }
+      });
+    })();
+ 
+    /* Пасхалка по клику на ник */
+    (function () {
+      const usernameEl = document.getElementById('usernameEl');
+      const pumpkinOverlay = document.getElementById('pumpkinOverlay');
+      let clickCount = 0, clickTimer = null;
+ 
+      usernameEl.addEventListener('click', () => {
+        clickCount++;
+        if (clickCount === 1) {
+          clickTimer = setTimeout(() => { clickCount = 0; }, 500);
+        } else if (clickCount === 3) {
+          clearTimeout(clickTimer);
+          clickCount = 0;
+          pumpkinOverlay.classList.add('active');
+          setTimeout(() => pumpkinOverlay.classList.remove('active'), 3000);
+          unlockAchievement('easter_egg', 'Нашёл пасхалку', '🥚');
+        }
+      });
+    })();
+
+    /* Пасхалка с монстром по 5 кликам на аватарку */
+    (function () {
+      const avatarWrap = document.getElementById('avatarWrap');
+      const monsterOverlay = document.getElementById('monsterOverlay');
+      let clickCount = 0, clickTimer = null;
+
+      avatarWrap.addEventListener('click', () => {
+        clickCount++;
+        clearTimeout(clickTimer);
+        if (clickCount >= 5) {
+          clickCount = 0;
+          monsterOverlay.classList.add('active');
+          setTimeout(() => monsterOverlay.classList.remove('active'), 3800);
+          unlockAchievement('easter_egg', 'Нашёл пасхалку', '🥚');
+        } else {
+          clickTimer = setTimeout(() => { clickCount = 0; }, 700);
+        }
+      });
+
+      monsterOverlay.addEventListener('click', () => monsterOverlay.classList.remove('active'));
+    })();
+
+    /* Модальное окно донатов */
+    (function () {
+      const donateBtn = document.getElementById('donateBtn');
+      const donateModal = document.getElementById('donateModal');
+      const donatecloseBtn = document.getElementById('donatecloseBtn');
+
+      // Открыть модальное окно при клике на кнопку донатов
+      donateBtn.addEventListener('click', () => {
+        donateModal.classList.add('active');
+      });
+
+      // Закрыть модальное окно при клике на кнопку закрытия
+      donatecloseBtn.addEventListener('click', () => {
+        donateModal.classList.remove('active');
+      });
+
+      // Закрыть модальное окно при клике вне окна
+      donateModal.addEventListener('click', (e) => {
+        if (e.target === donateModal) {
+          donateModal.classList.remove('active');
+        }
+      });
+    })();
+
+    /* Esc закрывает любую открытую модалку */
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      document.querySelectorAll('.modal-overlay.active, .donate-modal.active').forEach((modal) => {
+        modal.classList.remove('active');
+      });
+    });
+    // ================= РЕЖИМ «КОМНАТА» =================
+    (function () {
+      const order = ['profile', 'music', 'projects', 'guestbook'];
+      const tabs = Array.from(document.querySelectorAll('.room-tab'));
+      const viewport = document.getElementById('roomsViewport');
+      let current = 'profile';
+
+      function roomEls(name) {
+        return Array.from(viewport.querySelectorAll(`.room[data-room="${name}"]`));
+      }
+
+      function goToRoom(name, { silent = false } = {}) {
+        if (name === current || !order.includes(name)) return;
+
+        const fromIndex = order.indexOf(current);
+        const toIndex = order.indexOf(name);
+        const goingForward = toIndex > fromIndex;
+
+        roomEls(current).forEach(el => {
+          el.classList.remove('active', 'enter-from-right', 'enter-from-left');
+        });
+
+        roomEls(name).forEach(el => {
+          el.classList.add('active');
+          el.classList.add(goingForward ? 'enter-from-right' : 'enter-from-left');
+          el.addEventListener('animationend', () => {
+            el.classList.remove('enter-from-right', 'enter-from-left');
+          }, { once: true });
+        });
+
+        tabs.forEach(t => t.classList.toggle('active', t.dataset.room === name));
+
+        current = name;
+        if (!silent) viewport.scrollTop = 0;
+
+        if (name === 'music') startViz(); else stopViz();
+      }
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => goToRoom(tab.dataset.room));
+      });
+
+      // Свайп по комнате
+      let touchStartX = 0, touchStartY = 0, touching = false;
+      viewport.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        touching = true;
+      }, { passive: true });
+
+      viewport.addEventListener('touchend', (e) => {
+        if (!touching) return;
+        touching = false;
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy) * 1.3) return;
+
+        const idx = order.indexOf(current);
+        if (dx < 0 && idx < order.length - 1) goToRoom(order[idx + 1]);
+        else if (dx > 0 && idx > 0) goToRoom(order[idx - 1]);
+      }, { passive: true });
+
+      // Стрелки клавиатуры (когда фокус не в текстовом поле)
+      document.addEventListener('keydown', (e) => {
+        const tag = (document.activeElement && document.activeElement.tagName) || '';
+        if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+        const idx = order.indexOf(current);
+        if (e.key === 'ArrowRight' && idx < order.length - 1) goToRoom(order[idx + 1]);
+        if (e.key === 'ArrowLeft' && idx > 0) goToRoom(order[idx - 1]);
+      });
+
+      // ---- Аудио-визуализатор (Web Audio API) ----
+      const vizCanvas = document.getElementById('vizCanvas');
+      const vizCtx = vizCanvas ? vizCanvas.getContext('2d') : null;
+      let audioCtxViz, analyserViz, sourceViz, freqData, vizRafId = null;
+
+      function ensureVizAudioGraph() {
+        if (sourceViz || !vizCanvas) return;
+        try {
+          audioCtxViz = new (window.AudioContext || window.webkitAudioContext)();
+          sourceViz = audioCtxViz.createMediaElementSource(audio);
+          analyserViz = audioCtxViz.createAnalyser();
+          analyserViz.fftSize = 64;
+          analyserViz.smoothingTimeConstant = 0.8;
+          freqData = new Uint8Array(analyserViz.frequencyBinCount);
+          sourceViz.connect(analyserViz);
+          analyserViz.connect(audioCtxViz.destination);
+        } catch (err) {
+          // Web Audio недоступен — молча продолжаем без визуализатора
+        }
+      }
+
+      function resizeVizCanvas() {
+        if (!vizCanvas) return;
+        const rect = vizCanvas.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        vizCanvas.width = Math.max(1, rect.width * dpr);
+        vizCanvas.height = Math.max(1, rect.height * dpr);
+      }
+
+      function drawViz() {
+        if (!vizCtx) return;
+        vizRafId = requestAnimationFrame(drawViz);
+
+        const w = vizCanvas.width, h = vizCanvas.height;
+        vizCtx.clearRect(0, 0, w, h);
+
+        let bars, playing = !audio.paused && !audio.ended;
+        if (analyserViz && playing) {
+          analyserViz.getByteFrequencyData(freqData);
+          bars = Array.from(freqData);
+        } else {
+          // Простая "дышащая" анимация в покое / до инициализации Web Audio
+          const t = Date.now() / 500;
+          bars = new Array(24).fill(0).map((_, i) => 18 + 10 * Math.sin(t + i * 0.5));
+        }
+
+        const count = Math.min(bars.length, 28);
+        const gap = w * 0.012;
+        const barW = (w - gap * (count - 1)) / count;
+        const grad = vizCtx.createLinearGradient(0, h, 0, 0);
+        grad.addColorStop(0, 'rgba(122, 12, 31, 0.9)');
+        grad.addColorStop(1, 'rgba(255, 45, 77, 0.95)');
+        vizCtx.fillStyle = grad;
+
+        for (let i = 0; i < count; i++) {
+          const v = bars[i] / 255 || bars[i] / 40;
+          const barH = Math.max(3, (bars[i] / 255) * h * 0.92 || Math.min(h, bars[i]) * (h / 90));
+          const x = i * (barW + gap);
+          const y = h - barH;
+          const r = Math.min(3, barW / 2);
+          vizCtx.beginPath();
+          if (vizCtx.roundRect) {
+            vizCtx.roundRect(x, y, barW, barH, r);
+          } else {
+            vizCtx.rect(x, y, barW, barH);
+          }
+          vizCtx.fill();
+        }
+      }
+
+      function startViz() {
+        if (!vizCanvas) return;
+        resizeVizCanvas();
+        ensureVizAudioGraph();
+        if (audioCtxViz && audioCtxViz.state === 'suspended') {
+          audioCtxViz.resume().catch(() => {});
+        }
+        if (!vizRafId) drawViz();
+      }
+
+      function stopViz() {
+        if (vizRafId) {
+          cancelAnimationFrame(vizRafId);
+          vizRafId = null;
+        }
+      }
+
+      window.addEventListener('resize', () => {
+        if (current === 'music') resizeVizCanvas();
+      });
+
+      audio.addEventListener('play', () => {
+        if (audioCtxViz && audioCtxViz.state === 'suspended') {
+          audioCtxViz.resume().catch(() => {});
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
