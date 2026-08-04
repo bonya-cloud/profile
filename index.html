@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>@discoragen | Разработчик, Стример, Творец Контента</title>
 <meta name="theme-color" content="#0a0507">
-
+ 
 <!-- SEO Базовые теги -->
 <meta name="description" content="discoragen - разработчик, стример на Twitch, создатель контента. Портфолио проектов, гостевая книга, донаты. Hey, I'm discoragen. This is my little corner of the internet.">
 <meta name="keywords" content="discoragen, разработчик, developer, стример, twitch, python, webdev, portfolio, контент, gaming, открытый исходный код">
@@ -14,7 +14,7 @@
 <meta name="canonical" href="https://bonya-cloud.github.io/profile/">
 <link rel="alternate" hreflang="ru" href="https://bonya-cloud.github.io/profile/">
 <link rel="alternate" hreflang="en" href="https://bonya-cloud.github.io/profile/?lang=en">
-
+ 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="profile">
 <meta property="og:title" content="@discoragen | Разработчик и Стример">
@@ -25,7 +25,7 @@
 <meta property="og:url" content="https://bonya-cloud.github.io/profile/">
 <meta property="og:site_name" content="discoragen Profile">
 <meta property="profile:username" content="discoragen">
-
+ 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@discoragen">
@@ -33,22 +33,22 @@
 <meta name="twitter:title" content="@discoragen | Разработчик и Стример">
 <meta name="twitter:description" content="Портфолио разработчика, проекты, гостевая книга, Twitch стримы">
 <meta name="twitter:image" content="https://bonya-cloud.github.io/profile/assets/cover.jpg">
-
+ 
 <!-- Favicons & Web App -->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-
+ 
 <!-- PWA: манифест и мета-теги "добавить на экран" -->
 <link rel="manifest" href="manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="discoragen">
 <meta name="mobile-web-app-capable" content="yes">
-
+ 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
+ 
 <!-- JSON-LD Schema.org Structured Data -->
 <script type="application/ld+json">
 {
@@ -71,7 +71,7 @@
   }
 }
 </script>
-
+ 
 <!-- Website Schema -->
 <script type="application/ld+json">
 {
@@ -86,7 +86,7 @@
   }
 }
 </script>
-
+ 
 <style>
   :root {
     --bg: #0a0507;
@@ -97,6 +97,34 @@
     --red-glow: rgba(255, 45, 77, 0.35);
     --text: #f2e6e8;
     --muted: #9c7b80;
+  }
+ 
+  /* ---------- Сезонные темы (переопределяют акцентные переменные) ---------- */
+  body.theme-halloween {
+    --bg: #0a0610;
+    --card: rgba(16, 9, 6, 0.72);
+    --card-border: rgba(255, 140, 0, 0.35);
+    --red: #ff8c00;
+    --red-dim: #7a4300;
+    --red-glow: rgba(255, 140, 0, 0.35);
+  }
+ 
+  body.theme-newyear {
+    --bg: #05070c;
+    --card: rgba(8, 12, 20, 0.72);
+    --card-border: rgba(80, 170, 255, 0.35);
+    --red: #4fb3ff;
+    --red-dim: #12507a;
+    --red-glow: rgba(79, 179, 255, 0.35);
+  }
+ 
+  body.theme-birthday {
+    --bg: #0a0510;
+    --card: rgba(18, 8, 16, 0.70);
+    --card-border: rgba(255, 79, 216, 0.35);
+    --red: #ff4fd8;
+    --red-dim: #7a0c5f;
+    --red-glow: rgba(255, 79, 216, 0.35);
   }
  
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -161,7 +189,7 @@
     box-shadow: 0 6px 24px rgba(0,0,0,0.5);
     transition: all 0.25s ease;
   }
-
+ 
   .cv-download-link::before {
     content: '';
     position: absolute;
@@ -173,20 +201,20 @@
     transform: skewX(-20deg);
     pointer-events: none;
   }
-
+ 
   .cv-download-link:hover::before {
     animation: cvShine 0.85s ease;
   }
-
+ 
   @keyframes cvShine {
     0% { left: -75%; }
     100% { left: 125%; }
   }
-
+ 
   @media (prefers-reduced-motion: reduce) {
     .cv-download-link:hover::before { animation: none; }
   }
-
+ 
   .cv-download-link:hover {
     background: rgba(255, 45, 77, 0.12);
     border-color: var(--red);
@@ -194,18 +222,18 @@
     transform: translateY(-2px);
     color: #fff;
   }
-
+ 
   .cv-download-link svg {
     width: 18px;
     height: 18px;
     fill: var(--red);
     transition: transform 0.2s ease;
   }
-
+ 
   .cv-download-link:hover svg {
     transform: scale(1.15);
   }
-
+ 
   /* ---------- Карточка поддержки разработчика (DonationAlerts) ---------- */
   :root {
     --da-orange: #F57D07;
@@ -215,7 +243,7 @@
     --da-dark: #1F1F1F;
     --da-darker: #191919;
   }
-
+ 
   .donate-section {
     display: flex;
     align-items: center;
@@ -233,27 +261,27 @@
     font-family: 'Inter', sans-serif;
     transition: all 0.25s ease;
   }
-
+ 
   .donate-section:hover {
     box-shadow: 0 10px 32px rgba(245, 125, 7, 0.55);
     filter: brightness(1.06);
     animation: donateBreathe 1.6s ease-in-out infinite;
   }
-
+ 
   @keyframes donateBreathe {
     0%, 100% { transform: translateY(-2px) scale(1); }
     50% { transform: translateY(-2px) scale(1.02); }
   }
-
+ 
   @media (prefers-reduced-motion: reduce) {
     .donate-section:hover { animation: none; transform: translateY(-2px); }
   }
-
+ 
   .donate-section:active {
     transform: translateY(0) scale(0.98);
     animation: none;
   }
-
+ 
   .donate-icon-wrap {
     width: 34px;
     height: 34px;
@@ -266,29 +294,29 @@
     box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
     transition: transform 0.25s ease;
   }
-
+ 
   .donate-section:hover .donate-icon-wrap {
     transform: scale(1.08) rotate(-6deg);
   }
-
+ 
   .donate-icon-wrap svg {
     width: 22px;
     height: 22px;
   }
-
+ 
   .donate-text {
     flex: 0 1 auto;
     min-width: 0;
     text-align: left;
   }
-
+ 
   .donate-title {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 15px;
     color: #fff;
   }
-
+ 
   .donate-sub {
     font-size: 11px;
     color: rgba(255, 255, 255, 0.85);
@@ -296,7 +324,7 @@
     letter-spacing: 0.3px;
     margin-top: 2px;
   }
-
+ 
   /* ---------- Кнопка полноэкранного режима ---------- */
   .fullscreen-btn {
     position: fixed;
@@ -355,12 +383,12 @@
     transition: opacity 0.3s ease, visibility 0.3s ease;
     padding: 16px;
   }
-
+ 
   .donate-modal.active {
     opacity: 1;
     visibility: visible;
   }
-
+ 
   .donate-modal-content {
     background: radial-gradient(120% 140% at 50% -10%, rgba(245, 125, 7, 0.10), transparent 55%), linear-gradient(180deg, var(--da-dark), var(--da-darker));
     border: 2px solid var(--da-orange);
@@ -375,7 +403,7 @@
     animation: modalScaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
   }
-
+ 
   .donate-modal-content::-webkit-scrollbar {
     width: 6px;
   }
@@ -383,7 +411,7 @@
     background: var(--da-orange-deep);
     border-radius: 4px;
   }
-
+ 
   @keyframes modalScaleIn {
     from {
       opacity: 0;
@@ -396,7 +424,7 @@
       filter: blur(0);
     }
   }
-
+ 
   .donate-modal-close {
     position: absolute;
     top: 12px;
@@ -416,12 +444,12 @@
     font-size: 18px;
     font-weight: bold;
   }
-
+ 
   .donate-modal-close:hover {
     background: var(--da-orange);
     color: #191919;
   }
-
+ 
   .donate-modal-title {
     font-size: 21px;
     font-weight: 700;
@@ -433,7 +461,7 @@
     justify-content: center;
     gap: 8px;
   }
-
+ 
   /* Разделы методов доната */
   .donate-method-section {
     background: rgba(245, 125, 7, 0.06);
@@ -443,7 +471,7 @@
     margin-bottom: 16px;
     text-align: center;
   }
-
+ 
   /* ---------- Карточка цели сбора (Goal Card) ---------- */
   .donate-goal-card {
     position: relative;
@@ -454,21 +482,21 @@
     box-shadow: 0 8px 30px rgba(0,0,0,0.5);
     text-align: left;
   }
-
+ 
   .donate-goal-photo {
     position: relative;
     height: 110px;
     background-size: cover;
     background-position: center 55%;
   }
-
+ 
   .donate-goal-photo::before {
     content: '';
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg, rgba(25, 25, 25, 0.15) 0%, rgba(25, 25, 25, 0.55) 55%, var(--da-darker) 100%);
   }
-
+ 
   .donate-goal-badge {
     position: absolute;
     top: 12px;
@@ -488,7 +516,7 @@
     text-transform: uppercase;
     z-index: 2;
   }
-
+ 
   .donate-goal-badge .dot {
     width: 6px;
     height: 6px;
@@ -497,12 +525,12 @@
     box-shadow: 0 0 8px var(--da-orange);
     animation: goalDotPulse 1.6s ease-in-out infinite;
   }
-
+ 
   @keyframes goalDotPulse {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.4; transform: scale(0.7); }
   }
-
+ 
   .donate-goal-name {
     position: absolute;
     bottom: 12px;
@@ -515,7 +543,7 @@
     font-size: 17px;
     text-shadow: 0 2px 12px rgba(0,0,0,0.8);
   }
-
+ 
   .donate-goal-name span {
     display: block;
     font-family: 'Inter', sans-serif;
@@ -527,19 +555,19 @@
     margin-bottom: 3px;
     text-shadow: none;
   }
-
+ 
   .donate-goal-body {
     background: linear-gradient(180deg, var(--da-dark), var(--da-darker));
     padding: 12px 14px 14px;
     text-align: center;
   }
-
+ 
   .donate-goal-target-only {
     font-size: 13px;
     color: var(--muted);
     font-weight: 600;
   }
-
+ 
   .donate-goal-target-only b {
     color: #fff;
     font-size: 15px;
@@ -547,7 +575,7 @@
     font-weight: 800;
     margin-left: 2px;
   }
-
+ 
   .donate-method-title {
     font-size: 12px;
     font-weight: 600;
@@ -556,19 +584,19 @@
     letter-spacing: 1px;
     opacity: 0.9;
   }
-
+ 
   .donate-method-icon {
     font-size: 18px;
     margin-right: 6px;
   }
-
+ 
   .donate-method-description {
     font-size: 13px;
     color: var(--muted);
     margin-bottom: 12px;
     line-height: 1.5;
   }
-
+ 
   .donate-qr-container {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(245, 125, 7, 0.35);
@@ -578,7 +606,7 @@
     display: flex;
     justify-content: center;
   }
-
+ 
   .donate-qr-container img {
     max-width: 100%;
     height: auto;
@@ -587,19 +615,19 @@
     background: white;
     padding: 4px;
   }
-
+ 
   .donate-qr-hint {
     font-size: 12px;
     color: var(--muted);
     margin-top: 12px;
   }
-
+ 
   .donate-modal-buttons {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
-
+ 
   .donate-link-btn {
     padding: 12px 24px;
     background: linear-gradient(135deg, var(--da-orange-light), var(--da-orange-deep));
@@ -614,17 +642,17 @@
     display: inline-block;
     box-shadow: 0 0 15px var(--da-glow);
   }
-
+ 
   .donate-link-btn:hover {
     background: linear-gradient(135deg, var(--da-orange-deep), var(--da-orange-light));
     box-shadow: 0 0 25px var(--da-glow);
     transform: translateY(-2px);
   }
-
+ 
   .donate-link-btn:active {
     transform: translateY(0);
   }
-
+ 
   .donate-copy-btn {
     padding: 10px 16px;
     background: transparent;
@@ -636,12 +664,12 @@
     transition: all 0.3s ease;
     outline: none;
   }
-
+ 
   .donate-copy-btn:hover {
     background: rgba(245, 125, 7, 0.15);
     box-shadow: 0 0 15px var(--da-glow);
   }
-
+ 
   /* Предупреждение */
   .donate-warning {
     background: rgba(255, 45, 77, 0.12);
@@ -653,19 +681,19 @@
     color: var(--muted);
     line-height: 1.5;
   }
-
+ 
   .donate-warning-icon {
     display: inline-block;
     margin-right: 6px;
   }
-
+ 
   /* Вариант предупреждения: донат добровольный (в тонах DonationAlerts) */
   .donate-warning.donate-voluntary {
     background: rgba(245, 125, 7, 0.10);
     border: 1px solid rgba(245, 125, 7, 0.35);
     color: #d8c6bd;
   }
-
+ 
   /* Контактная информация */
   .donate-contact {
     font-size: 12px;
@@ -674,18 +702,18 @@
     padding-top: 12px;
     border-top: 1px solid rgba(245, 125, 7, 0.2);
   }
-
+ 
   .donate-contact-link {
     color: var(--da-orange-light);
     text-decoration: none;
     transition: all 0.2s ease;
   }
-
+ 
   .donate-contact-link:hover {
     color: var(--da-orange);
     text-decoration: underline;
   }
-
+ 
   /* ---------- Выдвижной регулятор громкости в верхнем левом углу ---------- */
   .corner-volume {
     position: fixed;
@@ -772,7 +800,7 @@
   .volume-slider::-webkit-slider-thumb:hover {
     transform: scale(1.5);
   }
-
+ 
   .volume-slider::-moz-range-thumb {
     width: 6px; height: 6px;
     border-radius: 50%;
@@ -781,7 +809,7 @@
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
     cursor: pointer;
   }
-
+ 
   .volume-slider::-moz-range-track {
     background: transparent;
   }
@@ -893,7 +921,7 @@
     pointer-events: none;
     background: linear-gradient(0deg, rgba(10, 5, 7, 0.4), rgba(10, 5, 7, 0.4)), url('assets/bg.gif') center/cover no-repeat;
   }
-
+ 
   /* ---------- Динамический фон (плавающие блики) ---------- */
   .dynamic-bg {
     position: fixed;
@@ -904,56 +932,56 @@
     filter: blur(70px);
     opacity: 0.6;
   }
-
+ 
   .blob {
     position: absolute;
     border-radius: 50%;
     mix-blend-mode: screen;
     will-change: transform;
   }
-
+ 
   .blob-1 {
     width: 42vmax; height: 42vmax;
     background: radial-gradient(circle, rgba(255,45,77,0.55), transparent 70%);
     top: -15%; left: -15%;
     animation: blobFloat1 24s ease-in-out infinite;
   }
-
+ 
   .blob-2 {
     width: 36vmax; height: 36vmax;
     background: radial-gradient(circle, rgba(255,119,0,0.35), transparent 70%);
     bottom: -18%; right: -12%;
     animation: blobFloat2 28s ease-in-out infinite;
   }
-
+ 
   .blob-3 {
     width: 28vmax; height: 28vmax;
     background: radial-gradient(circle, rgba(122,12,31,0.55), transparent 70%);
     top: 38%; left: 55%;
     animation: blobFloat3 32s ease-in-out infinite;
   }
-
+ 
   @keyframes blobFloat1 {
     0%, 100% { transform: translate(0, 0) scale(1); }
     33% { transform: translate(18vw, 12vh) scale(1.15); }
     66% { transform: translate(6vw, 22vh) scale(0.9); }
   }
-
+ 
   @keyframes blobFloat2 {
     0%, 100% { transform: translate(0, 0) scale(1); }
     50% { transform: translate(-16vw, -16vh) scale(1.2); }
   }
-
+ 
   @keyframes blobFloat3 {
     0%, 100% { transform: translate(0, 0) scale(1); }
     25% { transform: translate(-10vw, 8vh) scale(1.1); }
     75% { transform: translate(10vw, -10vh) scale(0.95); }
   }
-
+ 
   @media (prefers-reduced-motion: reduce) {
     .blob { animation: none !important; }
   }
-
+ 
   /* ---------- Частицы от курсора ---------- */
   .cursor-fx {
     position: fixed;
@@ -978,7 +1006,7 @@
     flex-direction: column;
     gap: 14px;
   }
-
+ 
   /* Stagger-анимация появления секций: каждый прямой child стейджа
      всплывает по очереди, а не всё разом */
   .stage > * {
@@ -986,12 +1014,12 @@
     transform: translateY(16px);
     transition: opacity 0.55s ease, transform 0.55s ease;
   }
-
+ 
   .stage.revealed > * {
     opacity: 1;
     transform: translateY(0);
   }
-
+ 
   .stage.revealed > *:nth-child(1) { transition-delay: 0.05s; }
   .stage.revealed > *:nth-child(2) { transition-delay: 0.12s; }
   .stage.revealed > *:nth-child(3) { transition-delay: 0.19s; }
@@ -1002,13 +1030,13 @@
   .stage.revealed > *:nth-child(8) { transition-delay: 0.54s; }
   .stage.revealed > *:nth-child(9) { transition-delay: 0.61s; }
   .stage.revealed > *:nth-child(n+10) { transition-delay: 0.68s; }
-
+ 
   @media (prefers-reduced-motion: reduce) {
     .stage > * { transition-delay: 0s !important; }
   }
-
+ 
   /* ================= РЕЖИМ «КОМНАТА» ================= */
-
+ 
   .room-nav {
     display: flex;
     gap: 6px;
@@ -1022,7 +1050,7 @@
     top: 10px;
     z-index: 20;
   }
-
+ 
   .room-tab {
     flex: 1;
     display: flex;
@@ -1040,7 +1068,7 @@
     transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
     -webkit-tap-highlight-color: transparent;
   }
-
+ 
   .room-tab svg {
     width: 17px;
     height: 17px;
@@ -1049,61 +1077,61 @@
     stroke-width: 1.8;
     transition: transform 0.25s ease;
   }
-
+ 
   .room-tab span {
     font-size: 9.5px;
     letter-spacing: 0.6px;
     text-transform: uppercase;
     font-weight: 600;
   }
-
+ 
   .room-tab:hover {
     color: var(--text);
     background: rgba(255, 45, 77, 0.08);
   }
-
+ 
   .room-tab.active {
     color: var(--red);
     background: rgba(255, 45, 77, 0.12);
     border-color: rgba(255, 45, 77, 0.35);
     box-shadow: 0 0 14px var(--red-glow);
   }
-
+ 
   .room-tab.active svg { transform: scale(1.08); }
-
+ 
   .room-tab:active { transform: scale(0.94); }
-
+ 
   .rooms-viewport {
     position: relative;
   }
-
+ 
   .room {
     display: none;
     flex-direction: column;
     gap: 14px;
   }
-
+ 
   .room.active {
     display: flex;
   }
-
+ 
   .room.enter-from-right { animation: roomInRight 0.38s cubic-bezier(0.22, 1, 0.36, 1); }
   .room.enter-from-left { animation: roomInLeft 0.38s cubic-bezier(0.22, 1, 0.36, 1); }
-
+ 
   @keyframes roomInRight {
     from { opacity: 0; transform: translateX(28px); }
     to { opacity: 1; transform: translateX(0); }
   }
-
+ 
   @keyframes roomInLeft {
     from { opacity: 0; transform: translateX(-28px); }
     to { opacity: 1; transform: translateX(0); }
   }
-
+ 
   @media (prefers-reduced-motion: reduce) {
     .room.enter-from-right, .room.enter-from-left { animation: none; }
   }
-
+ 
   /* --- Комната «Музыка»: визуализатор --- */
   .viz-wrap {
     background: rgba(0,0,0,0.25);
@@ -1111,21 +1139,21 @@
     border-radius: 14px;
     padding: 10px;
   }
-
+ 
   .viz-canvas {
     display: block;
     width: 100%;
     height: 96px;
   }
-
+ 
   .room-music .player {
     padding-bottom: 20px;
   }
-
+ 
   .track-cover {
     cursor: pointer;
   }
-
+ 
   /* --- Окно «Сейчас играет» на весь экран --- */
   .np-overlay {
     position: fixed;
@@ -1140,20 +1168,20 @@
     transform: translateY(16px);
     transition: opacity 0.32s ease, transform 0.32s ease;
   }
-
+ 
   .np-overlay.open {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
   }
-
+ 
   .np-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-shrink: 0;
   }
-
+ 
   .np-close {
     width: 36px;
     height: 36px;
@@ -1167,9 +1195,9 @@
     border-radius: 50%;
     transition: background 0.2s ease;
   }
-
+ 
   .np-close:hover { background: rgba(255,255,255,0.06); }
-
+ 
   .np-close svg {
     width: 22px;
     height: 22px;
@@ -1177,7 +1205,7 @@
     stroke: currentColor;
     stroke-width: 2;
   }
-
+ 
   .np-eyebrow {
     text-align: center;
     font-family: 'Space Grotesk', sans-serif;
@@ -1186,7 +1214,7 @@
     text-transform: uppercase;
     color: var(--muted);
   }
-
+ 
   .np-eyebrow strong {
     display: block;
     font-size: 13px;
@@ -1194,7 +1222,7 @@
     color: var(--text);
     margin-top: 2px;
   }
-
+ 
   .np-cover-wrap {
     flex: 1;
     display: flex;
@@ -1203,7 +1231,7 @@
     min-height: 0;
     padding: 18px 0;
   }
-
+ 
   .np-cover-wrap img {
     width: 100%;
     max-width: 360px;
@@ -1213,37 +1241,37 @@
     border-radius: 16px;
     box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,45,77,0.2);
   }
-
+ 
   .np-info {
     flex-shrink: 0;
-    text-align: center;
+    text-align: left;
   }
-
+ 
   .np-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 2rem;
+    font-size: 1.7rem;
     font-weight: 700;
     color: var(--text);
     line-height: 1.25;
   }
-
+ 
   .np-artist {
-    font-size: 13.5px;
+    font-size: 14.5px;
     color: var(--muted);
-    opacity: 0.7;
+    opacity: 0.75;
     margin-top: 4px;
   }
-
+ 
   .np-progress {
     margin-top: 22px;
     flex-shrink: 0;
   }
-
+ 
   .np-progress input[type="range"] {
     width: 100%;
     accent-color: var(--red);
   }
-
+ 
   .np-time-row {
     display: flex;
     justify-content: space-between;
@@ -1251,7 +1279,7 @@
     color: var(--muted);
     margin-top: 4px;
   }
-
+ 
   .np-controls {
     display: flex;
     align-items: center;
@@ -1260,7 +1288,7 @@
     margin-top: 22px;
     flex-shrink: 0;
   }
-
+ 
   .np-mini-btn {
     background: transparent;
     border: none;
@@ -1271,13 +1299,13 @@
     justify-content: center;
     padding: 6px;
   }
-
+ 
   .np-mini-btn svg {
     width: 26px;
     height: 26px;
     fill: currentColor;
   }
-
+ 
   .np-play-btn {
     width: 66px;
     height: 66px;
@@ -1291,40 +1319,40 @@
     box-shadow: 0 8px 24px rgba(0,0,0,0.5);
     transition: transform 0.2s ease;
   }
-
+ 
   .np-play-btn:active { transform: scale(0.94); }
-
+ 
   .np-play-btn svg {
     width: 28px;
     height: 28px;
     fill: #0a0507;
   }
-
+ 
   @media (prefers-reduced-motion: reduce) {
     .np-overlay { transition: none; }
   }
-
+ 
   /* --- Комната «Проекты»: крупные карточки --- */
   #room-projects .projects-section {
     padding: 14px;
   }
-
+ 
   #room-projects .projects-grid {
     gap: 16px;
   }
-
+ 
   #room-projects .project-card {
     padding: 0;
     overflow: hidden;
     gap: 0;
   }
-
+ 
   #room-projects .project-top {
     flex-direction: column;
     align-items: stretch;
     gap: 0;
   }
-
+ 
   #room-projects .project-thumb {
     width: 100%;
     height: 150px;
@@ -1332,23 +1360,23 @@
     border: none;
     border-bottom: 1px solid rgba(255, 45, 77, 0.25);
   }
-
+ 
   #room-projects .project-info {
     padding: 14px 14px 4px;
   }
-
+ 
   #room-projects .project-name {
     font-size: 16px;
   }
-
+ 
   #room-projects .project-desc {
     font-size: 12.5px;
   }
-
+ 
   #room-projects .project-tags {
     padding: 0 14px 14px;
   }
-
+ 
   /* --- Комната «Гостевая»: во весь экран --- */
   #room-guestbook .guestbook-section {
     flex: 1;
@@ -1356,7 +1384,7 @@
     flex-direction: column;
     min-height: min(62vh, 560px);
   }
-
+ 
   #room-guestbook .gb-messages-container {
     flex: 0 1 auto;
   }
@@ -1384,13 +1412,13 @@
     z-index: 1;
     transition: filter 0.4s ease;
   }
-
+ 
   /* Кольцо светится сильнее, когда играет музыка — связывает аватар и плеер */
   .avatar-wrap.playing .avatar-ring {
     animation: spin 2s linear infinite, fireGlowPlaying 1s ease-in-out infinite alternate;
     filter: blur(1.1px);
   }
-
+ 
   @keyframes fireGlowPlaying {
     0% {
       box-shadow: 0 0 16px rgba(255, 45, 77, 0.6), inset 0 0 10px rgba(255, 119, 0, 0.3);
@@ -1532,7 +1560,7 @@
     box-shadow: 0 0 12px var(--red-glow);
     transform: translateY(-1px);
   }
-
+ 
  
   .vibe-dot {
     width: 6px;
@@ -1577,7 +1605,7 @@
     letter-spacing: 0.3px;
     transition: all 0.25s ease;
   }
-
+ 
   /* Микро-искры при наведении на теги */
   .tag-spark {
     position: absolute;
@@ -1591,7 +1619,7 @@
     pointer-events: none;
     animation: tagSparkFly 0.5s ease-out forwards;
   }
-
+ 
   @keyframes tagSparkFly {
     0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
     100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.3); }
@@ -1658,7 +1686,7 @@
     border-color: #5865F2;
     box-shadow: 0 0 15px rgba(88, 101, 242, 0.6);
   }
-
+ 
   .social-btn.twitch-btn:hover {
     background: #9146FF;
     border-color: #9146FF;
@@ -1733,7 +1761,7 @@
     position: relative;
   }
   .track-cover img { width: 100%; height: 100%; object-fit: cover; }
-
+ 
   /* Эквалайзер поверх обложки — делает плеер "живым" */
   .equalizer {
     position: absolute;
@@ -1763,19 +1791,19 @@
   .player.playing .eq-bar:nth-child(1) { animation-duration: 0.7s; animation-delay: 0s; }
   .player.playing .eq-bar:nth-child(2) { animation-duration: 0.95s; animation-delay: 0.15s; }
   .player.playing .eq-bar:nth-child(3) { animation-duration: 0.8s; animation-delay: 0.3s; }
-
+ 
   @keyframes eqBounce {
     0%, 100% { height: 3px; }
     50% { height: 13px; }
   }
-
+ 
   @media (prefers-reduced-motion: reduce) {
     .player.playing .eq-bar { animation: none; height: 8px; opacity: 0.9; }
   }
  
   .track-info { flex: 1; min-width: 0; display: flex; align-items: center; gap: 6px; }
   .track-title { font-weight: 600; font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
+ 
   /* Пульсирующая точка "сейчас играет" */
   .now-playing-dot {
     flex-shrink: 0;
@@ -2141,7 +2169,7 @@
     flex-direction: column;
     gap: 12px;
   }
-
+ 
   .stack-header {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 13px;
@@ -2150,13 +2178,13 @@
     color: var(--muted);
     text-align: center;
   }
-
+ 
   .stack-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
     gap: 10px;
   }
-
+ 
   .stack-item {
     display: flex;
     flex-direction: column;
@@ -2168,14 +2196,14 @@
     border-radius: 12px;
     transition: all 0.25s ease;
   }
-
+ 
   .stack-item:hover {
     background: rgba(255, 45, 77, 0.08);
     border-color: var(--red);
     box-shadow: 0 0 15px var(--red-glow);
     transform: translateY(-2px);
   }
-
+ 
   .stack-item img {
     width: 26px;
     height: 26px;
@@ -2183,22 +2211,22 @@
     opacity: 0.9;
     transition: transform 0.25s ease;
   }
-
+ 
   .stack-item:hover img {
     transform: scale(1.15);
   }
-
+ 
   .stack-item span {
     font-size: 10.5px;
     color: var(--muted);
     font-weight: 600;
     text-align: center;
   }
-
+ 
   .stack-item:hover span {
     color: var(--text);
   }
-
+ 
   /* ---------- Секция "проекты / портфолио" ---------- */
   .projects-section {
     background: var(--card);
@@ -2211,7 +2239,7 @@
     flex-direction: column;
     gap: 12px;
   }
-
+ 
   .projects-header {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 13px;
@@ -2220,13 +2248,13 @@
     color: var(--muted);
     text-align: center;
   }
-
+ 
   .projects-grid {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
-
+ 
   .project-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 45, 77, 0.2);
@@ -2239,20 +2267,20 @@
     color: var(--text);
     transition: all 0.25s ease;
   }
-
+ 
   .project-card:hover {
     background: rgba(255, 45, 77, 0.08);
     border-color: var(--red);
     box-shadow: 0 0 15px var(--red-glow);
     transform: translateY(-2px);
   }
-
+ 
   .project-top {
     display: flex;
     align-items: center;
     gap: 12px;
   }
-
+ 
   .project-thumb {
     width: 48px;
     height: 48px;
@@ -2262,15 +2290,15 @@
     flex-shrink: 0;
     background: #1a0d10;
   }
-
+ 
   .project-thumb img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-
+ 
   .project-info { flex: 1; min-width: 0; text-align: left; }
-
+ 
   .project-name {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 14px;
@@ -2279,26 +2307,26 @@
     align-items: center;
     gap: 6px;
   }
-
+ 
   .project-name svg {
     width: 13px;
     height: 13px;
     fill: var(--muted);
     flex-shrink: 0;
   }
-
+ 
   .project-desc {
     font-size: 11.5px;
     color: var(--muted);
     line-height: 1.4;
   }
-
+ 
   .project-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
   }
-
+ 
   .project-tag {
     font-size: 9.5px;
     font-weight: 600;
@@ -2308,7 +2336,7 @@
     padding: 2px 8px;
     border-radius: 999px;
   }
-
+ 
   /* ---------- Кнопка перехода на сайт: неоновая "дверь" ---------- */
   .neon-door-link {
     position: relative;
@@ -2331,12 +2359,12 @@
     transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease, color 0.25s ease;
     animation: doorBreathe 3.4s ease-in-out infinite;
   }
-
+ 
   @keyframes doorBreathe {
     0%, 100% { box-shadow: 0 6px 24px rgba(0,0,0,0.5), 0 0 14px rgba(255,45,77,0.18); background-position: 0% 50%; }
     50% { box-shadow: 0 6px 24px rgba(0,0,0,0.5), 0 0 24px rgba(255,45,77,0.32); background-position: 100% 50%; }
   }
-
+ 
   .neon-door-link:hover {
     border-color: var(--red);
     box-shadow: 0 8px 28px rgba(0,0,0,0.55), 0 0 30px var(--red-glow), 0 0 46px rgba(255,119,0,0.28);
@@ -2344,7 +2372,7 @@
     color: #fff;
     animation-play-state: paused;
   }
-
+ 
   .neon-door-arrow {
     width: 18px;
     height: 18px;
@@ -2352,12 +2380,12 @@
     flex-shrink: 0;
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), fill 0.25s ease;
   }
-
+ 
   .neon-door-link:hover .neon-door-arrow {
     transform: translateX(5px);
     fill: #ff7700;
   }
-
+ 
   @media (prefers-reduced-motion: reduce) {
     .neon-door-link { animation: none; }
   }
@@ -2482,7 +2510,7 @@
     backdrop-filter: blur(10px);
     transition: all 0.25s ease;
   }
-
+ 
   .gb-msg:hover {
     background: rgba(255, 45, 77, 0.06);
     border-color: var(--red);
@@ -2503,6 +2531,7 @@
     font-weight: 700;
     font-size: 13px;
     font-family: 'Space Grotesk', sans-serif;
+    object-fit: cover;
     flex-shrink: 0;
   }
  
@@ -2772,25 +2801,156 @@
     outline: none;
     box-shadow: 0 4px 16px rgba(0,0,0,0.4);
   }
-
+ 
   .qr-btn:hover {
     background: var(--red);
     border-color: var(--red);
     box-shadow: 0 0 15px var(--red-glow);
     transform: scale(1.05);
   }
-
+ 
   .qr-btn svg {
     width: 18px;
     height: 18px;
     fill: var(--text);
     transition: fill 0.2s ease;
   }
-
+ 
   .qr-btn:hover svg {
     fill: #000;
   }
-
+ 
+  /* ---------- Кнопка настроек (тема / язык) ---------- */
+  .settings-btn {
+    position: fixed;
+    top: 18px;
+    right: 114px;
+    z-index: 100;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(20px);
+    transition: all 0.2s ease;
+    outline: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  }
+ 
+  .settings-btn:hover {
+    background: var(--red);
+    border-color: var(--red);
+    box-shadow: 0 0 15px var(--red-glow);
+    transform: scale(1.05) rotate(35deg);
+  }
+ 
+  .settings-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--text);
+    transition: fill 0.2s ease;
+  }
+ 
+  .settings-btn:hover svg {
+    fill: #000;
+  }
+ 
+  .settings-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+ 
+  .settings-row-label {
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 600;
+  }
+ 
+  .settings-row-desc {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+ 
+  .lang-switch {
+    display: flex;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    padding: 3px;
+    gap: 3px;
+    flex-shrink: 0;
+  }
+ 
+  .lang-switch-btn {
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: var(--muted);
+    background: transparent;
+    transition: all 0.2s ease;
+  }
+ 
+  .lang-switch-btn.active {
+    background: var(--red);
+    color: #fff;
+    box-shadow: 0 0 10px var(--red-glow);
+  }
+ 
+  .theme-toggle-switch {
+    position: relative;
+    width: 42px;
+    height: 24px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--card-border);
+    flex-shrink: 0;
+    transition: background 0.2s ease;
+    cursor: pointer;
+  }
+ 
+  .theme-toggle-switch::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--muted);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+ 
+  .theme-toggle-switch.on {
+    background: rgba(255, 45, 77, 0.25);
+    border-color: var(--red);
+  }
+ 
+  .theme-toggle-switch.on::after {
+    transform: translateX(18px);
+    background: var(--red);
+  }
+ 
+  .settings-divider {
+    height: 1px;
+    background: var(--card-border);
+    opacity: 0.5;
+  }
+ 
+  .settings-current-theme {
+    font-size: 11px;
+    color: var(--muted);
+  }
+ 
   .qr-canvas-wrap {
     display: flex;
     justify-content: center;
@@ -2798,17 +2958,17 @@
     background: #f2e6e8;
     border-radius: 14px;
   }
-
+ 
   .qr-canvas-wrap img, .qr-canvas-wrap canvas {
     border-radius: 6px;
   }
-
+ 
   .qr-hint {
     font-size: 11.5px;
     color: var(--muted);
     text-align: center;
   }
-
+ 
   .map-frame-wrap {
     width: 100%;
     height: 200px;
@@ -2846,6 +3006,58 @@
     transform: translateY(-2px);
   }
  
+  /* ---------- Telegram-логин для гостевой книги ---------- */
+  .tg-login-wrap {
+    display: flex;
+    justify-content: center;
+    min-height: 40px;
+  }
+ 
+  .modal-note {
+    font-size: 11px;
+    color: var(--muted);
+    opacity: 0.75;
+    line-height: 1.4;
+  }
+ 
+  .gb-auth-status {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    padding: 0 16px 8px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+ 
+  .gb-auth-status.show {
+    display: flex;
+  }
+ 
+  .gb-auth-avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 45, 77, 0.35);
+  }
+ 
+  .gb-auth-name {
+    color: var(--text);
+    font-weight: 600;
+  }
+ 
+  .gb-logout-link {
+    margin-left: auto;
+    color: var(--muted);
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+ 
+  .gb-logout-link:hover {
+    color: var(--red);
+  }
+ 
   /* Пасхалки и эффекты */
   .fire-border {
     position: fixed; inset: 0; z-index: 1000; pointer-events: none;
@@ -2875,7 +3087,7 @@
     0% { transform: scale(1) rotate(-5deg); }
     100% { transform: scale(1.1) rotate(5deg); }
   }
-
+ 
   /* ---------- Пасхалка с монстром ---------- */
   .monster-overlay {
     position: fixed; inset: 0; z-index: 3000;
@@ -2887,7 +3099,7 @@
     transition: opacity 0.3s ease, visibility 0.3s ease;
   }
   .monster-overlay.active { opacity: 1; visibility: visible; pointer-events: auto; }
-
+ 
   .monster-drop {
     position: relative;
     transform: translateY(-160%);
@@ -2896,31 +3108,31 @@
     animation: monsterDrop 0.75s cubic-bezier(.36, 1.6, .4, 1) forwards,
                monsterShake 0.12s ease-in-out 0.75s infinite alternate;
   }
-
+ 
   @keyframes monsterDrop {
     0%   { transform: translateY(-160%); }
     65%  { transform: translateY(8%); }
     82%  { transform: translateY(-3%); }
     100% { transform: translateY(0%); }
   }
-
+ 
   @keyframes monsterShake {
     0%   { transform: translateY(0) rotate(-1.5deg); }
     100% { transform: translateY(2px) rotate(1.5deg); }
   }
-
+ 
   .monster-eye {
     animation: eyeFlicker 0.55s ease-in-out infinite alternate;
     transform-origin: center;
   }
-
+ 
   @keyframes eyeFlicker {
     0%   { opacity: 0.65; }
     100% { opacity: 1; filter: drop-shadow(0 0 10px #ff2d4d); }
   }
-
+ 
   .fang { filter: drop-shadow(0 2px 2px rgba(0,0,0,0.6)); }
-
+ 
   .blood-drip {
     position: absolute;
     width: 9px; height: 9px;
@@ -2937,14 +3149,14 @@
   .blood-drip-right { left: 188px; top: 202px; animation-delay: 1.25s; }
   .blood-drip-left2  { left: 122px; top: 202px; animation-delay: 1.55s; }
   .blood-drip-right2 { left: 184px; top: 202px; animation-delay: 1.95s; }
-
+ 
   @keyframes bloodDrip {
     0%   { opacity: 0; transform: translateY(0) rotate(45deg) scale(0.6); }
     10%  { opacity: 1; transform: translateY(0) rotate(45deg) scale(1); }
     80%  { opacity: 1; transform: translateY(75px) rotate(45deg) scale(1); }
     100% { opacity: 0; transform: translateY(92px) rotate(45deg) scale(0.8); }
   }
-
+ 
   .monster-title {
     margin-top: 22px;
     text-align: center;
@@ -2982,7 +3194,7 @@
     opacity: 0; pointer-events: none; transition: opacity 0.4s ease, transform 0.4s ease;
   }
   .secret-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
+ 
   /* ---------- Тосты скрытых достижений ---------- */
   .achievement-container {
     position: fixed;
@@ -2997,7 +3209,7 @@
     pointer-events: none;
     max-width: 92vw;
   }
-
+ 
   .achievement-toast {
     display: flex;
     align-items: center;
@@ -3012,17 +3224,17 @@
     transform: translateY(-14px) scale(0.95);
     transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-
+ 
   .achievement-toast.show {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
-
+ 
   .achievement-toast.hide {
     opacity: 0;
     transform: translateY(-10px) scale(0.97);
   }
-
+ 
   .achievement-icon {
     width: 32px;
     height: 32px;
@@ -3035,7 +3247,7 @@
     flex-shrink: 0;
     box-shadow: 0 0 10px var(--red-glow);
   }
-
+ 
   .achievement-label {
     font-size: 9.5px;
     text-transform: uppercase;
@@ -3043,7 +3255,7 @@
     color: var(--muted);
     font-weight: 600;
   }
-
+ 
   .achievement-title {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 13px;
@@ -3051,7 +3263,7 @@
     color: var(--text);
     white-space: nowrap;
   }
-
+ 
   @media (prefers-reduced-motion: reduce) {
     .achievement-toast { transition: opacity 0.3s ease; }
   }
@@ -3100,8 +3312,8 @@
   <div class="donate-modal" id="donateModal">
     <div class="donate-modal-content">
       <button class="donate-modal-close" id="donatecloseBtn">×</button>
-      <h2 class="donate-modal-title">❤️ ПОДДЕРЖАТЬ ПРОЕКТ</h2>
-
+      <h2 class="donate-modal-title" data-i18n="donate.title">❤️ ПОДДЕРЖАТЬ ПРОЕКТ</h2>
+ 
       <!-- Карточка цели сбора -->
       <div class="donate-goal-card">
         <div class="donate-goal-photo" style="background-image: url('assets/goal-audi-rs4.jpg');">
@@ -3130,31 +3342,36 @@
         </div>
         
         <div class="donate-modal-buttons">
-          <a href="https://dalink.to/d1scoragen" target="_blank" class="donate-link-btn">ПЕРЕЙТИ К ОПЛАТЕ →</a>
+          <a href="https://dalink.to/d1scoragen" target="_blank" class="donate-link-btn" data-i18n="donate.cta">ПЕРЕЙТИ К ОПЛАТЕ →</a>
         </div>
       </div>
-
+ 
       <!-- Предупреждение: донат добровольный -->
       <div class="donate-warning donate-voluntary">
         <span class="donate-warning-icon">🤍</span>
         <strong>Донат — это исключительно добровольная поддержка. Я никого не заставляю и не принуждаю переводить деньги — это просто приятный бонус, если тебе самому(ой) хочется поддержать проект.</strong>
       </div>
-
+ 
       <!-- Контактная информация -->
       <div class="donate-contact">
         Остались вопросы? Пишите в <a href="https://t.me/discoragen" target="_blank" class="donate-contact-link">Telegram @discoragen</a>
       </div>
     </div>
   </div>
-
+ 
   <!-- Кнопка копирования ссылки на профиль -->
   <button class="share-btn" id="shareBtn" title="Скопировать ссылку на профиль">
     <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
   </button>
-
+ 
   <!-- Кнопка QR-кода профиля -->
   <button class="qr-btn" id="qrBtn" title="QR-код профиля">
     <svg viewBox="0 0 24 24"><path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v2h-3v-2zm0 3h3v2h-2v3h-2v-3h-3v-2h4v-2zm-3 5h2v2h-2v-2zm4 0h2v2h-2v-2z"/></svg>
+  </button>
+ 
+  <!-- Кнопка настроек: язык и сезонные темы -->
+  <button class="settings-btn" id="settingsBtn" title="Настройки">
+    <svg viewBox="0 0 24 24"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
   </button>
  
   <!-- Регулятор громкости -->
@@ -3210,18 +3427,19 @@
       <p class="qr-hint">discoragen • bonya-cloud.github.io</p>
     </div>
   </div>
-
+ 
   <!-- Модальное окно: нужна авторизация для гостевой книги -->
   <div class="modal-overlay" id="authModal">
     <div class="modal-card">
       <div class="modal-title-row">
-        <div class="modal-title">🔒 Нужна авторизация</div>
+        <div class="modal-title" data-i18n="auth.title">✈️ Вход через Telegram</div>
         <button class="modal-close-x" id="closeAuthModal">&times;</button>
       </div>
-      <p class="modal-desc">
-        Чтобы оставить сообщение в гостевой книге, войди в аккаунт на сайте «Общажня» — это тот же аккаунт, что и в моей соцсети. После входа возвращайся сюда и пиши смело.
+      <p class="modal-desc" data-i18n="auth.desc">
+        Чтобы оставить сообщение в гостевой книге, войди через Telegram — это быстро и без паролей. Имя и аватар подтянутся из твоего профиля.
       </p>
-      <a href="https://bonya-cloud.github.io/discoragen.github.io/" target="_blank" class="modal-primary-btn">Перейти на сайт</a>
+      <div class="tg-login-wrap" id="tgLoginWrap"></div>
+      <p class="modal-note" data-i18n="auth.note">Мы не публикуем ничего от твоего имени и не запрашиваем доступ к переписке — только имя, юзернейм и аватар.</p>
     </div>
   </div>
  
@@ -3230,7 +3448,7 @@
     <div class="pumpkin-container">🎃</div>
     <div class="pumpkin-title">nightmare mode unlocked</div>
   </div>
-
+ 
   <!-- Пасхалка с монстром -->
   <div class="monster-overlay" id="monsterOverlay">
     <div class="monster-drop">
@@ -3276,7 +3494,7 @@
   <div class="fire-border" id="fireBorder"></div>
   <div class="glitch-flash" id="glitchFlash"></div>
   <div class="secret-toast" id="secretToast">you found me 67🩸</div>
-
+ 
   <!-- Тосты скрытых достижений -->
   <div class="achievement-container" id="achievementContainer"></div>
  
@@ -3285,24 +3503,24 @@
     <nav class="room-nav" id="roomNav">
       <button class="room-tab active" data-room="profile" title="Профиль">
         <svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-        <span>Профиль</span>
+        <span data-i18n="nav.profile">Профиль</span>
       </button>
       <button class="room-tab" data-room="music" title="Музыка">
         <svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm11-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/></svg>
-        <span>Музыка</span>
+        <span data-i18n="nav.music">Музыка</span>
       </button>
       <button class="room-tab" data-room="projects" title="Проекты">
         <svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg>
-        <span>Проекты</span>
+        <span data-i18n="nav.projects">Проекты</span>
       </button>
       <button class="room-tab" data-room="guestbook" title="Гостевая">
         <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        <span>Гостевая</span>
+        <span data-i18n="nav.guestbook">Гостевая</span>
       </button>
     </nav>
-
+ 
     <div class="rooms-viewport" id="roomsViewport">
-
+ 
     <!-- ===== Комната: Профиль ===== -->
     <div class="room room-profile active" id="room-profile" data-room="profile">
     <!-- Главная карточка -->
@@ -3317,7 +3535,7 @@
  
       <h1 class="username" id="usernameEl">discoragen</h1>
  
-      <p class="bio">
+      <p class="bio" data-i18n="profile.bio">
         hey, i'm discoragen. this is my little corner of the internet.<br>message me on telegram if you want.
       </p>
  
@@ -3354,7 +3572,7 @@
         <span class="visitor-label">views</span>
       </div>
     </div>
-
+ 
     <!-- Кнопка скачивания CV -->
     <a href="resume.pdf" download="Nikita_Resume.pdf" class="cv-download-link">
       <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
@@ -3363,7 +3581,7 @@
  
     <!-- Секция стека технологий -->
     <div class="stack-section">
-      <div class="stack-header">tech stack</div>
+      <div class="stack-header" data-i18n="section.stack">tech stack</div>
       <div class="stack-grid">
         <div class="stack-item">
           <img src="https://cdn.simpleicons.org/python/f2e6e8" alt="Python">
@@ -3399,7 +3617,7 @@
         </div>
       </div>
     </div>
-
+ 
     <!-- Кнопка поддержки разработчика (DonationAlerts) -->
     <button class="donate-section" id="donateBtn" title="Поддержать разработчика">
       <div class="donate-icon-wrap">
@@ -3423,7 +3641,7 @@
  
     <!-- Секция любимых игр -->
     <div class="games-section">
-      <div class="games-header">favorite games</div>
+      <div class="games-header" data-i18n="section.games">favorite games</div>
       <div class="games-grid">
         <div class="game-plaque">
           <div class="game-thumb">
@@ -3463,7 +3681,7 @@
     </a>
     </div>
     <!-- ===== /Комната: Профиль ===== -->
-
+ 
     <!-- ===== Комната: Музыка ===== -->
     <div class="room room-music" id="room-music" data-room="music">
     <!-- Плеер -->
@@ -3498,7 +3716,7 @@
       <div class="viz-wrap">
         <canvas class="viz-canvas" id="vizCanvas"></canvas>
       </div>
-
+ 
       <div class="progress-section">
         <input type="range" class="progress-slider" id="progressSlider" min="0" max="100" value="0" step="0.1">
         <div class="time-row">
@@ -3521,13 +3739,13 @@
     </div>
     </div>
     <!-- ===== /Комната: Музыка ===== -->
-
+ 
     <!-- ===== Комната: Проекты ===== -->
     <div class="room room-projects" id="room-projects" data-room="projects">
     <!-- Секция проектов/портфолио -->
     <!-- ЗАМЕНИ картинки, названия, описания, теги и ссылки на свои реальные проекты -->
     <div class="projects-section">
-      <div class="projects-header">projects</div>
+      <div class="projects-header" data-i18n="section.projects">projects</div>
       <div class="projects-grid">
         <a href="https://github.com/bonya-cloud/discoragen.github.io" target="_blank" class="project-card">
           <div class="project-top">
@@ -3547,7 +3765,7 @@
             <span class="project-tag">firebase</span>
           </div>
         </a>
-
+ 
         <a href="https://github.com/bonya-cloud" target="_blank" class="project-card">
           <div class="project-top">
             <div class="project-thumb">
@@ -3588,7 +3806,7 @@
     </div>
     </div>
     <!-- ===== /Комната: Проекты ===== -->
-
+ 
     <!-- ===== Комната: Гостевая ===== -->
     <div class="room room-guestbook" id="room-guestbook" data-room="guestbook">
     <!-- Discord Guestbook (Гостевая книга с Firebase) -->
@@ -3600,22 +3818,27 @@
         <div class="gb-messages-container" id="gbMessages"></div>
       </div>
       <button class="gb-toggle-btn" id="gbToggleBtn" type="button"></button>
+      <div class="gb-auth-status" id="gbAuthStatus">
+        <img class="gb-auth-avatar" id="gbAuthAvatar" src="" alt="" style="display:none;">
+        <span data-i18n="guestbook.loggedInAs">Вы вошли как</span>&nbsp;<span class="gb-auth-name" id="gbAuthName"></span>
+        <span class="gb-logout-link" id="gbLogoutLink" data-i18n="guestbook.logout">выйти</span>
+      </div>
       <div class="gb-form-wrap">
         <div class="gb-input-box" id="gbInputBox">
-          <input type="text" class="gb-input" id="gbInput" placeholder="🔒 Войдите на сайте, чтобы написать..." maxlength="200" readonly>
+          <input type="text" class="gb-input" id="gbInput" placeholder="🔒 Войдите через Telegram, чтобы написать..." maxlength="200" readonly>
           <button class="gb-send-btn" id="gbSendBtn">Send</button>
         </div>
       </div>
     </div>
     </div>
     <!-- ===== /Комната: Гостевая ===== -->
-
+ 
     </div>
     <!-- /rooms-viewport -->
   </div>
  
   <audio id="audio" preload="metadata"></audio>
-
+ 
   <!-- Окно «Сейчас играет» на весь экран -->
   <div class="np-overlay" id="npOverlay">
     <div class="np-top">
@@ -3625,16 +3848,16 @@
       <div class="np-eyebrow">Сейчас играет<strong>discoragen</strong></div>
       <div style="width:36px;"></div>
     </div>
-
+ 
     <div class="np-cover-wrap">
       <img id="npCoverImg" src="assets/cover.jpg" alt="cover">
     </div>
-
+ 
     <div class="np-info">
       <div class="np-title" id="npTitleEl">LEGACY</div>
       <div class="np-artist">discoragen</div>
     </div>
-
+ 
     <div class="np-progress">
       <input type="range" id="npProgressSlider" min="0" max="100" value="0" step="0.1">
       <div class="np-time-row">
@@ -3642,7 +3865,7 @@
         <span id="npDuration">0:00</span>
       </div>
     </div>
-
+ 
     <div class="np-controls">
       <button class="np-mini-btn" id="npPrevBtn" title="Предыдущий трек">
         <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6V6zm3.5 6l8.5 6V6l-8.5 6z"/></svg>
@@ -3693,7 +3916,7 @@
       const closeQrModal = document.getElementById('closeQrModal');
       const qrWrap = document.getElementById('qrCanvasWrap');
       let qrGenerated = false;
-
+ 
       qrBtn.addEventListener('click', () => {
         qrModal.classList.add('active');
         if (!qrGenerated) {
@@ -3708,13 +3931,13 @@
           qrGenerated = true;
         }
       });
-
+ 
       closeQrModal.addEventListener('click', () => qrModal.classList.remove('active'));
       qrModal.addEventListener('click', (e) => {
         if (e.target === qrModal) qrModal.classList.remove('active');
       });
     })();
-
+ 
     /* Частицы/дым от курсора */
     (function () {
       const canvas = document.getElementById('cursorFx');
@@ -3723,14 +3946,14 @@
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       let particles = [];
       let w, h;
-
+ 
       function resize() {
         w = canvas.width = window.innerWidth;
         h = canvas.height = window.innerHeight;
       }
       window.addEventListener('resize', resize);
       resize();
-
+ 
       function spawn(x, y) {
         if (reduceMotion) return;
         for (let i = 0; i < 2; i++) {
@@ -3745,7 +3968,7 @@
         }
         if (particles.length > 160) particles.splice(0, particles.length - 160);
       }
-
+ 
       let lastX = null, lastY = null;
       function handleMove(x, y) {
         if (lastX !== null) {
@@ -3755,12 +3978,12 @@
           spawn(x, y); lastX = x; lastY = y;
         }
       }
-
+ 
       window.addEventListener('mousemove', (e) => handleMove(e.clientX, e.clientY));
       window.addEventListener('touchmove', (e) => {
         if (e.touches && e.touches[0]) handleMove(e.touches[0].clientX, e.touches[0].clientY);
       }, { passive: true });
-
+ 
       function tick() {
         ctx.clearRect(0, 0, w, h);
         particles.forEach(p => {
@@ -3770,7 +3993,7 @@
           p.size *= 0.98;
         });
         particles = particles.filter(p => p.life > 0 && p.size > 0.3);
-
+ 
         particles.forEach(p => {
           ctx.beginPath();
           ctx.fillStyle = `rgba(${p.hue}, ${p.life * 0.5})`;
@@ -3783,12 +4006,12 @@
       }
       if (!reduceMotion) requestAnimationFrame(tick);
     })();
-
+ 
     /* Parallax-наклон карточек */
     (function () {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-
+ 
       function attachTilt(el, maxTilt) {
         el.style.transition = 'transform 0.15s ease-out, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease';
         el.addEventListener('mousemove', (e) => {
@@ -3803,16 +4026,16 @@
           el.style.transform = '';
         });
       }
-
+ 
       document.querySelectorAll('.card, .game-plaque, .project-card').forEach(el => {
         attachTilt(el, el.classList.contains('card') ? 5 : 9);
       });
     })();
-
+ 
     /* Микро-искры при наведении на теги */
     (function () {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
+ 
       document.querySelectorAll('.tag').forEach((tagEl) => {
         tagEl.addEventListener('mouseenter', () => {
           const count = 3;
@@ -3829,7 +4052,7 @@
         });
       });
     })();
-
+ 
     /* Регистрация service worker для PWA */
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -3838,14 +4061,14 @@
         });
       });
     }
-
+ 
  
     let toastTimeout;
     let isSeeking = false;
     let previousVolume = 0.8;
  
     audio.volume = 0.8;
-
+ 
     /* Заполненный вид ползунка громкости (без "дешёвого" тонкого трека) */
     function updateVolumeFill(vol) {
       const pct = Math.round(vol * 100);
@@ -4131,7 +4354,7 @@
     const gbSendBtn = document.getElementById('gbSendBtn');
     const GB_PREVIEW_COUNT = 3;
     let gbExpanded = false;
-
+ 
     function loadMessages() {
       db.collection('messages').onSnapshot((snapshot) => {
         gbMessagesContainer.innerHTML = '';
@@ -4155,7 +4378,7 @@
         updateGbCollapse(messagesList.length);
       });
     }
-
+ 
     function updateGbCollapse(total) {
       if (total <= GB_PREVIEW_COUNT) {
         gbMessagesWrap.classList.remove('gb-collapsed');
@@ -4163,9 +4386,9 @@
         gbToggleBtn.style.display = 'none';
         return;
       }
-
+ 
       gbToggleBtn.style.display = 'block';
-
+ 
       if (gbExpanded) {
         gbMessagesWrap.classList.remove('gb-collapsed');
         gbMessagesContainer.style.maxHeight = '500px';
@@ -4186,7 +4409,7 @@
         gbToggleBtn.textContent = `Показать ещё (${total - GB_PREVIEW_COUNT}) ▼`;
       }
     }
-
+ 
     gbToggleBtn.addEventListener('click', () => {
       gbExpanded = !gbExpanded;
       updateGbCollapse(gbMessagesContainer.children.length);
@@ -4194,7 +4417,7 @@
         gbMessagesWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
     });
-
+ 
     window.addEventListener('resize', () => {
       if (!gbExpanded) updateGbCollapse(gbMessagesContainer.children.length);
     });
@@ -4219,9 +4442,12 @@
       
       const isOwner = authorName === '@discoragen' || msg.isAdminPost;
       const authorClass = isOwner ? 'gb-author admin-author' : 'gb-author';
+      const avatarHTML = msg.avatar
+        ? `<img class="gb-avatar" src="${escapeHtml(msg.avatar)}" alt="" loading="lazy">`
+        : `<div class="gb-avatar" style="${isOwner ? 'background: #fee75c; color: #000;' : ''}">${escapeHtml(authorName).charAt(isOwner ? 1 : 0).toUpperCase()}</div>`;
  
       msgDiv.innerHTML = `
-        <div class="gb-avatar" style="${isOwner ? 'background: #fee75c; color: #000;' : ''}">${authorName.charAt(0).toUpperCase()}</div>
+        ${avatarHTML}
         <div class="gb-content">
           <div class="gb-user-row">
             <span class="${authorClass}">${escapeHtml(authorName)}</span>
@@ -4313,18 +4539,104 @@
       document.querySelectorAll('.emoji-picker-popup').forEach(p => p.classList.remove('show'));
     };
  
-    const SITE_URL = 'https://bonya-cloud.github.io/discoragen.github.io/';
     const authModal = document.getElementById('authModal');
     const closeAuthModal = document.getElementById('closeAuthModal');
+    const tgLoginWrap = document.getElementById('tgLoginWrap');
+    const gbAuthStatus = document.getElementById('gbAuthStatus');
+    const gbAuthAvatar = document.getElementById('gbAuthAvatar');
+    const gbAuthName = document.getElementById('gbAuthName');
+    const gbLogoutLink = document.getElementById('gbLogoutLink');
+ 
+    // TODO: укажи юзернейм своего Telegram-бота (созданного через @BotFather,
+    // команда /setdomain с адресом этого сайта), без символа @.
+    const TELEGRAM_BOT_USERNAME = 'discoragen_guestbook_bot';
+ 
+    let gbTelegramUser = null;
+    try { gbTelegramUser = JSON.parse(localStorage.getItem('gbTelegramUser') || 'null'); } catch (e) { gbTelegramUser = null; }
+ 
+    function mountTelegramWidget() {
+      if (!tgLoginWrap || tgLoginWrap.dataset.mounted) return;
+      tgLoginWrap.dataset.mounted = '1';
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://telegram.org/js/telegram-widget.js?22';
+      script.setAttribute('data-telegram-login', TELEGRAM_BOT_USERNAME);
+      script.setAttribute('data-size', 'large');
+      script.setAttribute('data-radius', '10');
+      script.setAttribute('data-onauth', 'onTelegramAuth(user)');
+      script.setAttribute('data-request-access', 'write');
+      tgLoginWrap.appendChild(script);
+    }
+ 
+    window.onTelegramAuth = function(user) {
+      gbTelegramUser = user;
+      localStorage.setItem('gbTelegramUser', JSON.stringify(user));
+      renderGbAuthState();
+      authModal.classList.remove('active');
+      toast.textContent = `Вы вошли как ${user.first_name} 👋`;
+      toast.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => toast.classList.remove('show'), 3000);
+    };
+ 
+    function gbLogout() {
+      gbTelegramUser = null;
+      localStorage.removeItem('gbTelegramUser');
+      renderGbAuthState();
+    }
+ 
+    function renderGbAuthState() {
+      if (gbTelegramUser) {
+        gbInput.readOnly = false;
+        gbInput.placeholder = 'Написать сообщение...';
+        gbAuthStatus.classList.add('show');
+        gbAuthName.textContent = gbTelegramUser.username ? '@' + gbTelegramUser.username : gbTelegramUser.first_name;
+        if (gbTelegramUser.photo_url) {
+          gbAuthAvatar.src = gbTelegramUser.photo_url;
+          gbAuthAvatar.style.display = 'inline-block';
+        } else {
+          gbAuthAvatar.style.display = 'none';
+        }
+      } else {
+        gbInput.readOnly = true;
+        gbInput.placeholder = '🔒 Войдите через Telegram, чтобы написать...';
+        gbAuthStatus.classList.remove('show');
+      }
+    }
+ 
+    function postGbMessage() {
+      const text = gbInput.value.trim();
+      if (!text || !gbTelegramUser) return;
+      gbSendBtn.disabled = true;
+      db.collection('messages').add({
+        author: gbTelegramUser.username ? '@' + gbTelegramUser.username : gbTelegramUser.first_name,
+        text: text,
+        telegramId: gbTelegramUser.id,
+        avatar: gbTelegramUser.photo_url || null,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      }).then(() => {
+        gbInput.value = '';
+      }).catch((err) => {
+        console.error(err);
+        toast.textContent = '⚠️ Не получилось отправить сообщение';
+        toast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => toast.classList.remove('show'), 3000);
+      }).finally(() => {
+        gbSendBtn.disabled = false;
+      });
+    }
  
     function promptAuthAndRedirect() {
       authModal.classList.add('active');
+      mountTelegramWidget();
     }
  
     closeAuthModal.addEventListener('click', () => authModal.classList.remove('active'));
     authModal.addEventListener('click', (e) => {
       if (e.target === authModal) authModal.classList.remove('active');
     });
+    gbLogoutLink.addEventListener('click', gbLogout);
  
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.emoji-picker-container')) {
@@ -4332,12 +4644,20 @@
       }
     });
  
-    gbSendBtn.addEventListener('click', promptAuthAndRedirect);
-    gbInputBox.addEventListener('click', promptAuthAndRedirect);
+    gbSendBtn.addEventListener('click', () => {
+      if (!gbTelegramUser) { promptAuthAndRedirect(); return; }
+      postGbMessage();
+    });
+    gbInputBox.addEventListener('click', () => {
+      if (!gbTelegramUser) promptAuthAndRedirect();
+    });
     gbInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') promptAuthAndRedirect();
+      if (e.key !== 'Enter') return;
+      if (!gbTelegramUser) promptAuthAndRedirect();
+      else postGbMessage();
     });
  
+    renderGbAuthState();
     loadMessages();
  
     /* Статус сети */
@@ -4457,7 +4777,7 @@
     /* ---------- Система скрытых достижений ---------- */
     const achievementContainer = document.getElementById('achievementContainer');
     const unlockedAchievements = new Set();
-
+ 
     function unlockAchievement(id, title, icon) {
       if (unlockedAchievements.has(id)) return;
       if (localStorage.getItem(`discoragen_achv_${id}`) === 'true') {
@@ -4467,7 +4787,7 @@
       unlockedAchievements.add(id);
       localStorage.setItem(`discoragen_achv_${id}`, 'true');
       if (!achievementContainer) return;
-
+ 
       const el = document.createElement('div');
       el.className = 'achievement-toast';
       el.innerHTML = `
@@ -4479,14 +4799,14 @@
       `;
       achievementContainer.appendChild(el);
       requestAnimationFrame(() => el.classList.add('show'));
-
+ 
       setTimeout(() => {
         el.classList.remove('show');
         el.classList.add('hide');
         setTimeout(() => el.remove(), 400);
       }, 4000);
     }
-
+ 
     /* Ачивка: прослушал 3 разных трека */
     (function () {
       const playedTracks = new Set();
@@ -4497,7 +4817,7 @@
         }
       });
     })();
-
+ 
     /* Секретное слово */
     (function () {
       const secretWord = 'discoragen';
@@ -4543,13 +4863,13 @@
         }
       });
     })();
-
+ 
     /* Пасхалка с монстром по 5 кликам на аватарку */
     (function () {
       const avatarWrap = document.getElementById('avatarWrap');
       const monsterOverlay = document.getElementById('monsterOverlay');
       let clickCount = 0, clickTimer = null;
-
+ 
       avatarWrap.addEventListener('click', () => {
         clickCount++;
         clearTimeout(clickTimer);
@@ -4562,26 +4882,26 @@
           clickTimer = setTimeout(() => { clickCount = 0; }, 700);
         }
       });
-
+ 
       monsterOverlay.addEventListener('click', () => monsterOverlay.classList.remove('active'));
     })();
-
+ 
     /* Модальное окно донатов */
     (function () {
       const donateBtn = document.getElementById('donateBtn');
       const donateModal = document.getElementById('donateModal');
       const donatecloseBtn = document.getElementById('donatecloseBtn');
-
+ 
       // Открыть модальное окно при клике на кнопку донатов
       donateBtn.addEventListener('click', () => {
         donateModal.classList.add('active');
       });
-
+ 
       // Закрыть модальное окно при клике на кнопку закрытия
       donatecloseBtn.addEventListener('click', () => {
         donateModal.classList.remove('active');
       });
-
+ 
       // Закрыть модальное окно при клике вне окна
       donateModal.addEventListener('click', (e) => {
         if (e.target === donateModal) {
@@ -4589,7 +4909,7 @@
         }
       });
     })();
-
+ 
     /* Esc закрывает любую открытую модалку */
     document.addEventListener('keydown', (e) => {
       if (e.key !== 'Escape') return;
@@ -4603,22 +4923,22 @@
       const tabs = Array.from(document.querySelectorAll('.room-tab'));
       const viewport = document.getElementById('roomsViewport');
       let current = 'profile';
-
+ 
       function roomEls(name) {
         return Array.from(viewport.querySelectorAll(`.room[data-room="${name}"]`));
       }
-
+ 
       function goToRoom(name, { silent = false } = {}) {
         if (name === current || !order.includes(name)) return;
-
+ 
         const fromIndex = order.indexOf(current);
         const toIndex = order.indexOf(name);
         const goingForward = toIndex > fromIndex;
-
+ 
         roomEls(current).forEach(el => {
           el.classList.remove('active', 'enter-from-right', 'enter-from-left');
         });
-
+ 
         roomEls(name).forEach(el => {
           el.classList.add('active');
           el.classList.add(goingForward ? 'enter-from-right' : 'enter-from-left');
@@ -4626,19 +4946,19 @@
             el.classList.remove('enter-from-right', 'enter-from-left');
           }, { once: true });
         });
-
+ 
         tabs.forEach(t => t.classList.toggle('active', t.dataset.room === name));
-
+ 
         current = name;
         if (!silent) viewport.scrollTop = 0;
-
+ 
         if (name === 'music') startViz(); else stopViz();
       }
-
+ 
       tabs.forEach(tab => {
         tab.addEventListener('click', () => goToRoom(tab.dataset.room));
       });
-
+ 
       // Свайп по комнате
       let touchStartX = 0, touchStartY = 0, touching = false;
       viewport.addEventListener('touchstart', (e) => {
@@ -4646,19 +4966,19 @@
         touchStartY = e.touches[0].clientY;
         touching = true;
       }, { passive: true });
-
+ 
       viewport.addEventListener('touchend', (e) => {
         if (!touching) return;
         touching = false;
         const dx = e.changedTouches[0].clientX - touchStartX;
         const dy = e.changedTouches[0].clientY - touchStartY;
         if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy) * 1.3) return;
-
+ 
         const idx = order.indexOf(current);
         if (dx < 0 && idx < order.length - 1) goToRoom(order[idx + 1]);
         else if (dx > 0 && idx > 0) goToRoom(order[idx - 1]);
       }, { passive: true });
-
+ 
       // Стрелки клавиатуры (когда фокус не в текстовом поле)
       document.addEventListener('keydown', (e) => {
         const tag = (document.activeElement && document.activeElement.tagName) || '';
@@ -4667,12 +4987,12 @@
         if (e.key === 'ArrowRight' && idx < order.length - 1) goToRoom(order[idx + 1]);
         if (e.key === 'ArrowLeft' && idx > 0) goToRoom(order[idx - 1]);
       });
-
+ 
       // ---- Аудио-визуализатор (Web Audio API) ----
       const vizCanvas = document.getElementById('vizCanvas');
       const vizCtx = vizCanvas ? vizCanvas.getContext('2d') : null;
       let audioCtxViz, analyserViz, sourceViz, freqData, vizRafId = null;
-
+ 
       function ensureVizAudioGraph() {
         if (sourceViz || !vizCanvas) return;
         try {
@@ -4688,7 +5008,7 @@
           // Web Audio недоступен — молча продолжаем без визуализатора
         }
       }
-
+ 
       function resizeVizCanvas() {
         if (!vizCanvas) return;
         const rect = vizCanvas.getBoundingClientRect();
@@ -4696,14 +5016,14 @@
         vizCanvas.width = Math.max(1, rect.width * dpr);
         vizCanvas.height = Math.max(1, rect.height * dpr);
       }
-
+ 
       function drawViz() {
         if (!vizCtx) return;
         vizRafId = requestAnimationFrame(drawViz);
-
+ 
         const w = vizCanvas.width, h = vizCanvas.height;
         vizCtx.clearRect(0, 0, w, h);
-
+ 
         let bars, playing = !audio.paused && !audio.ended;
         if (analyserViz && playing) {
           analyserViz.getByteFrequencyData(freqData);
@@ -4713,7 +5033,7 @@
           const t = Date.now() / 500;
           bars = new Array(24).fill(0).map((_, i) => 18 + 10 * Math.sin(t + i * 0.5));
         }
-
+ 
         const count = Math.min(bars.length, 28);
         const gap = w * 0.012;
         const barW = (w - gap * (count - 1)) / count;
@@ -4721,7 +5041,7 @@
         grad.addColorStop(0, 'rgba(122, 12, 31, 0.9)');
         grad.addColorStop(1, 'rgba(255, 45, 77, 0.95)');
         vizCtx.fillStyle = grad;
-
+ 
         for (let i = 0; i < count; i++) {
           const v = bars[i] / 255 || bars[i] / 40;
           const barH = Math.max(3, (bars[i] / 255) * h * 0.92 || Math.min(h, bars[i]) * (h / 90));
@@ -4737,7 +5057,7 @@
           vizCtx.fill();
         }
       }
-
+ 
       function startViz() {
         if (!vizCanvas) return;
         resizeVizCanvas();
@@ -4747,25 +5067,25 @@
         }
         if (!vizRafId) drawViz();
       }
-
+ 
       function stopViz() {
         if (vizRafId) {
           cancelAnimationFrame(vizRafId);
           vizRafId = null;
         }
       }
-
+ 
       window.addEventListener('resize', () => {
         if (current === 'music') resizeVizCanvas();
       });
-
+ 
       audio.addEventListener('play', () => {
         if (audioCtxViz && audioCtxViz.state === 'suspended') {
           audioCtxViz.resume().catch(() => {});
         }
       });
     })();
-
+ 
     // ================= ОКНО «СЕЙЧАС ИГРАЕТ» =================
     (function () {
       const overlay = document.getElementById('npOverlay');
@@ -4782,9 +5102,9 @@
       const npPrevBtn = document.getElementById('npPrevBtn');
       const npNextBtn = document.getElementById('npNextBtn');
       if (!overlay || !coverBtn) return;
-
+ 
       let npSeeking = false;
-
+ 
       function syncNow() {
         npCover.src = trackCoverImg.src;
         npTitle.textContent = trackTitleEl.textContent;
@@ -4796,28 +5116,28 @@
           }
         }
       }
-
+ 
       function setNpPlayingIcons(isPlaying) {
         npPlayIcon.style.display = isPlaying ? 'none' : '';
         npPauseIcon.style.display = isPlaying ? '' : 'none';
       }
-
+ 
       function openOverlay() {
         syncNow();
         setNpPlayingIcons(!audio.paused && !audio.ended);
         overlay.classList.add('open');
       }
-
+ 
       function closeOverlay() {
         overlay.classList.remove('open');
       }
-
+ 
       coverBtn.addEventListener('click', openOverlay);
       coverBtn.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openOverlay(); }
       });
       closeBtn.addEventListener('click', closeOverlay);
-
+ 
       audio.addEventListener('timeupdate', () => {
         if (!overlay.classList.contains('open')) return;
         if (!npSeeking && audio.duration) {
@@ -4825,32 +5145,32 @@
           npCurrentTime.textContent = formatTime(audio.currentTime);
         }
       });
-
+ 
       audio.addEventListener('loadedmetadata', () => {
         if (overlay.classList.contains('open')) syncNow();
       });
-
+ 
       audio.addEventListener('play', () => setNpPlayingIcons(true));
       audio.addEventListener('pause', () => setNpPlayingIcons(false));
-
+ 
       npProgress.addEventListener('input', () => {
         npSeeking = true;
         if (audio.duration) {
           npCurrentTime.textContent = formatTime((npProgress.value / 100) * audio.duration);
         }
       });
-
+ 
       npProgress.addEventListener('change', () => {
         if (audio.duration) {
           audio.currentTime = (npProgress.value / 100) * audio.duration;
         }
         npSeeking = false;
       });
-
+ 
       npPlayBtn.addEventListener('click', () => playBtn.click());
       npPrevBtn.addEventListener('click', () => prevBtn.click());
       npNextBtn.addEventListener('click', () => nextBtn.click());
-
+ 
       // Держим обложку/название в окне синхронными при смене трека,
       // даже если окно уже открыто
       const npObserver = new MutationObserver(() => {
