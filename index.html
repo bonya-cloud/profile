@@ -1030,13 +1030,24 @@
   .stage.revealed > *:nth-child(8) { transition-delay: 0.54s; }
   .stage.revealed > *:nth-child(9) { transition-delay: 0.61s; }
   .stage.revealed > *:nth-child(n+10) { transition-delay: 0.68s; }
- 
+
   @media (prefers-reduced-motion: reduce) {
     .stage > * { transition-delay: 0s !important; }
   }
- 
+
+  .room, #room-projects {
+  height: auto !important;
+  min-height: 100vh;
+  overflow-y: visible !important;
+}
+
+.projects-grid {
+  height: auto !important;
+  max-height: none !important;
+}
+
   /* ================= РЕЖИМ «КОМНАТА» ================= */
- 
+
   .room-nav {
     display: flex;
     gap: 6px;
@@ -4012,6 +4023,47 @@
           <div class="project-tags">
             <span class="project-tag">html/css/js</span>
             <span class="project-tag">font awesome</span>
+          </div>
+        </a>
+        <!-- 2D Pixel UFC Fighting -->
+        <a href="https://bonya-cloud.github.io/2D-Pixel-UFC-Fighting/" target="_blank" class="project-card">
+          <div class="project-top">
+            <div class="project-thumb">
+              <img src="https://ui-avatars.com/api/?name=UFC+2D&background=ff2d4d&color=fff" alt="2D Pixel UFC Fighting">
+            </div>
+            <div class="project-info">
+              <div class="project-name">
+                2D Pixel UFC Fighting
+                <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59L9 13.59 10.41 15 19 6.41V10h2V3h-7zM5 5h5V3H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-5h-2v5H5V5z"/></svg>
+              </div>
+              <div class="project-desc">Пиксельный 2D файтинг по мотивам UFC с полосками выносливости и спецударами.</div>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">JavaScript</span>
+            <span class="project-tag">HTML5 Canvas</span>
+            <span class="project-tag">2D Game</span>
+          </div>
+        </a>
+
+        <!-- UFC 3D -->
+        <a href="https://bonya-cloud.github.io/ufc-3d/" target="_blank" class="project-card">
+          <div class="project-top">
+            <div class="project-thumb">
+              <img src="https://ui-avatars.com/api/?name=UFC+3D&background=2d83ff&color=fff" alt="UFC 3D">
+            </div>
+            <div class="project-info">
+              <div class="project-name">
+                UFC 3D
+                <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59L9 13.59 10.41 15 19 6.41V10h2V3h-7zM5 5h5V3H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-5h-2v5H5V5z"/></svg>
+              </div>
+              <div class="project-desc">3D симулятор / файтинг UFC с объёмной ареной и боёвкой.</div>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Three.js</span>
+            <span class="project-tag">WebGL</span>
+            <span class="project-tag">3D Game</span>
           </div>
         </a>
       </div>
